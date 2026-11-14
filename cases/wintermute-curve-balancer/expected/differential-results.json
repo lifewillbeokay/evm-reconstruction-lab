@@ -1,0 +1,250 @@
+[
+  {
+    "name": "grant_operator",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_operator",
+    "match": true
+  },
+  {
+    "name": "grant_curve",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_curve",
+    "match": true
+  },
+  {
+    "name": "grant_coinbase",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_coinbase",
+    "match": true
+  },
+  {
+    "name": "grant_spender",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_spender",
+    "match": true
+  },
+  {
+    "name": "grant_balv1",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_balv1",
+    "match": true
+  },
+  {
+    "name": "grant_balv2",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_balv2",
+    "match": true
+  },
+  {
+    "name": "grant_unknown",
+    "match": true
+  },
+  {
+    "name": "revoke_absent_unknown",
+    "match": true
+  },
+  {
+    "name": "pool_specialization_0",
+    "match": true
+  },
+  {
+    "name": "pool_specialization_2",
+    "match": true
+  },
+  {
+    "name": "pool_specialization_3",
+    "match": true
+  },
+  {
+    "name": "pool_specialization_255",
+    "match": true
+  },
+  {
+    "name": "pool_specialization_256",
+    "match": true
+  },
+  {
+    "name": "revoke_spender_allowance_nonzero",
+    "match": true
+  },
+  {
+    "name": "revoke_count_allowance_nonzero",
+    "match": true
+  },
+  {
+    "name": "revoke_all_allowance_nonzero",
+    "match": true
+  },
+  {
+    "name": "revoke_spender_allowance_zero",
+    "match": true
+  },
+  {
+    "name": "revoke_count_allowance_zero",
+    "match": true
+  },
+  {
+    "name": "revoke_all_allowance_zero",
+    "match": true
+  },
+  {
+    "name": "revoke_spender_allowance_revert",
+    "match": true
+  },
+  {
+    "name": "revoke_count_allowance_revert",
+    "match": true
+  },
+  {
+    "name": "revoke_all_allowance_revert",
+    "match": true
+  },
+  {
+    "name": "revoke_spender_allowance_empty",
+    "match": true
+  },
+  {
+    "name": "revoke_count_allowance_empty",
+    "match": true
+  },
+  {
+    "name": "revoke_all_allowance_empty",
+    "match": true
+  },
+  {
+    "name": "revoke_empty_0",
+    "match": true
+  },
+  {
+    "name": "revoke_empty_1",
+    "match": true
+  },
+  {
+    "name": "revoke_empty_2",
+    "match": true
+  },
+  {
+    "name": "approve_empty",
+    "match": true
+  },
+  {
+    "name": "approve_token",
+    "match": true
+  },
+  {
+    "name": "transfer_token",
+    "match": true
+  },
+  {
+    "name": "transfer_eth",
+    "match": true
+  },
+  {
+    "name": "kill",
+    "match": true
+  },
+  {
+    "name": "unkill",
+    "match": true
+  },
+  {
+    "name": "eth_input_without_deadline",
+    "match": true
+  },
+  {
+    "name": "curve_uint",
+    "match": true
+  },
+  {
+    "name": "inactive",
+    "match": true
+  },
+  {
+    "name": "unauthorized_operator",
+    "match": true
+  },
+  {
+    "name": "unapproved_pool",
+    "match": true
+  },
+  {
+    "name": "unapproved_builder",
+    "match": true
+  },
+  {
+    "name": "zero_tip_unapproved_builder",
+    "match": true
+  },
+  {
+    "name": "builder_reverts",
+    "match": true
+  },
+  {
+    "name": "input_transfer_reverts",
+    "match": true
+  },
+  {
+    "name": "output_token_reverts",
+    "match": true
+  },
+  {
+    "name": "curve_uint_deadline",
+    "match": true
+  },
+  {
+    "name": "expired_deadline",
+    "match": true
+  },
+  {
+    "name": "deadline_equal_now",
+    "match": true
+  },
+  {
+    "name": "curve_int_balance",
+    "match": true
+  },
+  {
+    "name": "curve_int_balance_deadline",
+    "match": true
+  },
+  {
+    "name": "curve_int_return",
+    "match": true
+  },
+  {
+    "name": "curve_int_return_wrap_eth",
+    "match": true
+  },
+  {
+    "name": "curve_int_return_deadline",
+    "match": true
+  },
+  {
+    "name": "curve_eth_in_deadline",
+    "match": true
+  },
+  {
+    "name": "balancer_v1",
+    "match": true
+  },
+  {
+    "name": "balancer_v1_deadline",
+    "match": true
+  },
+  {
+    "name": "balancer_v2",
+    "match": true
+  }
+]

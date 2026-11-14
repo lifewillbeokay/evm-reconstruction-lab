@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "chain_id": 1,
+  "address": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+  "contract": "src/Executor.sol:Executor",
+  "compiler": "0.8.19+commit.7dd6d404",
+  "deployment_transaction": "0xa733d91ddbf7acc28db5e21cb66ebf3cdaee2acca1c9427dc160793505e63a2d",
+  "deployer": "0x3c2d58cf26b667b3a3de9110937b869e75cb214b",
+  "timestamp": 1701337067,
+  "evm_fork": "shanghai",
+  "constructor_value": 0,
+  "source_input": "standard-input.json",
+  "constructor_arguments": "constructor-arguments.hex",
+  "chain_runtime": "chain-runtime.hex",
+  "chain_creation_input": "chain-creation-input.hex"
+}

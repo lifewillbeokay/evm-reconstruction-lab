@@ -1,0 +1,2006 @@
+{
+  "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+  "chain": "ethereum",
+  "observed_date": "2026-11-14",
+  "runtime_bytes": 13759,
+  "runtime_keccak256": "0x4d149c3cdf8ddfa030d404be873d04867ef50bbb0e8a3c08cdba48acb098a92b",
+  "runtime_sha256": "a92342431b2c5e5a16d15b8e7a18449a18e500251fbc142f11a71539349e64fa",
+  "compiler_version_from_metadata": "0.8.19",
+  "source_verification": "Unverified on Etherscan at collection",
+  "sample": {
+    "selection": "First 25 transactions on the Etherscan address page captured November 14, 2026; three older examples selected for selector/builder diversity. Not a random or exhaustive sample.",
+    "recent_window_utc": [
+      "2026-11-14T17:54:47Z",
+      "2026-11-14T18:42:35Z"
+    ],
+    "recent_count": 25,
+    "older_count": 3,
+    "recent_unique_callers": 18,
+    "recent_selectors": {
+      "0x15427b54": 23,
+      "0xc94ba2ba": 2
+    },
+    "recent_tip_recipients_by_explorer_label": {
+      "Titan Builder": 24,
+      "BuilderNet": 1
+    },
+    "slack_definition": "10000 * (actual output transferred to inventory - calldata minOut) / actual output transferred to inventory",
+    "median_slack_bps": 0.019994376719545626,
+    "count_slack_between_0_0199_and_0_0201_bps": 19,
+    "median_tip_eth": "0.000332572301168341",
+    "median_direct_tip_divided_by_transaction_gas_fee": "4.857829052804039051088302115",
+    "pool_output_equals_sweep_for_all_recent": true
+  },
+  "validation": {
+    "method": "Original runtime executed in local py-evm Shanghai VM with mock ERC20s/venues and synthetic storage; not a historical-state fork replay.",
+    "cases": 21,
+    "swap_entry_points_exercised": 10,
+    "natural_signatures_hash_matched": 9
+  },
+  "transactions": [
+    {
+      "hash": "0x3a8bc0c4713e7cdcd1bf314a3c8ecf424e3877fb7c8b7c4e64c31fcdbe7dff58",
+      "selector": "0x15427b54",
+      "caller": "0x501a9b3fcff1d79968f210e7402aab33f1ee9bb7",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "1856292867808567552",
+      "min_out": "3413080357",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "3413087181",
+      "slack_bps": 0.01999362933940831,
+      "tip_wei": "332572301168341",
+      "gas_used": 291130,
+      "fee_wei": "54782657887090",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000332572301168341 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1856292867808567552"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1856292867808567552"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3413087181"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "3413087181"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:42:35 PM +UTC 12 mins ago Nov-14-2026 06:42:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x3a8bc0c4713e7cdcd1bf314a3c8ecf424e3877fb7c8b7c4e64c31fcdbe7dff58",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000012e7905df8ed5000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000019c2e08738d2210000000000000000000000000000000000000000000000000000000000cb6f7925000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 332572301168341,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 1856292867808567552,
+          "minOut": 3413080357,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x615a2cd280a7bd8bfe97eb5c3e0fbb7c9c3557ce20b7f1323a5a96050094daae",
+      "selector": "0x15427b54",
+      "caller": "0x257c414fa79fa8e1b827baa65b1166b60d69d840",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "1867908061786635520",
+      "min_out": "3435514242",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "3435521112",
+      "slack_bps": 0.019996966329223362,
+      "tip_wei": "75405484571209",
+      "gas_used": 285763,
+      "fee_wei": "57652590948210",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000075405484571209 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1867908061786635520"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1867908061786635520"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3435521112"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "3435521112"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:41:59 PM +UTC 12 mins ago Nov-14-2026 06:41:59 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x615a2cd280a7bd8bfe97eb5c3e0fbb7c9c3557ce20b7f1323a5a96050094daae",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000004494b51f3a49000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000019ec247c4fe17d0000000000000000000000000000000000000000000000000000000000ccc5c982000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 75405484571209,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 1867908061786635520,
+          "minOut": 3435514242,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xa9eef46cc08b463ee1367f3e313cdb42f5069b0260aba92936a6e7ac224bfcd1",
+      "selector": "0x15427b54",
+      "caller": "0xacd0c098d223ef3a70daf477a9c394bb9ef1939c",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "4683304725909575680",
+      "min_out": "8613397777",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "8613414999",
+      "slack_bps": 0.019994392470349377,
+      "tip_wei": "1143305425789821",
+      "gas_used": 285435,
+      "fee_wei": "53841645152640",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 001143305425789821 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "4683304725909575680"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "4683304725909575680"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "8613414999"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "8613414999"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:40:23 PM +UTC 14 mins ago Nov-14-2026 06:40:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xa9eef46cc08b463ee1367f3e313cdb42f5069b0260aba92936a6e7ac224bfcd1",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000040fd489c6237d000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040fe70d5c2bf98000000000000000000000000000000000000000000000000000000000201660511000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 1143305425789821,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 4683304725909575680,
+          "minOut": 8613397777,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xca355f04826a0703d4a213d4324c9e3833a0076ea385ddb5edea077b7f8632d9",
+      "selector": "0x15427b54",
+      "caller": "0x34721c188080f25ed3ef0ac4e6684fbf024403ae",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "4962448458636569600",
+      "min_out": "9130548931",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "9130567187",
+      "slack_bps": 0.019994376719545626,
+      "tip_wei": "1248353457606875",
+      "gas_used": 278863,
+      "fee_wei": "51002959317245",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 001248353457606875 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "4962448458636569600"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "4962448458636569600"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "9130567187"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "9130567187"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:40:11 PM +UTC 14 mins ago Nov-14-2026 06:40:11 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xca355f04826a0703d4a213d4324c9e3833a0076ea385ddb5edea077b7f8632d9",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000046f5ef06510db000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000044de2894b937ac000000000000000000000000000000000000000000000000000000000220391ec3000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 1248353457606875,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 4962448458636569600,
+          "minOut": 9130548931,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x8d04c4b9ce123d78b6afd561a2b0f0989b6c84e20585d727f01e1c798157dd30",
+      "selector": "0x15427b54",
+      "caller": "0xa87adff970497424a5314763f8ef98072274bf51",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 2,
+      "amount_in": "1086617269",
+      "min_out": "589358173601634304",
+      "token_out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "actual_out_to_inventory": "589359352611540946",
+      "slack_bps": 0.020004940982401107,
+      "tip_wei": "93441115510955",
+      "gas_used": 296402,
+      "fee_wei": "53281971045844",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000093441115510955 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1086617269"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1086617269"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "589359352611540946"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "589359352611540946"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:37:23 PM +UTC 17 mins ago Nov-14-2026 06:37:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x8d04c4b9ce123d78b6afd561a2b0f0989b6c84e20585d727f01e1c798157dd30",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000054fbf47f58ab000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000040c476b5000000000000000000000000000000000000000000000000082dd222e6ff9800000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 93441115510955,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 2,
+          "amountIn": 1086617269,
+          "minOut": 589358173601634304,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xff8726b094da3be1edd7500cc46653f93523de97705ea2e0f90ffc6e22d6a66d",
+      "selector": "0x15427b54",
+      "caller": "0x6ec06f16c22c7fc87d9ceacc677a5dec4aa36cbc",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "884871677184976640",
+      "min_out": "1627635974",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "1627639228",
+      "slack_bps": 0.019992145335538693,
+      "tip_wei": "62921012240691",
+      "gas_used": 290587,
+      "fee_wei": "60486186474923",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000062921012240691 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "884871677184976640"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "884871677184976640"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1627639228"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "1627639228"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:33:23 PM +UTC 21 mins ago Nov-14-2026 06:33:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xff8726b094da3be1edd7500cc46653f93523de97705ea2e0f90ffc6e22d6a66d",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000003939f0956133000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c47b21a266a2700000000000000000000000000000000000000000000000000000000006103c106000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 62921012240691,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 884871677184976640,
+          "minOut": 1627635974,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x01ecc147b5b046ca4e93f6fc392f9b91f1eade29fbfd558bec77d756773d2a0e",
+      "selector": "0x15427b54",
+      "caller": "0xf60b4af712a893b641f61a1498d21bef208d57eb",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "975900384332764160",
+      "min_out": "1797535768",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "1797539361",
+      "slack_bps": 0.019988435735844787,
+      "tip_wei": "146056440205986",
+      "gas_used": 369940,
+      "fee_wei": "79795261889120",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db BuilderNet 0 . 000146056440205986 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "975900384332764160"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "975900384332764160"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1797539361"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "1797539361"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:32:47 PM +UTC 21 mins ago Nov-14-2026 06:32:47 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x01ecc147b5b046ca4e93f6fc392f9b91f1eade29fbfd558bec77d756773d2a0e",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000084d66a3c52a2000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d8b183aa0525400000000000000000000000000000000000000000000000000000000006b243818000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 146056440205986,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 975900384332764160,
+          "minOut": 1797535768,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x8b9a0783ff542c05a54270172db82fa0ca168b75cd0418f4098cc1f2bcc9668d",
+      "selector": "0x15427b54",
+      "caller": "0x7dfa477e5e20c61f43e9c7ffb23058f1b1d3d052",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 1,
+      "amount_in": "8824284344",
+      "min_out": "13402287",
+      "token_out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "actual_out_to_inventory": "13402313",
+      "slack_bps": 0.01939963646573543,
+      "tip_wei": "1524251425096463",
+      "gas_used": 294046,
+      "fee_wei": "69018151611078",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 001524251425096463 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "8824284344"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "8824284344"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "13402313"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "13402313"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:28:35 PM +UTC 26 mins ago Nov-14-2026 06:28:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x8b9a0783ff542c05a54270172db82fa0ca168b75cd0418f4098cc1f2bcc9668d",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000056a4c70bdc30f000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000020df7e4b80000000000000000000000000000000000000000000000000000000000cc80af000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec70000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 1524251425096463,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 1,
+          "amountIn": 8824284344,
+          "minOut": 13402287,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x162dacd67d2a2c02c3afdacf7117c5f1fcb8209e3692ea5663a1cc70789c7e26",
+      "selector": "0x15427b54",
+      "caller": "0xacd0c098d223ef3a70daf477a9c394bb9ef1939c",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 1,
+      "amount_in": "1769014655",
+      "min_out": "2687737",
+      "token_out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "actual_out_to_inventory": "2689459",
+      "slack_bps": 6.40277468442538,
+      "tip_wei": "1688343546544",
+      "gas_used": 278924,
+      "fee_wei": "63482672857040",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000001688343546544 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1769014655"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1769014655"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2689459"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "2689459"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:27:59 PM +UTC 26 mins ago Nov-14-2026 06:27:59 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x162dacd67d2a2c02c3afdacf7117c5f1fcb8209e3692ea5663a1cc70789c7e26",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000000189191e0ab0000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000006971057f00000000000000000000000000000000000000000000000000000000002902f9000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec70000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 1688343546544,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 1,
+          "amountIn": 1769014655,
+          "minOut": 2687737,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x31c200919426a91b57ac873f354cfa47127022cd8ee0f0ee7f37eeb2cc2bf9be",
+      "selector": "0x15427b54",
+      "caller": "0x9ec6e7bce42f236dba2e5e3638ab7e246eca6e89",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 2,
+      "amount_in": "6322484034",
+      "min_out": "3439863237408380416",
+      "token_out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "actual_out_to_inventory": "3443943338967248719",
+      "slack_bps": 11.847179692833803,
+      "tip_wei": "584878924236647",
+      "gas_used": 274827,
+      "fee_wei": "62550201966420",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000584878924236647 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6322484034"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "6322484034"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3443943338967248719"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "3443943338967248719"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:27:59 PM +UTC 26 mins ago Nov-14-2026 06:27:59 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x31c200919426a91b57ac873f354cfa47127022cd8ee0f0ee7f37eeb2cc2bf9be",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000213f1bc840767000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000178d973420000000000000000000000000000000000000000000000002fbcd963a5a6d600000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 584878924236647,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 2,
+          "amountIn": 6322484034,
+          "minOut": 3439863237408380416,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xd07512b43d40a1df5bdc3136e9ae8f0a3e896e2955e2634e8d4083e80089a3ce",
+      "selector": "0x15427b54",
+      "caller": "0xc455e4a494252dc43e0d773d58bba031435a32e8",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "1794785227499224832",
+      "min_out": "3294630354",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "3294636940",
+      "slack_bps": 0.01999006300220746,
+      "tip_wei": "644211110859763",
+      "gas_used": 297029,
+      "fee_wei": "71291992859376",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000644211110859763 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1794785227499224832"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1794785227499224832"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3294636940"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "3294636940"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:26:35 PM +UTC 28 mins ago Nov-14-2026 06:26:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xd07512b43d40a1df5bdc3136e9ae8f0a3e896e2955e2634e8d4083e80089a3ce",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000249e8166c53f3000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000018e85ba7bd35bf0000000000000000000000000000000000000000000000000000000000c46011d2000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 644211110859763,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 1794785227499224832,
+          "minOut": 3294630354,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x6748b421234f163793f1180c83ad62e1ffe4473e2ff62e82a4b20a9c0f737844",
+      "selector": "0x15427b54",
+      "caller": "0xa87adff970497424a5314763f8ef98072274bf51",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "2821630720862137856",
+      "min_out": "5182602991",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "5182613353",
+      "slack_bps": 0.01999377397891716,
+      "tip_wei": "777534758502923",
+      "gas_used": 291058,
+      "fee_wei": "69644503769000",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000777534758502923 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2821630720862137856"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "2821630720862137856"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "5182613353"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "5182613353"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:26:23 PM +UTC 28 mins ago Nov-14-2026 06:26:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x6748b421234f163793f1180c83ad62e1ffe4473e2ff62e82a4b20a9c0f737844",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000002c329eb14c20b000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000027287230e4512e000000000000000000000000000000000000000000000000000000000134e83eef000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 777534758502923,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 2821630720862137856,
+          "minOut": 5182602991,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xace4b1aba38088dda08a9f80f251750a6428d806d236adc7edbecd89b3ff9158",
+      "selector": "0x15427b54",
+      "caller": "0xb890a192fa16a3da2443d0375cf405633349db72",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "3853460133058700800",
+      "min_out": "7080300223",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "7080314381",
+      "slack_bps": 0.01999628722418449,
+      "tip_wei": "569343792418603",
+      "gas_used": 292438,
+      "fee_wei": "71174608245354",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000569343792418603 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3853460133058700800"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "3853460133058700800"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "7080314381"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "7080314381"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:26:11 PM +UTC 28 mins ago Nov-14-2026 06:26:11 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xace4b1aba38088dda08a9f80f251750a6428d806d236adc7edbecd89b3ff9158",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000205d0ae808f2b000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000357a3d931317e60000000000000000000000000000000000000000000000000000000001a604cebf000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 569343792418603,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 3853460133058700800,
+          "minOut": 7080300223,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x877959fc95b0107da43887298f9969da4f00f4835a4fa6ec58ccb811834bf0b7",
+      "selector": "0x15427b54",
+      "caller": "0x7dfa477e5e20c61f43e9c7ffb23058f1b1d3d052",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "578674108129835648",
+      "min_out": "1061224553",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "1061226674",
+      "slack_bps": 0.019986305018186906,
+      "tip_wei": "67440754804146",
+      "gas_used": 382836,
+      "fee_wei": "105027831589536",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000067440754804146 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "578674108129835648"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "578674108129835648"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1061226674"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "1061226674"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:18:23 PM +UTC 36 mins ago Nov-14-2026 06:18:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x877959fc95b0107da43887298f9969da4f00f4835a4fa6ec58ccb811834bf0b7",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000003d56463bc5b2000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000807dd090fcb7a80000000000000000000000000000000000000000000000000000000003f410069000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 67440754804146,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 578674108129835648,
+          "minOut": 1061224553,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x6ace96a9bc7394728d602012526cd5f7bb709356bf35e091f5b882bf8bc088a7",
+      "selector": "0xc94ba2ba",
+      "caller": "0x3112ed026f5b26eb6aa28e99e4ea8c5cec9b06c6",
+      "pool": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+      "i": 1,
+      "j": 0,
+      "amount_in": "6498838209230215839744",
+      "min_out": "6465745940",
+      "token_out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "actual_out_to_inventory": "6465758871",
+      "slack_bps": 0.019999199255632125,
+      "tip_wei": "20153394920424",
+      "gas_used": 163995,
+      "fee_wei": "49247263749255",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000020153394920424 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6498838209230215839744"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "amount": "6498838209230215839744"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "from": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6465758871"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "6465758871"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:15:47 PM +UTC 38 mins ago Nov-14-2026 06:15:47 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x6ace96a9bc7394728d602012526cd5f7bb709356bf35e091f5b882bf8bc088a7",
+      "calldata": "0xc94ba2ba0000000000000000000000000000000000000000000000000000125453f1fbe80000000000000000000000004dece678ceceb27446b35c672dc7d61f30bad69e000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001604d7f66f96ec0000000000000000000000000000000000000000000000000000000000001816374140000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f939e0a03fb07f59a73314e73794be0e57ac1b4e000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0xc94ba2ba",
+        "function_label": "curveSwap2",
+        "signature": "curveSwap2(uint256,address,int128,int128,uint256,uint256,bool,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 20153394920424,
+          "pool": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "i": 1,
+          "j": 0,
+          "amountIn": 6498838209230215839744,
+          "minOut": 6465745940,
+          "wrapEthOutput": false,
+          "tokenIn": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "tokenOut": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+        },
+        "behavior": "Uses exchange return amount; optionally wraps ETH output",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x945a17cc480efca5c80be49a9f624e5452ca7796d2584ae8921a294da4ef75a7",
+      "selector": "0x15427b54",
+      "caller": "0xd5210826a953dacf9c9d32ce550b37f9252d2f4a",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 1,
+      "amount_in": "1028936674570485760",
+      "min_out": "2870322",
+      "token_out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "actual_out_to_inventory": "2870327",
+      "slack_bps": 0.017419618043519082,
+      "tip_wei": "272484256297921",
+      "gas_used": 287141,
+      "fee_wei": "86360296585777",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000272484256297921 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1028936674570485760"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1028936674570485760"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2870327"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "2870327"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:15:23 PM +UTC 39 mins ago Nov-14-2026 06:15:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x945a17cc480efca5c80be49a9f624e5452ca7796d2584ae8921a294da4ef75a7",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000000f7d2af4db3c1000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000e4784743825400000000000000000000000000000000000000000000000000000000000002bcc32000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 272484256297921,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 1,
+          "amountIn": 1028936674570485760,
+          "minOut": 2870322,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x7f6f24a2c8cae43c8d98f2c81e74ef3265d970c9c5d99573087a9f7b576f8812",
+      "selector": "0xc94ba2ba",
+      "caller": "0x7dfa477e5e20c61f43e9c7ffb23058f1b1d3d052",
+      "pool": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+      "i": 1,
+      "j": 0,
+      "amount_in": "11107010013319120551936",
+      "min_out": "11049044374",
+      "token_out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "actual_out_to_inventory": "11049066470",
+      "slack_bps": 0.01999806957446967,
+      "tip_wei": "302538336389728",
+      "gas_used": 164004,
+      "fee_wei": "49119199968048",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000302538336389728 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "11107010013319120551936"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "amount": "11107010013319120551936"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "from": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "11049066470"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "11049066470"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:08:59 PM +UTC 45 mins ago Nov-14-2026 06:08:59 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x7f6f24a2c8cae43c8d98f2c81e74ef3265d970c9c5d99573087a9f7b576f8812",
+      "calldata": "0xc94ba2ba0000000000000000000000000000000000000000000000000001132832124a600000000000000000000000004dece678ceceb27446b35c672dc7d61f30bad69e0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000025a1cba67a710e0000000000000000000000000000000000000000000000000000000000002929309960000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f939e0a03fb07f59a73314e73794be0e57ac1b4e000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0xc94ba2ba",
+        "function_label": "curveSwap2",
+        "signature": "curveSwap2(uint256,address,int128,int128,uint256,uint256,bool,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 302538336389728,
+          "pool": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+          "i": 1,
+          "j": 0,
+          "amountIn": 11107010013319120551936,
+          "minOut": 11049044374,
+          "wrapEthOutput": false,
+          "tokenIn": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "tokenOut": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+        },
+        "behavior": "Uses exchange return amount; optionally wraps ETH output",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xf4393831c86c1e0448a8bad1d8c9eea610fec05d4b8efa6d990ae8cfaeb8011c",
+      "selector": "0x15427b54",
+      "caller": "0xe1a7f44dddbd048931c3f1cc53807ced13deee57",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 1,
+      "amount_in": "696648831196563968",
+      "min_out": "1945267",
+      "token_out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "actual_out_to_inventory": "1945270",
+      "slack_bps": 0.01542202367794702,
+      "tip_wei": "8923335587937",
+      "gas_used": 368348,
+      "fee_wei": "123784011741532",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000008923335587937 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "696648831196563968"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "696648831196563968"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1945270"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "1945270"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:07:23 PM +UTC 47 mins ago Nov-14-2026 06:07:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xf4393831c86c1e0448a8bad1d8c9eea610fec05d4b8efa6d990ae8cfaeb8011c",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000000081da03f7861000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000009aafe6bc4a98a0000000000000000000000000000000000000000000000000000000000001daeb3000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 8923335587937,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 1,
+          "amountIn": 696648831196563968,
+          "minOut": 1945267,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xde1b84e11a5764033665dbe69896c66d2bd25850db3cb83e98f14642455edb3b",
+      "selector": "0x15427b54",
+      "caller": "0xe1a7f44dddbd048931c3f1cc53807ced13deee57",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 2,
+      "amount_in": "3911631468",
+      "min_out": "2119519861808734976",
+      "token_out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "actual_out_to_inventory": "2119524102837541554",
+      "slack_bps": 0.020009344554752954,
+      "tip_wei": "888818649164994",
+      "gas_used": 303029,
+      "fee_wei": "104827736814551",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000888818649164994 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3911631468"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "3911631468"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2119524102837541554"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "2119524102837541554"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:00:35 PM +UTC 54 mins ago Nov-14-2026 06:00:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xde1b84e11a5764033665dbe69896c66d2bd25850db3cb83e98f14642455edb3b",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000003286037da6cc2000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000e926c26c0000000000000000000000000000000000000000000000001d6a0c15a97ea300000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 888818649164994,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 2,
+          "amountIn": 3911631468,
+          "minOut": 2119519861808734976,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x6b741089a418edc5f29244a7d7a17e63c69c274533feae9b6a54c9b04d0d4ee8",
+      "selector": "0x15427b54",
+      "caller": "0x20a2239b3dee196bb7d360cecae7955a39726528",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 2,
+      "amount_in": "3730273531",
+      "min_out": "2022657419314809344",
+      "token_out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "actual_out_to_inventory": "2022661465864274673",
+      "slack_bps": 0.020006063958903406,
+      "tip_wei": "517358449771537",
+      "gas_used": 296065,
+      "fee_wei": "99613518299680",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000517358449771537 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3730273531"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "3730273531"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2022661465864274673"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "2022661465864274673"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 06:00:23 PM +UTC 54 mins ago Nov-14-2026 06:00:23 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x6b741089a418edc5f29244a7d7a17e63c69c274533feae9b6a54c9b04d0d4ee8",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000001d688e69ec411000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae460000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000de5774fb0000000000000000000000000000000000000000000000001c11ec34d4914a00000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 517358449771537,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 2,
+          "amountIn": 3730273531,
+          "minOut": 2022657419314809344,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xa13dea7959f02c89451c28b4b04086322373277d3ab549995b3178617139db8d",
+      "selector": "0x15427b54",
+      "caller": "0xd5210826a953dacf9c9d32ce550b37f9252d2f4a",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "1692749425669732352",
+      "min_out": "3115062354",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "3115068581",
+      "slack_bps": 0.019989929075657806,
+      "tip_wei": "480872330899948",
+      "gas_used": 303101,
+      "fee_wei": "122044151107760",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000480872330899948 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1692749425669732352"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1692749425669732352"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "3115068581"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "3115068581"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 05:57:47 PM +UTC 56 mins ago Nov-14-2026 05:57:47 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xa13dea7959f02c89451c28b4b04086322373277d3ab549995b3178617139db8d",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000001b559d07731ec000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000177ddaa252ca780000000000000000000000000000000000000000000000000000000000b9ac1452000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 480872330899948,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 1692749425669732352,
+          "minOut": 3115062354,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xfc869d41c1c1192f850fe2c6fd3c0dc516833948c0ba5dd46133992406d33892",
+      "selector": "0x15427b54",
+      "caller": "0xb890a192fa16a3da2443d0375cf405633349db72",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "2339133595260560896",
+      "min_out": "4307743170",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "4307751782",
+      "slack_bps": 0.01999186683871935,
+      "tip_wei": "765598435903216",
+      "gas_used": 376573,
+      "fee_wei": "157600942227742",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000765598435903216 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "2339133595260560896"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "2339133595260560896"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "4307751782"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "4307751782"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 05:57:35 PM +UTC 57 mins ago Nov-14-2026 05:57:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xfc869d41c1c1192f850fe2c6fd3c0dc516833948c0ba5dd46133992406d33892",
+      "calldata": "0x15427b540000000000000000000000000000000000000000000000000002b84ec6d006f0000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002076459c93b026000000000000000000000000000000000000000000000000000000000100c2f1c2000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 765598435903216,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 2339133595260560896,
+          "minOut": 4307743170,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x40dfd95fa6fbc5855d013e0ae334f1d77611ba731c159b7b18f286b059cdbb04",
+      "selector": "0x15427b54",
+      "caller": "0xd15b60fa9af3cb15c8c5276a937673ae80fda2c4",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 2,
+      "amount_in": "1753671008",
+      "min_out": "952652341351769856",
+      "token_out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "actual_out_to_inventory": "952654247093182595",
+      "slack_bps": 0.02000454434076115,
+      "tip_wei": "101333072748441",
+      "gas_used": 302136,
+      "fee_wei": "116967272615496",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000101333072748441 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1753671008"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1753671008"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "952654247093182595"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "952654247093182595"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 05:56:35 PM +UTC 58 mins ago Nov-14-2026 05:56:35 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x40dfd95fa6fbc5855d013e0ae334f1d77611ba731c159b7b18f286b059cdbb04",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000005c2971ce1f99000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000006886e5600000000000000000000000000000000000000000000000000d388041d0b76700000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 101333072748441,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 2,
+          "amountIn": 1753671008,
+          "minOut": 952652341351769856,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x2ebb25f2b7c2de9c5c71839515c9edaac3c5c0cb3ca29a5d8937572d39cf7b3e",
+      "selector": "0x15427b54",
+      "caller": "0xedcda9e10f53073c3376bf62f78f4ec391f24bd0",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 2,
+      "j": 0,
+      "amount_in": "833249661102868608",
+      "min_out": "1532424572",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "1532427636",
+      "slack_bps": 0.019994418842496,
+      "tip_wei": "89571545699395",
+      "gas_used": 305445,
+      "fee_wei": "125986815763515",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000089571545699395 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "833249661102868608"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "833249661102868608"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1532427636"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "1532427636"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 05:55:47 PM +UTC 58 mins ago Nov-14-2026 05:55:47 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0x2ebb25f2b7c2de9c5c71839515c9edaac3c5c0cb3ca29a5d8937572d39cf7b3e",
+      "calldata": "0x15427b54000000000000000000000000000000000000000000000000000051770029d443000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b904c26eb404880000000000000000000000000000000000000000000000000000000005b56f17c000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 89571545699395,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 2,
+          "j": 0,
+          "amountIn": 833249661102868608,
+          "minOut": 1532424572,
+          "tokenIn": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0xdfa70154f11db8374f804d3c79ef7689eb7fd6e07e354b27d538351e7af082d7",
+      "selector": "0x15427b54",
+      "caller": "0x081c3fa498390da0f483cf8ad5eba8331b59065d",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 0,
+      "j": 1,
+      "amount_in": "6746016819",
+      "min_out": "10260154",
+      "token_out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "actual_out_to_inventory": "10260174",
+      "slack_bps": 0.019492846807471296,
+      "tip_wei": "2312930781241246",
+      "gas_used": 308176,
+      "fee_wei": "127511935690480",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 002312930781241246 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6746016819"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "6746016819"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "10260174"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "10260174"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-14-2026 05:54:47 PM +UTC 1 hr ago Nov-14-2026 05:54:47 PM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "recent_consecutive_25",
+      "source_url": "https://etherscan.io/tx/0xdfa70154f11db8374f804d3c79ef7689eb7fd6e07e354b27d538351e7af082d7",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000083799299b1f9e000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae46000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000192180c3300000000000000000000000000000000000000000000000000000000009c8eba000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec70000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 2312930781241246,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 0,
+          "j": 1,
+          "amountIn": 6746016819,
+          "minOut": 10260154,
+          "tokenIn": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "tokenOut": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x8100bd792a89ab8c83d9329cb13663efd872c3c578dbd242dbe6e69c34eb0686",
+      "selector": "0x6440a7b4",
+      "caller": "0x696cb6cc8bcf3cff5a0ae98b5cfd8cf2798af062",
+      "pool": "0xf1f435b05d255a5dbde37333c0f61da6f69c6127",
+      "i": 1,
+      "j": 0,
+      "amount_in": "108793021801691360",
+      "min_out": "6458582505940362199040",
+      "token_out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+      "actual_out_to_inventory": "6458595421439304337700",
+      "slack_bps": 0.01999738038903268,
+      "tip_wei": "521861635369029",
+      "gas_used": 206224,
+      "fee_wei": "26923655984704",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db Titan Builder 0 . 000521861635369029 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "108793021801691360"
+        },
+        {
+          "token": "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xf1f435b05d255a5dbde37333c0f61da6f69c6127",
+          "amount": "108793021801691360"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0xf1f435b05d255a5dbde37333c0f61da6f69c6127",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6458595421439304337700"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "6458595421439304337700"
+        }
+      ],
+      "timestamp": "Timestamp: Jun-26-2026 10:47:35 AM +UTC 141 days ago Jun-26-2026 10:47:35 AM +UTC Time Formats UTC Local Unix Timestamp",
+      "deadline": 1782470858,
+      "sample_group": "older_purposive_example",
+      "source_url": "https://etherscan.io/tx/0x8100bd792a89ab8c83d9329cb13663efd872c3c578dbd242dbe6e69c34eb0686",
+      "calldata": "0x6440a7b40000000000000000000000000000000000000000000000000001daa16165e845000000000000000000000000f1f435b05d255a5dbde37333c0f61da6f69c612700000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000018282ad4a87f8e000000000000000000000000000000000000000000000015e1ed66a1db780000000000000000000000000000018084fba666a33d37592fa2633fd49a74dd93a88000000000000000000000000f939e0a03fb07f59a73314e73794be0e57ac1b4e000000000000000000000000000000000000000000000000000000006a3e58ca",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x6440a7b4",
+        "function_label": "curveSwapDL",
+        "signature": "curveSwapDL(uint256,address,uint256,uint256,uint256,uint256,address,address,uint256)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 521861635369029,
+          "pool": "0xf1f435b05d255a5dbde37333c0f61da6f69c6127",
+          "i": 1,
+          "j": 0,
+          "amountIn": 108793021801691360,
+          "minOut": 6458582505940362199040,
+          "tokenIn": "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+          "tokenOut": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "deadline": 1782470858
+        },
+        "behavior": "Same, with executor deadline check",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x71da11205a8f820da8618178538f6e6642368bf4a1cf6b85b538b74b012792e8",
+      "selector": "0x6440a7b4",
+      "caller": "0x7721f0dd2edd37cdf60d0dc76560908f883faca9",
+      "pool": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+      "i": 0,
+      "j": 1,
+      "amount_in": "6056472028569322651648",
+      "min_out": "9500680",
+      "token_out": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+      "actual_out_to_inventory": "9502773",
+      "slack_bps": 2.2025149922028024,
+      "tip_wei": "0",
+      "gas_used": 666820,
+      "fee_wei": "130702155916640",
+      "internal_transfers": "",
+      "logs": [
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "6056472028569322651648"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "amount": "6056472028569322651648"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x26de7861e213a5351f6ed767d00e0839930e9ee1",
+          "to": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "amount": "30000000104156744573530227"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "to": "0x49f51d7e279252f3c9a09678fdc65b4dbd5cb196",
+          "amount": "11982590158679419727775"
+        },
+        {
+          "token": "0x862cb4e988fb66e72f128d1183829f8c05b6c6a0",
+          "from": "0x49f51d7e279252f3c9a09678fdc65b4dbd5cb196",
+          "to": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "amount": "23583528021100551137"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x49f51d7e279252f3c9a09678fdc65b4dbd5cb196",
+          "to": "0x722fc3640ba007c3e9867ccdb0dca59f2e2f29f9",
+          "amount": "128208852796953314"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x722fc3640ba007c3e9867ccdb0dca59f2e2f29f9",
+          "to": "0x862cb4e988fb66e72f128d1183829f8c05b6c6a0",
+          "amount": "128208852796953314"
+        },
+        {
+          "token": "0x862cb4e988fb66e72f128d1183829f8c05b6c6a0",
+          "from": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "to": "0x0000000000000000000000000000000000000000",
+          "amount": "23583528021100551137"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x862cb4e988fb66e72f128d1183829f8c05b6c6a0",
+          "to": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "amount": "5926118170052658015879"
+        },
+        {
+          "token": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+          "from": "0x862cb4e988fb66e72f128d1183829f8c05b6c6a0",
+          "to": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "amount": "9502773"
+        },
+        {
+          "token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "from": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "to": "0x26de7861e213a5351f6ed767d00e0839930e9ee1",
+          "amount": "30000000104196687134469979"
+        },
+        {
+          "token": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+          "from": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "9502773"
+        },
+        {
+          "token": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "9502773"
+        }
+      ],
+      "timestamp": "Timestamp: Aug-13-2026 09:51:35 AM +UTC 93 days ago Aug-13-2026 09:51:35 AM +UTC Time Formats UTC Local Unix Timestamp",
+      "deadline": 1786614698,
+      "sample_group": "older_purposive_example",
+      "source_url": "https://etherscan.io/tx/0x71da11205a8f820da8618178538f6e6642368bf4a1cf6b85b538b74b012792e8",
+      "calldata": "0x6440a7b4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004ca7a7e602335a261b63128e89d43b6fe1e2c8700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000148526f056b73f00000000000000000000000000000000000000000000000000000000000000090f808000000000000000000000000f939e0a03fb07f59a73314e73794be0e57ac1b4e000000000000000000000000cbb7c0000ab88b473b1f5afd9ef808440eed33bf000000000000000000000000000000000000000000000000000000006a7d93aa",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x6440a7b4",
+        "function_label": "curveSwapDL",
+        "signature": "curveSwapDL(uint256,address,uint256,uint256,uint256,uint256,address,address,uint256)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 0,
+          "pool": "0x04ca7a7e602335a261b63128e89d43b6fe1e2c87",
+          "i": 0,
+          "j": 1,
+          "amountIn": 6056472028569322651648,
+          "minOut": 9500680,
+          "tokenIn": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "tokenOut": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+          "deadline": 1786614698
+        },
+        "behavior": "Same, with executor deadline check",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    },
+    {
+      "hash": "0x0567de4533726725dc972baec618ba214b29e820d94e9891b2d34e67d3d0fc4f",
+      "selector": "0x15427b54",
+      "caller": "0x67f8ec5ebc099cf3e58001d507b0c2c7e696e8e1",
+      "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "i": 1,
+      "j": 0,
+      "amount_in": "1159858",
+      "min_out": "870729543",
+      "token_out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "actual_out_to_inventory": "870731284",
+      "slack_bps": 0.019994687591815066,
+      "tip_wei": "21116817805309",
+      "gas_used": 308318,
+      "fee_wei": "16698904618354",
+      "internal_transfers": "Type Trace Address Method From To Value Gas Limit call_0_1 Transfer Transfer MEV Bot: 0xEc6FC9...3823db BuilderNet 0 . 000021116817805309 ETH 2,300 Loading... Loading",
+      "logs": [
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "1159858"
+        },
+        {
+          "token": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "amount": "1159858"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "to": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "amount": "870731284"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "from": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+          "to": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+          "amount": "870731284"
+        }
+      ],
+      "timestamp": "Timestamp: Nov-10-2026 01:04:11 AM +UTC 4 days ago Nov-10-2026 01:04:11 AM +UTC Time Formats UTC Local Unix Timestamp",
+      "sample_group": "older_purposive_example",
+      "source_url": "https://etherscan.io/tx/0x0567de4533726725dc972baec618ba214b29e820d94e9891b2d34e67d3d0fc4f",
+      "calldata": "0x15427b5400000000000000000000000000000000000000000000000000001334a46c8ffd000000000000000000000000d51a44d3fae010294c616388b506acda1bfaae4600000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011b2b20000000000000000000000000000000000000000000000000000000033e647470000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "decoded": {
+        "chain": "ethereum",
+        "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+        "selector": "0x15427b54",
+        "function_label": "curveSwap",
+        "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+        "signature_hash_verified": true,
+        "parameters": {
+          "tip": 21116817805309,
+          "pool": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "i": 1,
+          "j": 0,
+          "amountIn": 1159858,
+          "minOut": 870729543,
+          "tokenIn": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "tokenOut": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "behavior": "Curve uint256 indices; sweeps output-token balance",
+        "trailing_data": "0x"
+      },
+      "status": "Success"
+    }
+  ]
+}

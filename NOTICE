@@ -1,0 +1,17 @@
+The root MIT license applies to original toolkit code, tests and documentation.
+
+It does not relicense reconstructed Solidity contracts, embedded copies of
+those contracts in Standard JSON, blockchain data, or third-party code.
+
+cases/wintermute-curve-balancer/src/Executor.sol retains SPDX UNLICENSED.
+The reconstruction was submitted to Etherscan with No License selected.
+This repository makes no claim to ownership of Wintermute's original source,
+recovery of its original source text, endorsement, or official affiliation.
+
+cases/wintermute-curve-balancer/lib/oz-v4.7.3 contains OpenZeppelin Contracts
+v4.7.3 code. Its MIT license is included in that directory. The same license
+applies to those source contents embedded in standard-input.json.
+
+The case's source files and standard-input.json are preserved exactly as
+submitted. Function names beginning recovered_ are synthetic names whose
+Keccak selectors match the deployed interface, not recovered original names.

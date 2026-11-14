@@ -1,0 +1,20 @@
+{
+  "status": "verified_and_published",
+  "contract": "0xec6fc9be2d5e505b40a2df8b0622cd25333823db",
+  "chainId": 1,
+  "explorer": "https://etherscan.io/address/0xec6fc9be2d5e505b40a2df8b0622cd25333823db#code",
+  "publication_authorized": true,
+  "source_upload_started": true,
+  "local_creation_executable_match": true,
+  "local_runtime_executable_match": true,
+  "metadata_hash_matches_original": false,
+  "terms_accepted": true,
+  "source_upload_completed": true,
+  "submitted": true,
+  "success_observed_at_utc": "2026-11-14T20:41:31.958649+00:00",
+  "etherscan_result": "Successfully generated matching Bytecode and ABI for Contract Address [0xec6fc9be2d5e505b40a2df8b0622cd25333823db]",
+  "compiler": "v0.8.19+commit.7dd6d404",
+  "uploaded_file": "standard-input.json",
+  "uploaded_file_bytes": 62844,
+  "receipt_screenshot": "etherscan-result.jpg"
+}

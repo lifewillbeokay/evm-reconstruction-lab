@@ -1,0 +1,338 @@
+[
+  {
+    "selector": "0x02082cbf",
+    "signature": "recovered_19b9lm300000(address)",
+    "description": "approved Balancer V1 pool mapping",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x0329dd62",
+    "signature": "multiSigOwner()",
+    "description": "multiSigOwner",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x07f49f73",
+    "signature": "balancerSwapV1(uint256,address,address,address,uint256,uint256,uint256)",
+    "description": "balancerSwapV1",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x09b0d50a",
+    "signature": "getAllApprovedTokens()",
+    "description": "getAllApprovedTokens",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x0af88b24",
+    "signature": "WETHAddress()",
+    "description": "WETHAddress",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x15427b54",
+    "signature": "curveSwap(uint256,address,uint256,uint256,uint256,uint256,address,address)",
+    "description": "curveSwap",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x19283043",
+    "signature": "recovered_g6qibk000000(address)",
+    "description": "get Balancer pool ID",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x1c02708d",
+    "signature": "killContract()",
+    "description": "killContract",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x1ce9ae07",
+    "signature": "accessControlRegistry()",
+    "description": "accessControlRegistry",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x22f3e2d4",
+    "signature": "isActive()",
+    "description": "isActive",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x2a455199",
+    "signature": "_operators(address)",
+    "description": "_operators",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x2c88026b",
+    "signature": "recovered_3hgj34f00000(address[],uint256[],address)",
+    "description": "owner batch token transfer to one recipient",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x3cbe46f8",
+    "signature": "recovered_53rk7q200000((address,address,uint256)[])",
+    "description": "approve token/spender/amount tuples",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x47503b3d",
+    "signature": "operatorRole()",
+    "description": "operatorRole",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x481c42a2",
+    "signature": "getTimelockDelay()",
+    "description": "getTimelockDelay",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x48ea3731",
+    "signature": "recovered_jpbl5r800000()",
+    "description": "Curve pool role identifier",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x534c83e5",
+    "signature": "recovered_312p15600000(bytes32)",
+    "description": "resolve Balancer pool address",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x57ab543b",
+    "signature": "recovered_ftdj1u300000()",
+    "description": "Balancer V2 pool role identifier",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x59733e7f",
+    "signature": "recovered_b3pefig00000(bytes32,address,bytes)",
+    "description": "registry role-revoked callback",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x6440a7b4",
+    "signature": "curveSwapDL(uint256,address,uint256,uint256,uint256,uint256,address,address,uint256)",
+    "description": "curveSwapDL",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x6b410e34",
+    "signature": "unkillContract()",
+    "description": "unkillContract",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x6d623b01",
+    "signature": "curveSwap2DL(uint256,address,int128,int128,uint256,uint256,bool,address,address,uint256)",
+    "description": "curveSwap2DL",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x70e842a1",
+    "signature": "balancerVaultAddress()",
+    "description": "balancerVaultAddress",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x7a1a5ab6",
+    "signature": "recovered_i49mj1d00000()",
+    "description": "Balancer V1 pool role identifier",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x8b8c1618",
+    "signature": "balancerSwapV1DL(uint256,address,address,address,uint256,uint256,uint256,uint256)",
+    "description": "balancerSwapV1DL",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0x8f05e71b",
+    "signature": "recovered_gatlfh100000(uint256,address)",
+    "description": "owner ETH transfer",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xa5fd3043",
+    "signature": "recovered_aa22rp000000()",
+    "description": "deactivate and revoke all tracked token approvals",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xada00694",
+    "signature": "getAllApprovedSpenders()",
+    "description": "getAllApprovedSpenders",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xb624fc85",
+    "signature": "recovered_jnq35c100000(bytes32)",
+    "description": "approved Balancer V2 pool ID mapping",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xbb25faea",
+    "signature": "recovered_fhqu41500000(address)",
+    "description": "approved Curve pool mapping",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xc8e706e2",
+    "signature": "contractWallet()",
+    "description": "contractWallet",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xc94ba2ba",
+    "signature": "curveSwap2(uint256,address,int128,int128,uint256,uint256,bool,address,address)",
+    "description": "curveSwap2",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xcbc1e60c",
+    "signature": "balancerSwapV2(uint256,bytes32,address,address,uint256,uint256,uint256)",
+    "description": "balancerSwapV2",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xcc5b1926",
+    "signature": "curveSwap3(uint256,address,int128,int128,uint256,uint256,address,address)",
+    "description": "curveSwap3",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xcd6cf919",
+    "signature": "curveSwap3DL(uint256,address,int128,int128,uint256,uint256,address,address,uint256)",
+    "description": "curveSwap3DL",
+    "mined_name": false,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xcf1346bc",
+    "signature": "recovered_hhe311200000(bytes32,address,bytes)",
+    "description": "registry role-granted callback",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xd368093d",
+    "signature": "_approvedCoinbaseAddresses(address)",
+    "description": "_approvedCoinbaseAddresses",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xe457acdd",
+    "signature": "approvedSpenderRole()",
+    "description": "approvedSpenderRole",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xe6ac82d2",
+    "signature": "coinbaseAddressRole()",
+    "description": "coinbaseAddressRole",
+    "mined_name": false,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xf1fe2eeb",
+    "signature": "recovered_9godbg900000(uint256,address,int128,int128,uint256,uint256,address,uint256)",
+    "description": "Curve ETH-input swap with deadline",
+    "mined_name": true,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xf203c1b1",
+    "signature": "recovered_jspoj0000000(uint256)",
+    "description": "deactivate and revoke a count of tracked token approvals",
+    "mined_name": true,
+    "trade_entrypoint": false,
+    "signature_hash_verified": true
+  },
+  {
+    "selector": "0xfc8b5d11",
+    "signature": "recovered_gl44id100000(uint256,address,int128,int128,uint256,uint256,address)",
+    "description": "Curve ETH-input swap after pulling and unwrapping WETH",
+    "mined_name": true,
+    "trade_entrypoint": true,
+    "signature_hash_verified": true
+  }
+]
