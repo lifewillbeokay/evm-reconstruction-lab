@@ -1,0 +1,39 @@
+name: Validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: '3.11'
+      - name: Install locked dependencies
+        run: |
+          uv sync --frozen --extra dev
+          npm ci --ignore-scripts
+      - name: Test reusable tools
+        run: uv run --frozen pytest -q
+      - name: Check case evidence
+        run: uv run --frozen python scripts/evidence.py cases/wintermute-curve-balancer
+      - name: Compile, compare and run differential tests
+        run: uv run --frozen python scripts/reproduce.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reconstruction-results
+          path: build/wintermute-curve-balancer/
