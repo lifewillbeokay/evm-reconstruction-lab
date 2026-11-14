@@ -15,3 +15,18 @@ applies to those source contents embedded in standard-input.json.
 The case's source files and standard-input.json are preserved exactly as
 submitted. Function names beginning recovered_ are synthetic names whose
 Keccak selectors match the deployed interface, not recovered original names.
+
+cases/elfomofi-pricing/src/PricingDispatcher.sol is an independent behavioral
+reconstruction, designated SPDX UNLICENSED. It is not original ElfomoFi source,
+does not match deployed executable bytecode, and has not been submitted for
+explorer verification. No official affiliation or endorsement is claimed.
+
+cases/elfomofi-pricing/src/IElfomoPricing.sol was extracted from the verified
+swap-wrapper sources at Base 0xf0f0f0f0fb0d738452efd03a28e8be14c76d5f73 and retains
+its MIT SPDX identifier. These designations also apply to the source contents
+embedded in that case's standard-input.json. Captured onchain bytecode and state
+are evidence and are not relicensed as original toolkit software.
+
+Prior research for the ElfomoFi case: Ozan Solmaz, Lioba Heimbach and Jason
+Milionis, Active Liquidity On Chain: Evidence from PropAMMs Across Chains,
+arXiv:2609.38056v1, 29 September 2026, Appendix D. The paper is cited, not vendored.

@@ -1,0 +1,29 @@
+{
+  "chain_id": 8453,
+  "block_number": 57503212,
+  "block_hash": "0x2308f3bff4902fb89cf07af3a89e2cb03a29363d1b82febf4c71357f80f32bee",
+  "methods": [
+    "eth_getCode",
+    "eth_getStorageAt",
+    "eth_getBalance",
+    "eth_call",
+    "eth_getBlockByNumber"
+  ],
+  "collection_date": "2026-11-14",
+  "code_keccak256": {
+    "0x000f3df6d732807ef1319fb7b8bb8522d0beac02": "0xf57acd40259872606d76197ef052f3d35588dadf919ee1f0e3cb9b62d3f4b02c",
+    "0xffffffbb2d432b8acb4c57d556c0c721a431d038": "0x4d9be648c5bf39973670d9f8b481d5d0b971e6a2db2deccc6b98cde21c5dd83e",
+    "0x555a998a43a63d67abfb186b375d8aa56c66790b": "0xe552901dcbaab7cdf3d36773891e45cac6b987357ed27bfea5e07dbf95950b22",
+    "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee": "0xf35c4f96ffc5d17edf593efbee4063fbd5c4a56b58eb432edceee70d96fe21ad",
+    "0x4200000000000000000000000000000000000006": "0x8a3a1f6a9f9dce633117adee5b458245835a8645a8c8726a26382a4622508b1c",
+    "0xf9b0c8ee13ae2fc0665764ecbdb417685dea8081": "0x9fa9abfad45b643baddd24eca23e14a3c98583782a7be74ed4686152820b9053",
+    "0x80d06229252825137f36e3484ea61c10b6235e29": "0x1242c21b76f40eeb64897b487083c8ac61fe1899a82139cf56011433e94426ee",
+    "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913": "0xa6705a10bb756b5dea144591118be77d7af0c3eee3bf2dfe2583dcb0364fefab",
+    "0x2ce6311ddae708829bc0784c967b7d77d19fd779": "0x11b75a237997ab8328f65b2d5a55c10f0346d0a175741ed42ddf4f2c66b9e873"
+  },
+  "limitations": [
+    "Public RPC responses; no Merkle state proofs.",
+    "Witness covers exercised paths only; uncaptured code/storage fails offline replay.",
+    "State overrides in experiments are local counterfactuals, never broadcast."
+  ]
+}

@@ -9,6 +9,8 @@ Before submitting changes:
 uv run --frozen pytest -q
 uv run --frozen python scripts/evidence.py cases/wintermute-curve-balancer
 uv run --frozen python scripts/reproduce.py
+uv run --frozen python scripts/evidence.py cases/elfomofi-pricing
+uv run --frozen python scripts/reproduce-elfomofi.py
 ```
 
 Keep RPC credentials and local provider URLs out of commits. Tool tests run

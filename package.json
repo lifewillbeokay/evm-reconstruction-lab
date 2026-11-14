@@ -2,12 +2,19 @@
   "name": "evm-reconstruction-lab",
   "version": "0.1.0",
   "private": true,
-  "description": "Pinned Solidity compiler for the first reconstruction case",
+  "description": "Pinned Solidity compilers for reconstruction cases",
   "license": "MIT",
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "compile:case": "node scripts/compile.cjs cases/wintermute-curve-balancer/standard-input.json build/wintermute-curve-balancer/compiled.json src/Executor.sol:Executor 0.8.19+commit.7dd6d404"
   },
-  "devDependencies": {"solc": "0.8.19"},
-  "overrides": {"tmp": "0.2.7"}
+  "devDependencies": {
+    "solc": "0.8.19",
+    "solc-0.8.34": "npm:solc@0.8.34"
+  },
+  "overrides": {
+    "tmp": "0.2.7"
+  }
 }

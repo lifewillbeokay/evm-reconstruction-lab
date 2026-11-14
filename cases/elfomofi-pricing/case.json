@@ -1,0 +1,31 @@
+{
+  "name": "ElfomoFi pricing dispatcher and engine experiments",
+  "case_type": "behavioral-reconstruction",
+  "chain_id": 8453,
+  "address": "0x555a998a43a63d67abfb186b375d8aa56c66790b",
+  "proxy": "0xffffffbb2d432b8acb4c57d556c0c721a431d038",
+  "block_number": 57503212,
+  "block_hash": "0x2308f3bff4902fb89cf07af3a89e2cb03a29363d1b82febf4c71357f80f32bee",
+  "deployer": "0x394c90bf66a863451978ba038e5b6ab1984f1745",
+  "deployment_transaction": "0x9fff0d8c5907ed6ef7a71122c570d6051ecbd05db5fd3e403fa18b80412433ec",
+  "runtime_keccak256": "0xe552901dcbaab7cdf3d36773891e45cac6b987357ed27bfea5e07dbf95950b22",
+  "compiler": "0.8.34+commit.80d5c536",
+  "compiler_provenance": "Version from deployed CBOR; candidate settings are analyst choices, not recovered original settings.",
+  "contract": "src/PricingDispatcher.sol:PricingDispatcher",
+  "evm_fork": "cancun",
+  "reproduce": "uv run --frozen python scripts/reproduce-elfomofi.py",
+  "match_claims": {
+    "original_constructor_runtime": true,
+    "executable_bytecode": false,
+    "full_bytecode": false,
+    "behavioral": "Covered dispatcher fixtures and selected engine replay paths only",
+    "explorer_submission": "Not submitted"
+  },
+  "scope": [
+    "15 external dispatcher selectors reconstructed",
+    "Five unnamed selectors kept as raw fallback dispatch; no synthetic selector names",
+    "Live engine bytecode captured, not fully reconstructed Solidity",
+    "Exact-input ladder traversal reconstructed for supplied levels",
+    "Original snapshot quote plus explicit state-override engine experiments"
+  ]
+}

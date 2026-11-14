@@ -1,0 +1,54 @@
+{
+  "chain_id": 8453,
+  "address": "0x555a998a43a63d67abfb186b375d8aa56c66790b",
+  "block_number": 57503212,
+  "block_hash": "0x2308f3bff4902fb89cf07af3a89e2cb03a29363d1b82febf4c71357f80f32bee",
+  "runtime_keccak256": "0xe552901dcbaab7cdf3d36773891e45cac6b987357ed27bfea5e07dbf95950b22",
+  "proxy_candidates": {},
+  "deployment_transaction": "0x9fff0d8c5907ed6ef7a71122c570d6051ecbd05db5fd3e403fa18b80412433ec",
+  "deployment_receipt": {
+    "type": "0x2",
+    "status": "0x1",
+    "cumulativeGasUsed": "0x4b1ae9",
+    "logs": [
+      {
+        "address": "0x555a998a43a63d67abfb186b375d8aa56c66790b",
+        "topics": [
+          "0x7f26b83ff96e1f2b6a682f133852f6798a09c465da95921460cefb3847402498"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000000ff",
+        "blockHash": "0x93ebe6362ee7fe1207255027e42c4c57ed0d2855f4194c2908221bdc7231b495",
+        "blockNumber": "0x31f5294",
+        "blockTimestamp": "0x6ac9020b",
+        "transactionHash": "0x9fff0d8c5907ed6ef7a71122c570d6051ecbd05db5fd3e403fa18b80412433ec",
+        "transactionIndex": "0x1b",
+        "logIndex": "0x7c",
+        "removed": false
+      }
+    ],
+    "logsBloom": "0x00008000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "transactionHash": "0x9fff0d8c5907ed6ef7a71122c570d6051ecbd05db5fd3e403fa18b80412433ec",
+    "transactionIndex": "0x1b",
+    "blockHash": "0x93ebe6362ee7fe1207255027e42c4c57ed0d2855f4194c2908221bdc7231b495",
+    "blockNumber": "0x31f5294",
+    "gasUsed": "0x13ed7c",
+    "effectiveGasPrice": "0x5dd770",
+    "blobGasUsed": "0x80864",
+    "from": "0x394c90bf66a863451978ba038e5b6ab1984f1745",
+    "to": null,
+    "contractAddress": "0x555a998a43a63d67abfb186b375d8aa56c66790b",
+    "l1GasPrice": "0xf0f9305",
+    "l1GasUsed": "0xde5b",
+    "l1Fee": "0x14bd971a31",
+    "l1BaseFeeScalar": "0x8dd",
+    "l1BlobBaseFee": "0xe54cca",
+    "l1BlobBaseFeeScalar": "0x101c12",
+    "daFootprintGasScalar": "0x94"
+  },
+  "deployer": "0x394c90bf66a863451978ba038e5b6ab1984f1745",
+  "limitations": [
+    "Proxy slots are hints, not proof of delegation.",
+    "Beacon addresses are collected but not resolved through implementation().",
+    "Factory initcode, historical storage and traces are not automatically collected."
+  ]
+}

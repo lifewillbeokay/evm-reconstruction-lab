@@ -32,8 +32,14 @@ jobs:
         run: uv run --frozen python scripts/evidence.py cases/wintermute-curve-balancer
       - name: Compile, compare and run differential tests
         run: uv run --frozen python scripts/reproduce.py
+      - name: Check ElfomoFi evidence
+        run: uv run --frozen python scripts/evidence.py cases/elfomofi-pricing
+      - name: Reproduce ElfomoFi dispatcher and engine experiments
+        run: uv run --frozen python scripts/reproduce-elfomofi.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reconstruction-results
-          path: build/wintermute-curve-balancer/
+          path: |
+            build/wintermute-curve-balancer/
+            build/elfomofi-pricing/

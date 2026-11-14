@@ -13,6 +13,12 @@ Stock Solidity produces matching creation and runtime executable bytes;
 the original source metadata hash differs. The case covers **42 external
 function selectors, 11 trade entry points, and 62 differential test cases**.
 
+The second case studies [ElfomoFi pricing on Base](cases/elfomofi-pricing/README.md):
+a 15-selector dispatcher reconstruction, five captured pricing engines, and
+65 controlled WETH/USDC experiments. It recovers inventory, age, caller-class
+and within-block pricing behavior. The dispatcher passes 84 differential tests
+but **does not match deployed bytecode**; the full engine source is not recovered.
+
 This is a reconstruction workbench. It does not automatically recover arbitrary
 contracts' source or prove behavioral equivalence in every possible state.
 
@@ -34,6 +40,16 @@ uv run --frozen python scripts/reproduce.py
 Compilation, constructor execution, and behavioral tests use local files after
 dependency installation. They require no RPC endpoint, wallet, or API key.
 Results are written to `build/wintermute-curve-balancer/`.
+
+To reproduce the ElfomoFi case with the same installed dependencies:
+
+```sh
+uv run --frozen python scripts/evidence.py cases/elfomofi-pricing
+uv run --frozen python scripts/reproduce-elfomofi.py
+```
+
+Its captured state, explicit counterfactual experiments and independent ladder
+arithmetic also run offline. Results go to `build/elfomofi-pricing/`.
 
 Expected result:
 
@@ -89,6 +105,8 @@ verification, bounded selector mining and exit codes. Python libraries live in
 - [Lessons from the first reconstruction](docs/lessons.md): compiler pipeline traps and selector provenance.
 - [Adding a case](docs/adding-cases.md): case format and review requirements.
 - [Wintermute case study](cases/wintermute-curve-balancer/README.md): verified build and execution findings.
+- [ElfomoFi case study](cases/elfomofi-pricing/README.md): dispatcher reconstruction and pricing experiments.
+- [Stateful engine analysis](docs/stateful-engine-analysis.md): reproducible proxy, state-witness and counterfactual workflow.
 - [Contributing](CONTRIBUTING.md): tests and changes to evidence.
 
 The workflow can use [Heimdall](https://github.com/Jon-Becker/heimdall-rs) for
@@ -102,6 +120,7 @@ release. Candidate source construction and interpretation remain analyst work.
 src/evm_lab/                    Reusable Python libraries and CLI
 scripts/compile.cjs             Stock solc Standard JSON runner
 scripts/reproduce.py            Compile + validate a case
+scripts/reproduce-elfomofi.py    Compile dispatcher + replay engine experiments
 tools/                         Optional Apple Metal selector miner
 cases/wintermute-curve-balancer/
   src/ and lib/                Submitted Solidity and dependencies
@@ -110,6 +129,7 @@ cases/wintermute-curve-balancer/
   evidence/                    Submission receipt and decoded transactions
   expected/                    Results recorded during reconstruction
   differential.py              Reproducible synthetic EVM tests
+cases/elfomofi-pricing/         Dispatcher source, captured state and pricing lab
 docs/                          Methodology and operational details
 tests/                         Reusable-tool regression tests
 ```
@@ -120,3 +140,5 @@ Original toolkit code and documentation are MIT licensed. The reconstructed
 executor retains its **UNLICENSED** designation and is an independent reconstruction,
 not an official Wintermute release. Vendored OpenZeppelin files retain their MIT
 license. See [NOTICE](NOTICE) for the explicit scope of these licenses.
+The ElfomoFi dispatcher reconstruction is also UNLICENSED; its public pricing
+interface retains its MIT identifier. Neither case is an official project release.

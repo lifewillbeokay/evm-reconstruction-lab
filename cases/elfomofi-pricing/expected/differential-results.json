@@ -1,0 +1,427 @@
+{
+  "passed": 84,
+  "total": 84,
+  "cases": [
+    {
+      "name": "561fa97d-forward-0-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-0-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-1-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-1-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-1000000000000000000-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-1000000000000000000-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-115792089237316195423570985008687907853269984665640564039457584007913129639935-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-forward-115792089237316195423570985008687907853269984665640564039457584007913129639935-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-wrong-caller",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "561fa97d-unconfigured",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "561fa97d-engine-revert",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "561fa97d-bad-return",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "6486c4ac-forward-0-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-0-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-1-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-1-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-1000000000000000000-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-1000000000000000000-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-115792089237316195423570985008687907853269984665640564039457584007913129639935-False",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-forward-115792089237316195423570985008687907853269984665640564039457584007913129639935-True",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-wrong-caller",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "6486c4ac-unconfigured",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "6486c4ac-engine-revert",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "6486c4ac-bad-return",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "owner",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "initialize",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "initialize-zero-owner",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "initialize-twice",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "renounce-e4d317fc02dbc3bf88a7d5c0d5a527444bf322b0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "transfer-e4d317fc02dbc3bf88a7d5c0d5a527444bf322b01111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "transfer-e4d317fc02dbc3bf88a7d5c0d5a527444bf322b00000000000000000000000000000000000000000",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "add-pair-e4d317fc02dbc3bf88a7d5c0d5a527444bf322b0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "renounce-1111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "transfer-11111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "transfer-11111111111111111111111111111111111111110000000000000000000000000000000000000000",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "add-pair-1111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "pairs-0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "pairs-1",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "pairs-3",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "pairs-access",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "orderbook",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "orderbook-missing",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "orderbook-revert",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "classifier-set-e4d317fc02dbc3bf88a7d5c0d5a527444bf322b0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-set-423429453df78b5ed36ce1d6c1edcba41c3a358a",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-set-1111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-bytes-0",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-bytes-31",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-bytes-32",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-bytes-51",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-bytes-52",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "route-bytes-60",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "route-access",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "route-overflow",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "classifier-query-2222222222222222222222222222222222222222-0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-2222222222222222222222222222222222222222-1",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-2222222222222222222222222222222222222222-44",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-2222222222222222222222222222222222222222-255",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-1111111111111111111111111111111111111111-0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-1111111111111111111111111111111111111111-1",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-1111111111111111111111111111111111111111-44",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-query-1111111111111111111111111111111111111111-255",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-missing",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "classifier-invalid-uint8",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "classifier-revert",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "operator-fbecbad7e4d317fc02dbc3bf88a7d5c0d5a527444bf322b0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "operator-fbecbad71111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "operator-fbecbad7ce480e2897a8dfd860706491f592cacd61514b98",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "operator-d2ad58b5e4d317fc02dbc3bf88a7d5c0d5a527444bf322b0",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "operator-d2ad58b51111111111111111111111111111111111111111",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "operator-d2ad58b5ce480e2897a8dfd860706491f592cacd61514b98",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-61",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-6162",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-616263",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-616263646566",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-no-engine",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-no-classifier",
+      "match": true,
+      "original_reverted": false
+    },
+    {
+      "name": "update-unauthorized",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "malformed-",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "malformed-00",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "malformed-deadbeef",
+      "match": true,
+      "original_reverted": true
+    },
+    {
+      "name": "malformed-561fa97d",
+      "match": true,
+      "original_reverted": true
+    }
+  ],
+  "scope": "Synthetic dispatcher fixtures; compares returndata, reverts, calls, logs and watched storage. Not full system equivalence."
+}

@@ -1,0 +1,989 @@
+[
+  {
+    "changed_storage": [],
+    "name": "observed-zero-anchor",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x70002b07500036af8cfc7000000000000000000",
+    "data": "0x2a715b0e33",
+    "spec": {
+      "name": "observed-zero-anchor",
+      "price": null
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-175000",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x70002b07500036af8cfc70002ab980000000000",
+    "data": "0x4eabe52536",
+    "spec": {
+      "name": "anchor-175000",
+      "price": 175000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-176000",
+    "reverted": false,
+    "amount": 1759535360,
+    "before_updates": 1759535360,
+    "quote_id": "0x70002b07500036af8cfc70002af80000002af80",
+    "data": "0x259cb901f0",
+    "spec": {
+      "name": "anchor-176000",
+      "price": 176000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-176200",
+    "reverted": false,
+    "amount": 1761534832,
+    "before_updates": 1761534832,
+    "quote_id": "0x70002b07500036af8cfc70002b048000002b048",
+    "data": "0x236a4928d9",
+    "spec": {
+      "name": "anchor-176200",
+      "price": 176200
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-176245",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "anchor-176245",
+      "price": 176245
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-176300",
+    "reverted": false,
+    "amount": 1762534568,
+    "before_updates": 1762534568,
+    "quote_id": "0x70002b07500036af8cfc70002b0ac000002b0ac",
+    "data": "0x67bcdb2e3b",
+    "spec": {
+      "name": "anchor-176300",
+      "price": 176300
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-176500",
+    "reverted": false,
+    "amount": 1764534040,
+    "before_updates": 1764534040,
+    "quote_id": "0x70002b07500036af8cfc70002b174000002b174",
+    "data": "0x0c444829e1",
+    "spec": {
+      "name": "anchor-176500",
+      "price": 176500
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "anchor-177000",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x70002b07500036af8cfc70002b3680000000000",
+    "data": "0x3d6f5228a2",
+    "spec": {
+      "name": "anchor-177000",
+      "price": 177000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-100000000000000",
+    "reverted": false,
+    "amount": 176241,
+    "before_updates": 176241,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-100000000000000",
+      "price": 176245,
+      "amount": 100000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-10000000000000000",
+    "reverted": false,
+    "amount": 17624147,
+    "before_updates": 17624147,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-10000000000000000",
+      "price": 176245,
+      "amount": 10000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-100000000000000000",
+    "reverted": false,
+    "amount": 176241475,
+    "before_updates": 176241475,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-100000000000000000",
+      "price": 176245,
+      "amount": 100000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-500000000000000000",
+    "reverted": false,
+    "amount": 881207375,
+    "before_updates": 881207375,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-500000000000000000",
+      "price": 176245,
+      "amount": 500000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-1000000000000000000",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-1000000000000000000",
+      "price": 176245,
+      "amount": 1000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-2000000000000000000",
+    "reverted": false,
+    "amount": 3523324369,
+    "before_updates": 3523324369,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-2000000000000000000",
+      "price": 176245,
+      "amount": 2000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-5000000000000000000",
+    "reverted": false,
+    "amount": 8807047246,
+    "before_updates": 8807047246,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "sell-5000000000000000000",
+      "price": 176245,
+      "amount": 5000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-10000000000000000000",
+    "reverted": false,
+    "amount": 13851434284,
+    "before_updates": 13851434284,
+    "quote_id": "0xe5a00000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x219cbd0e72",
+    "spec": {
+      "name": "sell-10000000000000000000",
+      "price": 176245,
+      "amount": 10000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-50000000000000000000",
+    "reverted": false,
+    "amount": 49100434284,
+    "before_updates": 49100434284,
+    "quote_id": "0x221e00000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x0a353f1500",
+    "spec": {
+      "name": "sell-50000000000000000000",
+      "price": 176245,
+      "amount": 50000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "sell-100000000000000000000",
+    "reverted": false,
+    "amount": 93161684284,
+    "before_updates": 93161684284,
+    "quote_id": "0x249700000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x2dc4e917dd",
+    "spec": {
+      "name": "sell-100000000000000000000",
+      "price": 176245,
+      "amount": 100000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-1-usdc",
+    "reverted": false,
+    "amount": 567380635138580,
+    "before_updates": 567380635138580,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-1-usdc",
+      "price": 176245,
+      "amount": 1000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-10-usdc",
+    "reverted": false,
+    "amount": 5673806351385809,
+    "before_updates": 5673806351385809,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-10-usdc",
+      "price": 176245,
+      "amount": 10000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-100-usdc",
+    "reverted": false,
+    "amount": 56738063513858095,
+    "before_updates": 56738063513858095,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-100-usdc",
+      "price": 176245,
+      "amount": 100000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-1000-usdc",
+    "reverted": false,
+    "amount": 567380635138580952,
+    "before_updates": 567380635138580952,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-1000-usdc",
+      "price": 176245,
+      "amount": 1000000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-5000-usdc",
+    "reverted": false,
+    "amount": 2836880806991773678,
+    "before_updates": 2836880806991773678,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-5000-usdc",
+      "price": 176245,
+      "amount": 5000000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-10000-usdc",
+    "reverted": false,
+    "amount": 5673506800868575776,
+    "before_updates": 5673506800868575776,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-10000-usdc",
+      "price": 176245,
+      "amount": 10000000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-50000-usdc",
+    "reverted": false,
+    "amount": 28361916178850629722,
+    "before_updates": 28361916178850629722,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-50000-usdc",
+      "price": 176245,
+      "amount": 50000000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "buy-100000-usdc",
+    "reverted": false,
+    "amount": 56717337605701390559,
+    "before_updates": 56717337605701390559,
+    "quote_id": "0xff000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x3d506d2929",
+    "spec": {
+      "name": "buy-100000-usdc",
+      "price": 176245,
+      "amount": 100000000000,
+      "reverse": true
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-0",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "classifier-0",
+      "price": 176245,
+      "score": 0
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-1",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07501036af8cfc70002b075000002b075",
+    "data": "0x70037206cf",
+    "spec": {
+      "name": "classifier-1",
+      "price": 176245,
+      "score": 1
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-2",
+    "reverted": false,
+    "amount": 1758988547,
+    "before_updates": 1758988547,
+    "quote_id": "0xaa00070002b07502036af8cfc70002b075000002b075",
+    "data": "0x698de61730",
+    "spec": {
+      "name": "classifier-2",
+      "price": 176245,
+      "score": 2
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-10",
+    "reverted": false,
+    "amount": 1761279732,
+    "before_updates": 1761279732,
+    "quote_id": "0x2800070002b0750a036af8cfc70002b075000002b075",
+    "data": "0x068b870344",
+    "spec": {
+      "name": "classifier-10",
+      "price": 176245,
+      "score": 10
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-20",
+    "reverted": false,
+    "amount": 1758988547,
+    "before_updates": 1758988547,
+    "quote_id": "0xaa00070002b07514036af8cfc70002b075000002b075",
+    "data": "0x6b3e410a2e",
+    "spec": {
+      "name": "classifier-20",
+      "price": 176245,
+      "score": 20
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-44",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "classifier-44",
+      "price": 176245,
+      "score": 44
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-100",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "classifier-100",
+      "price": 176245,
+      "score": 100
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "classifier-255",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "classifier-255",
+      "price": 176245,
+      "score": 255
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-0",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "time-plus-0",
+      "price": 176245,
+      "time_delta": 0
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-1",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x80002b07500046af8cfc70002b075000002b075",
+    "data": "0x0c616d0eb5",
+    "spec": {
+      "name": "time-plus-1",
+      "price": 176245,
+      "time_delta": 1
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-2",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x90002b07500056af8cfc70002b075000002b075",
+    "data": "0x2b5b702223",
+    "spec": {
+      "name": "time-plus-2",
+      "price": 176245,
+      "time_delta": 2
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-3",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0xa0002b07500066af8cfc70002b075000002b075",
+    "data": "0x5a29732ac3",
+    "spec": {
+      "name": "time-plus-3",
+      "price": 176245,
+      "time_delta": 3
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-5",
+    "reverted": false,
+    "amount": 1757578587,
+    "before_updates": 1757578587,
+    "quote_id": "0xfa0c0002b07500086af8cfc70002b075000002b075",
+    "data": "0x1e4f512115",
+    "spec": {
+      "name": "time-plus-5",
+      "price": 176245,
+      "time_delta": 5
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-10",
+    "reverted": false,
+    "amount": 1754053687,
+    "before_updates": 1754053687,
+    "quote_id": "0xff110002b075000d6af8cfc70002b075000002b075",
+    "data": "0x48afe72d22",
+    "spec": {
+      "name": "time-plus-10",
+      "price": 176245,
+      "time_delta": 10
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-30",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x250002b07500216af8cfc70002b075000002b075",
+    "data": "0x6e1e7022cf",
+    "spec": {
+      "name": "time-plus-30",
+      "price": 176245,
+      "time_delta": 30
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-60",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x430002b075003f6af8cfc70002b075000002b075",
+    "data": "0x2041612be2",
+    "spec": {
+      "name": "time-plus-60",
+      "price": 176245,
+      "time_delta": 60
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-119",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x7a6af8cfc70002b0750000000000",
+    "data": "0x69167f0e8c",
+    "spec": {
+      "name": "time-plus-119",
+      "price": 176245,
+      "time_delta": 119
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-120",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x7b6af8cfc70002b0750000000000",
+    "data": "0x58075f2a15",
+    "spec": {
+      "name": "time-plus-120",
+      "price": 176245,
+      "time_delta": 120
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-121",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x7c6af8cfc70002b0750000000000",
+    "data": "0x18c0d824dc",
+    "spec": {
+      "name": "time-plus-121",
+      "price": 176245,
+      "time_delta": 121
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-255",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0xff6af8cfc70002b0750000000000",
+    "data": "0x204767262a",
+    "spec": {
+      "name": "time-plus-255",
+      "price": 176245,
+      "time_delta": 255
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "time-plus-300",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0xff6af8cfc70002b0750000000000",
+    "data": "0x205777262a",
+    "spec": {
+      "name": "time-plus-300",
+      "price": 176245,
+      "time_delta": 300
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-0-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-0-lots",
+      "price": 176245,
+      "vault_weth": 0
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-1-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-1-lots",
+      "price": 176245,
+      "vault_weth": 600000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-10-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-10-lots",
+      "price": 176245,
+      "vault_weth": 6000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-30-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-30-lots",
+      "price": 176245,
+      "vault_weth": 18000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-60-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-60-lots",
+      "price": 176245,
+      "vault_weth": 36000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-100-lots",
+    "reverted": false,
+    "amount": 1762407700,
+    "before_updates": 1762407700,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x3174451757",
+    "spec": {
+      "name": "inventory-100-lots",
+      "price": 176245,
+      "vault_weth": 60000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-119-lots",
+    "reverted": false,
+    "amount": 528735000,
+    "before_updates": 528735000,
+    "quote_id": "0xfa000000000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x6083e313be",
+    "spec": {
+      "name": "inventory-119-lots",
+      "price": 176245,
+      "vault_weth": 71400000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-120-lots",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x0",
+    "data": "0x0971780000",
+    "spec": {
+      "name": "inventory-120-lots",
+      "price": 176245,
+      "vault_weth": 72000000000000000000
+    }
+  },
+  {
+    "changed_storage": [],
+    "name": "inventory-140-lots",
+    "reverted": false,
+    "amount": 0,
+    "before_updates": 0,
+    "quote_id": "0x0",
+    "data": "0x0971780000",
+    "spec": {
+      "name": "inventory-140-lots",
+      "price": 176245,
+      "vault_weth": 84000000000000000000
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x100000000000000000de0b6b3a7640000"
+      }
+    ],
+    "name": "prior-same-side-updates-1",
+    "reverted": false,
+    "amount": 1761632221,
+    "before_updates": 1761984712,
+    "quote_id": "0x1140000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x5d500d09c8",
+    "spec": {
+      "name": "prior-same-side-updates-1",
+      "price": 176245,
+      "updates": 1
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x200000000000000001bc16d674ec80000"
+      }
+    ],
+    "name": "prior-same-side-updates-2",
+    "reverted": false,
+    "amount": 1760927238,
+    "before_updates": 1761984712,
+    "quote_id": "0x23c0000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x66244224f7",
+    "spec": {
+      "name": "prior-same-side-updates-2",
+      "price": 176245,
+      "updates": 2
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x3000000000000000029a2241af62c0000"
+      }
+    ],
+    "name": "prior-same-side-updates-3",
+    "reverted": false,
+    "amount": 1760574743,
+    "before_updates": 1761984712,
+    "quote_id": "0x3500000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x254b6e0b92",
+    "spec": {
+      "name": "prior-same-side-updates-3",
+      "price": 176245,
+      "updates": 3
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x500000000000000004563918244f40000"
+      }
+    ],
+    "name": "prior-same-side-updates-5",
+    "reverted": false,
+    "amount": 1760222237,
+    "before_updates": 1761984712,
+    "quote_id": "0x5640000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x5e3c62220d",
+    "spec": {
+      "name": "prior-same-side-updates-5",
+      "price": 176245,
+      "updates": 5
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x10100000000000000001bc16d674ec80000"
+      }
+    ],
+    "name": "fixed-volume-2000000000000000000",
+    "reverted": false,
+    "amount": 1760927241,
+    "before_updates": 1761984712,
+    "quote_id": "0x13c0000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x1e100e17eb",
+    "spec": {
+      "name": "fixed-volume-2000000000000000000",
+      "price": 176245,
+      "update_amounts": [
+        2000000000000000000
+      ]
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x200000000000000001bc16d674ec80000"
+      }
+    ],
+    "name": "fixed-volume-1000000000000000000-1000000000000000000",
+    "reverted": false,
+    "amount": 1760927238,
+    "before_updates": 1761984712,
+    "quote_id": "0x23c0000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x66244224f7",
+    "spec": {
+      "name": "fixed-volume-1000000000000000000-1000000000000000000",
+      "price": 176245,
+      "update_amounts": [
+        1000000000000000000,
+        1000000000000000000
+      ]
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x100000000000000000de0b6b3a7640000"
+      }
+    ],
+    "name": "fixed-volume-1000000000000000000",
+    "reverted": false,
+    "amount": 1761632221,
+    "before_updates": 1761984712,
+    "quote_id": "0x1140000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x5d500d09c8",
+    "spec": {
+      "name": "fixed-volume-1000000000000000000",
+      "price": 176245,
+      "update_amounts": [
+        1000000000000000000
+      ]
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x200000000000000000de0b6b3a7640000"
+      }
+    ],
+    "name": "fixed-volume-500000000000000000-500000000000000000",
+    "reverted": false,
+    "amount": 1761632218,
+    "before_updates": 1761984712,
+    "quote_id": "0x2140000070002b07500036af8cfc70002b075000002b075",
+    "data": "0x08aaa229a8",
+    "spec": {
+      "name": "fixed-volume-500000000000000000-500000000000000000",
+      "price": 176245,
+      "update_amounts": [
+        500000000000000000,
+        500000000000000000
+      ]
+    }
+  },
+  {
+    "changed_storage": [
+      {
+        "address": "0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee",
+        "slot": "0xc27876a1093319716336beb14cf2a569dfdebd000ece6d00877daa3369e2981a",
+        "before": "0x0",
+        "after": "0x200000000000000001bc16d674ec80000"
+      }
+    ],
+    "name": "next-block-after-two-updates",
+    "reverted": false,
+    "amount": 1761984712,
+    "before_updates": 1761984712,
+    "quote_id": "0x70002b07500036af8cfc70002b075000002b075",
+    "data": "0x0204061757",
+    "spec": {
+      "name": "next-block-after-two-updates",
+      "price": 176245,
+      "update_amounts": [
+        1000000000000000000,
+        1000000000000000000
+      ],
+      "advance_block": true
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "exact_match": false,
+  "executable_match": false,
+  "metadata_match": false,
+  "original_has_recognized_metadata": true,
+  "candidate_has_recognized_metadata": true,
+  "original_bytes": 5669,
+  "candidate_bytes": 5957,
+  "original_keccak256": "0xe552901dcbaab7cdf3d36773891e45cac6b987357ed27bfea5e07dbf95950b22",
+  "candidate_keccak256": "0xbef7f02cbea42653ecebf0091caf9ff547af15f257e764226e65d27f82bd466d",
+  "first_executable_difference": 12,
+  "difference_context": {
+    "start": 0,
+    "original": "60806040526004361015610011575f80fd5b5f5f3560e01c80630a6e04",
+    "candidate": "60806040526004361015610028575b346100245761001c3661103e565b"
+  }
+}

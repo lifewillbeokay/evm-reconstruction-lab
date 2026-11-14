@@ -1,0 +1,132 @@
+[
+  {
+    "selector": "0x0a6e04cb",
+    "signature": "getOrderbook(address,address)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0x19b4c955",
+    "signature": null,
+    "argument_types": [
+      "address"
+    ],
+    "description": "set classifier address",
+    "mined_name": false,
+    "signature_hash_verified": false,
+    "provenance": "Raw selector and ABI shape reconstructed from bytecode; analyst description"
+  },
+  {
+    "selector": "0x2784993c",
+    "signature": null,
+    "argument_types": [
+      "bytes"
+    ],
+    "description": "set pair-sum route from packed 32-byte sum and 20-byte engine",
+    "mined_name": false,
+    "signature_hash_verified": false,
+    "provenance": "Raw selector and ABI shape reconstructed from bytecode; analyst description"
+  },
+  {
+    "selector": "0x519341bb",
+    "signature": "update(uint256,bytes,address,address,uint256,uint256,address,uint256)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Verified public IElfomoPricing interface"
+  },
+  {
+    "selector": "0x561fa97d",
+    "signature": "getAmountOut(address,address,uint256,address,uint256)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Verified public IElfomoPricing interface"
+  },
+  {
+    "selector": "0x6486c4ac",
+    "signature": "getAmountIn(address,address,uint256,address,uint256)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Verified public IElfomoPricing interface"
+  },
+  {
+    "selector": "0x715018a6",
+    "signature": "renounceOwnership()",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0x725e6ced",
+    "signature": null,
+    "argument_types": [
+      "address",
+      "address",
+      "address",
+      "uint256"
+    ],
+    "description": "query uint8 classification for mapped engine",
+    "mined_name": false,
+    "signature_hash_verified": false,
+    "provenance": "Raw selector and ABI shape reconstructed from bytecode; analyst description"
+  },
+  {
+    "selector": "0x8da5cb5b",
+    "signature": "owner()",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0xb6f3e087",
+    "signature": "addPair(address,address)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0xc4d66de8",
+    "signature": "initialize(address)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0xd2ad58b5",
+    "signature": null,
+    "argument_types": [
+      "address",
+      "uint8"
+    ],
+    "description": "forward operator command 0x2f115662",
+    "mined_name": false,
+    "signature_hash_verified": false,
+    "provenance": "Raw selector and ABI shape reconstructed from bytecode; analyst description"
+  },
+  {
+    "selector": "0xd527c998",
+    "signature": "getSupportedPairs()",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Verified public IElfomoPricing interface"
+  },
+  {
+    "selector": "0xf2fde38b",
+    "signature": "transferOwnership(address)",
+    "signature_hash_verified": true,
+    "mined_name": false,
+    "provenance": "Candidate signature hash matches; behavior checked, original spelling not independently proven"
+  },
+  {
+    "selector": "0xfbecbad7",
+    "signature": null,
+    "argument_types": [
+      "address",
+      "uint8"
+    ],
+    "description": "forward operator command 0x066cd13f",
+    "mined_name": false,
+    "signature_hash_verified": false,
+    "provenance": "Raw selector and ABI shape reconstructed from bytecode; analyst description"
+  }
+]

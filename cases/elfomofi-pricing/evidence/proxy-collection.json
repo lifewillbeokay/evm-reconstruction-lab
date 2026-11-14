@@ -1,0 +1,15 @@
+{
+  "chain_id": 8453,
+  "address": "0xffffffbb2d432b8acb4c57d556c0c721a431d038",
+  "block_number": 57503212,
+  "block_hash": "0x2308f3bff4902fb89cf07af3a89e2cb03a29363d1b82febf4c71357f80f32bee",
+  "runtime_keccak256": "0x4d9be648c5bf39973670d9f8b481d5d0b971e6a2db2deccc6b98cde21c5dd83e",
+  "proxy_candidates": {
+    "implementation": "0x555a998a43a63d67abfb186b375d8aa56c66790b"
+  },
+  "limitations": [
+    "Proxy slots are hints, not proof of delegation.",
+    "Beacon addresses are collected but not resolved through implementation().",
+    "Factory initcode, historical storage and traces are not automatically collected."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "original_initcode_runtime_exact": true,
+  "dispatcher_differential_cases": 84,
+  "historical_rpc_replays": 2,
+  "engine_scenarios": 65,
+  "engine_scenarios_with_candidate_dispatcher": 65,
+  "independent_ladder_arithmetic_matches": 18,
+  "metadata_getter_matches": true,
+  "exact_bytecode_match": false,
+  "executable_bytecode_match": false,
+  "explorer_submission": "not submitted",
+  "scope": "Dispatcher behavioral reconstruction; original engine bytes used for bounded experiments. Engine source and upstream trading model are not fully recovered."
+}

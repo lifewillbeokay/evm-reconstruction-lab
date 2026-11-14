@@ -49,3 +49,21 @@ uv run python scripts/evidence.py cases/<descriptive-name>
 Add a CI reproduction step for the new case and its compiler installation.
 Publishing a candidate is not an assertion that it is the original source or
 that the deployed contract is safe to operate.
+
+## Behavioral and modular cases
+
+An informative case need not reach executable-bytecode equivalence. Mark it
+explicitly as a behavioral reconstruction in `case.json`, and distinguish the
+reconstructed component from dependencies executed as captured original bytes.
+The [ElfomoFi case](../cases/elfomofi-pricing/README.md) uses a dedicated
+`scripts/reproduce-elfomofi.py` runner because its state witness and engine
+experiments do not fit the first case's exact-match runner.
+
+Unknown signatures may be null in the selector map when accompanied by the raw
+selector, decoded argument types and behavioral provenance. Do not mine a name
+merely to satisfy the original case's schema.
+
+Preserve the authentic unmodified replay separately from synthetic state
+overrides. Record complete scenario inputs, all reached code/storage needed for
+offline reproduction, and explicit limitations of incomplete state coverage.
+See [stateful engine analysis](stateful-engine-analysis.md).
