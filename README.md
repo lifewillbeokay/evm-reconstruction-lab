@@ -19,6 +19,11 @@ a 15-selector dispatcher reconstruction, five captured pricing engines, and
 and within-block pricing behavior. The dispatcher passes 84 differential tests
 but **does not match deployed bytecode**; the full engine source is not recovered.
 
+A [live ElfomoFi virtual order book](apps/elfomofi-depth/README.md) now samples
+current Base quotes at one block, compares them with the engine ladder, and
+exports reproducible snapshots. It follows the current routed engine; it does
+not assume the historical case-study address is still active.
+
 This is a reconstruction workbench. It does not automatically recover arbitrary
 contracts' source or prove behavioral equivalence in every possible state.
 

@@ -29,3 +29,16 @@ ignored `build/`, not in the source history.
 Scope initial improvements to a demonstrated need in a real case. Additional
 compiler versions, proxy families and EVM forks should have targeted fixtures
 that fail without the implementation change.
+
+For the live depth app (Node 22.13+; Node 24 recommended):
+
+```sh
+cd apps/elfomofi-depth
+npm ci
+npm test
+npm run typecheck
+npm run build
+```
+
+Its unit tests are offline. The `test:live` script is an explicit public-RPC
+collection step and is excluded from CI.
