@@ -256,4 +256,22 @@ def scenarios():
                 2,
                 code=codes,
             )
+    # Inverse division precedes normalization. Nonintegral ratios and decimal
+    # boundaries distinguish this from squaring the base-token decimal scale.
+    for dec in [0, 6, 8, 18, 36, 39, 71, 72]:
+        for sqrt in [2**96 + 12345678901234567890123, 2**97 + 19, 2**128 - 1]:
+            m = copy.deepcopy(M)
+            m[1], m[3], m[4], m[11], m[12] = dec, 3, 3, POOL, 2
+            code = responder({"3850c7bd": encode(["uint256"], [sqrt])})
+            add(
+                f"reference-inverse-rounding-{dec}-{sqrt}",
+                0x3F5C,
+                [128, int(p.ARGS[4][0], 16)],
+                mw(m),
+                "referencePrice",
+                [p.META_TYPE, "address"],
+                [m, p.ARGS[4][0]],
+                2,
+                code={POOL: code},
+            )
     return out

@@ -206,9 +206,9 @@ contract EngineState {
         if (sqrt == 0) return result;
         uint256 price = sqrtToRatio(sqrt, forward ? m.tokenDecimals : quoteDecimals);
         if (price == 0) return result;
-        if (forward) price = normalizePrice(price, quoteDecimals);
-        else price = normalizePrice(Math.mulDiv(10 ** uint256(m.tokenDecimals), 10 ** uint256(m.tokenDecimals), price), m.tokenDecimals);
-        return ReferencePrice(price, m.raw4);
+        // The inverse division rounds before normalization to 12 decimals.
+        if (!forward) price = Math.mulDiv(10 ** (uint256(m.tokenDecimals) + uint256(quoteDecimals)), 1, price);
+        return ReferencePrice(normalizePrice(price, quoteDecimals), m.raw4);
     }
 
     function readReferencePrice(Metadata memory m, address token)

@@ -56,6 +56,14 @@ oracle formats, a pool's square-root price, a pool-manager square-root price, an
 the average of both pool references. The timestamped formats expire at ages of
 120 and 45 seconds respectively. Pool references use metadata-controlled ages.
 
+Inverting a pool reference divides `10 ** (baseDecimals + quoteDecimals)` by the
+decoded ratio, rounds down, then normalizes using `quoteDecimals`. That order
+matters: normalization can amplify the rounding step. The previous candidate
+squared the base-token decimal scale before dividing, which matched the initial
+fixtures but failed ten of 24 new inverse-price cases. The corrected formula and
+these regression cases are included here. Existing target expectations are
+unchanged; the evidence manifest was deliberately regenerated for this correction.
+
 For ordinary origins with reference checking enabled, a missing reference or
 excessive posted/reference deviation produces a zero price. Within the allowed
 deviation, a newer posted price wins; otherwise bid and ask selection can use the
@@ -80,7 +88,7 @@ times the configured inventory target. It then trims the ladder to available
 quote funds using the recovered rounding rules. These describe the public book;
 trade-update constraints below also determine whether settlement succeeds.
 
-The current candidate has a 24,425-byte runtime versus the deployed 24,500 bytes.
+The current candidate has a 24,554-byte runtime versus the deployed 24,500 bytes.
 The size difference is not a measure of completion or behavioral coverage.
 
 ## Reconstructed quotes
@@ -175,14 +183,14 @@ conditions, not attribution of those addresses to particular organizations.
 
 ## Validation scope
 
-The parent checkpoint passes 15,299 differential scenarios:
+The parent checkpoint passes 15,323 differential scenarios:
 
 | Scope | Scenarios |
 | --- | ---: |
 | Constructor metadata and validation | 102 |
 | Constructor reference-pool modes | 90 |
 | Metadata, administration, authorization and fallback | 234 |
-| Price decoding, oracle formats, scaling and arithmetic | 409 |
+| Price decoding, oracle formats, scaling and arithmetic | 433 |
 | Price selection, quote-ID packing and special origins | 1,047 |
 | Internal book construction and inventory boundaries | 720 |
 | Public book, including one captured RPC result | 58 |

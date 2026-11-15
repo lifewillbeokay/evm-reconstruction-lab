@@ -38,7 +38,7 @@
     "constructor": 102,
     "reference-constructor": 90,
     "state": 234,
-    "price-primitives": 409,
+    "price-primitives": 433,
     "price-selection": 1047,
     "book-internals": 720,
     "quote-fill": 2600,

@@ -4175,6 +4175,126 @@
     "target_sha256": "077f5b2b94d4ad6e0c4479a6aa9ab584dcad19f4f9242d83915eaaad24792c1e"
   },
   {
+    "name": "price-primitives:reference-inverse-rounding-0-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "e923b36b22b1e588fd4f594f496dbd9ba5db037c606b169424a46fbf90974032"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-0-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "cfbc83db274234107dc8f50ef275ded9a311c08a99f5adb3df1404a96746ed1c"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-0-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "cfbc83db274234107dc8f50ef275ded9a311c08a99f5adb3df1404a96746ed1c"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-6-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "2d960af16784bbb5ef7e7790f5aa6f09a2149177689495aa803e520689c34284"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-6-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "e52a84a2560118e09fc03925ed8d2bddfffc0b550b67ef4d1a1158e7bee200f6"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-6-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "cfbc83db274234107dc8f50ef275ded9a311c08a99f5adb3df1404a96746ed1c"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-8-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "7e25ac87dc774146da68a668322ea8faadb251812acf40d6ebfc31a62a8f9b26"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-8-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "3dd8b008aea0257b87e786f8cda3797dd755d6f882cd11f87e70b285f47b953e"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-8-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "cfbc83db274234107dc8f50ef275ded9a311c08a99f5adb3df1404a96746ed1c"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-18-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "bf273ab7e7a5abc9e42b096ee271eb995ab1f4bb0fa2ec794c62886aeed1503d"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-18-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "61fa26b65aac5667bd23a53ce6a96151340863a63da0c76b403192c8e8317ebe"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-18-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "cfbc83db274234107dc8f50ef275ded9a311c08a99f5adb3df1404a96746ed1c"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-36-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "62512820b89d39fbd3358ee29f5ae528b35dfeaa32d14094f90c81debdeb63e9"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-36-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "59125c3188783cf14d316386eecb089510906522a23395a7c0c2b8407ff8be4b"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-36-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "e839604b7d1637372f2ca1c437d4410bcaa9d4fd324d45c72efb36fc04b40eaa"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-39-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "6ffa338067355c766684a5b286749d09319f307f218c8ef019dad8142d336284"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-39-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "6d5b4f0090273bfbfaf97f4818e37c730c73e34d9453e32221bc8d5caee69924"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-39-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "516db16aa359a42b0221ea8a81f2aa28b35822f0683dcc2fceea19532c0bf106"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-71-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "dc6fbf4843859441c38e3f191a203379c4db320b4345d4ef45236beec84a292b"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-71-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "89295f4427459a26e1a0d89a8c44ca1d2dbc46a7d8c5e818c8508c4e1f035b21"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-71-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "a5d7125b0598f2301ec0a6d8a57075cf0cf6566f9e0abf4a0865e81c35f77ccc"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-72-79228174859943238828111840459",
+    "match": true,
+    "target_sha256": "81681801241a81a6085181a30293acd09094081c67fff9d9ae5b2ff4d925eb14"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-72-158456325028528675187087900691",
+    "match": true,
+    "target_sha256": "81681801241a81a6085181a30293acd09094081c67fff9d9ae5b2ff4d925eb14"
+  },
+  {
+    "name": "price-primitives:reference-inverse-rounding-72-340282366920938463463374607431768211455",
+    "match": true,
+    "target_sha256": "81681801241a81a6085181a30293acd09094081c67fff9d9ae5b2ff4d925eb14"
+  },
+  {
     "name": "price-selection:pack-0-0",
     "match": true,
     "target_sha256": "0401cc592cb5406b16b74dab2bdada5ac560b3c8fad440404ee51fe7fffccf8e"
