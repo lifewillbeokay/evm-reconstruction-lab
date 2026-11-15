@@ -1,17 +1,16 @@
-# ElfomoFi current pricing engine: reconstruction in progress
+# ElfomoFi current pricing engine: exact executable reconstruction
 
 This case preserves the Base engine at
 [`0x84cb1a96e57e9b88cf75035384c06dc3769654ae`](https://basescan.org/address/0x84cb1a96e57e9b88cf75035384c06dc3769654ae#code).
 It is separate from the earlier dispatcher and `0xd6ac…` engine case.
-**The complete parent runtime executable and its 4,364-byte constructor prefix
-now match exactly. Basescan verification remains pending.** The reconstructed
-source covers the constructor, all twelve external selectors, fallback, reference
-pricing, book construction, exact quotes, and trade updates. The embedded fee
-helper still differs at 17 executable byte positions. The two metadata hashes
-also differ, so neither complete creation bytecode nor full runtime bytecode is
-claimed to match.
+**Both runtime executables and the complete creation executable now match exactly.
+Both sources are verified on Basescan.** The reconstructed source covers the
+constructor, all twelve external selectors, fallback, reference pricing, book
+construction, exact quotes, trade updates, and the embedded fee helper. The two
+metadata hashes still differ, so full bytecode equality including metadata is
+not claimed.
 
-## Evidence and remaining work
+## Evidence and verification
 
 The deployment transaction is
 [`0xee98…198b5`](https://basescan.org/tx/0xee98e76f2482e9df90f37ad1de66b60810fc523ddb9ee2590805bda1596198b5).
@@ -23,7 +22,9 @@ creation input.
 
 A [publication-time route check](evidence/publication-route-check.json) at finalized
 block 57,935,202 still routes WETH, cbBTC and AAPLc to this engine
-with the captured runtime hash. This is a dated observation, not a permanent route.
+with the captured runtime hash. This is a dated observation, not a permanent route. A
+[verification-time check](evidence/verification-route-check.json) at finalized
+block 57,948,646 confirms the same three routes and both runtime hashes.
 
 The checkpoint contains the deployment, finalized block, constructor arguments,
 runtime, a strict state witness and three RPC-backed replay fixtures. These
@@ -56,14 +57,14 @@ accounts for every byte of the 29,706-byte creation code:
 | Parent runtime executable, with immutable placeholders | 24,447 | Exact |
 | Parent metadata | 53 | Different |
 | Embedded helper constructor | 26 | Exact |
-| Embedded helper runtime executable | 763 | 17 differing byte positions, starting at offset 738 |
+| Embedded helper runtime executable | 763 | Exact |
 | Embedded helper metadata | 53 | Different |
 
 Only recognized CBOR metadata regions are excluded from executable comparisons.
-The remaining helper differences are executable and are not ignored. Reproduction
-checks these reports against fresh compiler output; a passing behavioral suite
-cannot replace a bytecode match. Remaining work is the helper's exact executable
-match, complete creation matching excluding metadata, and Basescan submission.
+All four executable regions match: 29,600 bytes in total. Reproduction checks
+these reports against fresh compiler output and actually executes the constructor
+to validate deployed immutables. [Basescan accepted both submissions](evidence/explorer-verification.json). The record
+binds the submitted inputs to their SHA-256 hashes and captures the success pages.
 The successful settings reproduce this candidate; they are not proof of the
 original build configuration. See [source fidelity notes](../../docs/bytecode-fidelity.md)
 for the reusable lessons from reaching this match.

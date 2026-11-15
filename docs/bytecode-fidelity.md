@@ -1,9 +1,9 @@
 # Reaching an exact executable match
 
 The [current ElfomoFi case](../cases/elfomofi-engine-84cb/README.md) has an exact
-24,447-byte parent executable match and a 4,364-byte constructor-prefix match.
-Its embedded helper still differs. This checkpoint illustrates why behavioral
-agreement, local function similarity and whole-contract equality are separate
+24,447-byte parent runtime executable match, a 763-byte helper executable match,
+and exact constructor prefixes for both. All 29,600 executable bytes in the
+creation code match. Metadata equality and explorer acceptance remain separate
 results.
 
 ## Preserve a tested source checkpoint
@@ -28,6 +28,11 @@ Equivalent source expressions can compile differently. In this case:
 - Small validation and conversion wrappers affected utility emission order
   without changing the external ABI. Applying a wrapper at every similar call
   site could undo a match at a previously recovered site.
+
+- In the fee helper, reversing the two canonical-value equality operands and
+  arranging the four-way conjunction changed stack scheduling enough to match
+  the final 25-byte region. A matching prefix alone missed promising variants;
+  comparing all differing positions helped identify the exact expression.
 
 These are measured properties of this compiler/input combination, not universal
 Solidity style rules or evidence of the author's original source. Names of
@@ -57,7 +62,8 @@ checks that its ordered regions reconstruct **every byte** of both creation
 inputs. It compares both constructor prefixes, both executable runtime regions,
 and both recognized terminal CBOR metadata regions separately. It also checks
 the parent after constructor execution. Only the identified metadata is excluded
-from the executable claim; the unresolved helper bytes remain a reported failure.
+from the executable claim; the helper differences were treated as a failure until
+the complete child executable matched.
 
 Keep explorer acceptance separate from local equality. Original metadata hashes,
 source filenames, identifiers and build settings are not recovered merely by

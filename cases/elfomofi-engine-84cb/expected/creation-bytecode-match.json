@@ -3,7 +3,7 @@
   "candidate_creation_bytes": 29706,
   "all_creation_bytes_accounted_for": true,
   "full_creation_match": false,
-  "creation_executable_match": false,
+  "creation_executable_match": true,
   "segments": [
     {
       "name": "parent_constructor",
@@ -32,7 +32,7 @@
       "bytes": 53,
       "exact_match": false,
       "original_sha256": "45459ecaf1c3f61c154efc41d09ac520bb10da9c4eeab2be93dfa79ab4b3f536",
-      "candidate_sha256": "e24ab7ef49cd7a5734125514cc166fc999d438a76e2bdf5e8228611cc4df24f2",
+      "candidate_sha256": "a1d2e66b70f03239ee14eab250a37a625361e513b18860791b9ad68f187bdea3",
       "different_byte_positions": [
         10,
         11,
@@ -83,28 +83,10 @@
       "kind": "executable",
       "offset": 28890,
       "bytes": 763,
-      "exact_match": false,
+      "exact_match": true,
       "original_sha256": "5e04ab78a0512637f830a1f800e18f1a73b68687252c47f929cb3410efab66b2",
-      "candidate_sha256": "3d76445275a820508a0d1e47cf9c8ef560a41f7f19dea55e7b7bc8dde30784a1",
-      "different_byte_positions": [
-        738,
-        740,
-        741,
-        742,
-        743,
-        745,
-        746,
-        747,
-        748,
-        749,
-        750,
-        751,
-        752,
-        753,
-        754,
-        755,
-        756
-      ]
+      "candidate_sha256": "5e04ab78a0512637f830a1f800e18f1a73b68687252c47f929cb3410efab66b2",
+      "different_byte_positions": []
     },
     {
       "name": "helper_metadata",
@@ -113,7 +95,7 @@
       "bytes": 53,
       "exact_match": false,
       "original_sha256": "b8290ba4b6953eddb3720c388efa118577cba2d44ff3ed261c22e28d499e6985",
-      "candidate_sha256": "03ddb42ab5837575be26c25b05d99538bc116e8c271e17d5374d339c36ad19a4",
+      "candidate_sha256": "e26670075c7acd48f46166d3bdb6cb7a9f980561e437d5e9a0f8c2b5f5921eb9",
       "different_byte_positions": [
         10,
         11,
@@ -159,7 +141,7 @@
     "original_bytes": 24500,
     "candidate_bytes": 24500,
     "original_keccak256": "0xd6d62d9b98c4b43b84850142eb732fc02a4e2cbb90c69dbae9ace534419fc680",
-    "candidate_keccak256": "0xf18dd39916856de89f920abd9e3fdd9cd65c12879d1bfd5a52d825e1556cf43d",
+    "candidate_keccak256": "0xf6555b553bec2539e8ec92aac8c9e06d0bd695173959688e533f0daa7eeab5b1",
     "first_executable_difference": null,
     "difference_context": null
   },
@@ -172,26 +154,22 @@
     "original_bytes": 24500,
     "candidate_bytes": 24500,
     "original_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
-    "candidate_keccak256": "0x749a6b7abd5ac81c0e8b6112a335ee19474330579ea59e0d19a0f3c46ef37541",
+    "candidate_keccak256": "0xc6c888ffc04a025128f704b36f24830061c25059eb0eae9e18d43689efe6eee8",
     "first_executable_difference": null,
     "difference_context": null
   },
   "helper_runtime": {
     "exact_match": false,
-    "executable_match": false,
+    "executable_match": true,
     "metadata_match": false,
     "original_has_recognized_metadata": true,
     "candidate_has_recognized_metadata": true,
     "original_bytes": 816,
     "candidate_bytes": 816,
     "original_keccak256": "0x4134563410f4611a3c10e238f4d202539afff270b4eddc8ed67c030ee36ea14b",
-    "candidate_keccak256": "0x37be256668602aa911e6f9c20695dac641b42cf21157252677fcab8e5d4600e8",
-    "first_executable_difference": 738,
-    "difference_context": {
-      "start": 722,
-      "original": "90805160208201519063ffffffff811693600160608460060b9501511416918314",
-      "candidate": "90805160208201519063ffffffff81168260060b81956001606083970151141693"
-    }
+    "candidate_keccak256": "0x2acd2ea1a8df0c86c2d31b0b048812d3de4e3b4ab166a5783096f219a1590e63",
+    "first_executable_difference": null,
+    "difference_context": null
   },
   "scope": "Every creation byte is assigned to a checked region. Only the two recognized CBOR metadata regions are excluded from executable equality. Deployed parent comparison uses actual constructor output, including immutables."
 }

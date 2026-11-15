@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-11-15T22:22:08.057196+00:00",
+  "rpc": "https://base-rpc.publicnode.com",
+  "proxy": "0xffffffbb2d432b8acb4c57d556c0c721a431d038",
+  "block": {
+    "number": "0x37439e6",
+    "hash": "0x47848d50bf5ee98f5373b4ae36a611a4bc351c986517fee962e118bab7a8f590",
+    "timestamp": "0x6afa2bc8"
+  },
+  "routes": [
+    {
+      "market": "WETH",
+      "slot": "0x8dd3416d6a29f316c400d30cc7a4c4b85a1e84f155430cb54f452b437e5ea11f",
+      "word": "0x00000000000000000000000084cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "engine": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
+      "runtime_bytes": 24500
+    },
+    {
+      "market": "cbBTC",
+      "slot": "0xf8b93bb4caee16b582679e42eb646155e84f0879563b227942d8f3d4f5a4dc29",
+      "word": "0x00000000000000000000000084cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "engine": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
+      "runtime_bytes": 24500
+    },
+    {
+      "market": "AAPLc",
+      "slot": "0x3f43c04475a68b36669a12e99486672f61a4b588e6a4bed986474504a63b427b",
+      "word": "0x00000000000000000000000084cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "engine": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
+      "runtime_bytes": 24500
+    }
+  ],
+  "helper": {
+    "address": "0x42e88fbc20c66bfe4bac17892980b640990d8cbc",
+    "runtime_keccak256": "0x4134563410f4611a3c10e238f4d202539afff270b4eddc8ed67c030ee36ea14b",
+    "runtime_bytes": 816
+  },
+  "scope": "Read-only RPC snapshot at one finalized block. Routing can change after this block; this is not a cryptographic state proof."
+}

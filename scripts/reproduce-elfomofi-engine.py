@@ -1,4 +1,4 @@
-"""Reproduce the exact parent executable and report the unresolved child separately."""
+"""Reproduce both exact runtime executables and the complete creation executable."""
 
 import copy
 import hashlib
@@ -218,12 +218,22 @@ def main():
         "Recorded creation segment comparison is stale"
     )
     assert parent_match["executable_match"]
+    assert match["executable_match"]
+    assert creation_match["creation_executable_match"]
+    assert "0x" + keccak(split_metadata(candidate).executable).hex() == fidelity["helper_runtime_executable_keccak256"]
     assert "0x" + keccak(split_metadata(deployed.output).executable).hex() == fidelity["parent_runtime_executable_keccak256"]
     assert creation_match["segments"][0]["candidate_sha256"] == fidelity["parent_constructor_prefix_sha256"]
     assert len(creation_match["segments"][4]["different_byte_positions"]) == fidelity["remaining_helper_different_executable_bytes"]
     (BUILD / "creation-bytecode-match.json").write_text(
         json.dumps(creation_match, indent=2) + "\n"
     )
+    verification = read("evidence/explorer-verification.json")
+    assert verification["status"] == "verified on Basescan (parent and helper)"
+    assert {entry["address"] for entry in verification["contracts"]} == {engine, helper}
+    for entry in verification["contracts"]:
+        assert entry["result"] == "verified"
+        assert entry["standard_input_sha256"] == fidelity["inputs_sha256"][entry["standard_input"]]
+        assert hashlib.sha256((CASE / entry["screenshot"]).read_bytes()).hexdigest() == entry["screenshot_sha256"]
     report = {
         "original_constructor_runtime_match": True,
         "constructor_scope": read("evidence/constructor-replay.json"),
@@ -239,7 +249,7 @@ def main():
         "parent_constructor_prefix_match": creation_match["segments"][0]["exact_match"],
         "implemented_external_selectors": 12,
         "full_engine_source_reconstructed": creation_match["creation_executable_match"],
-        "explorer_submission": "not submitted",
+        "explorer_submission": verification["status"],
     }
     (BUILD / "validation.json").write_text(json.dumps(report, indent=2) + "\n")
     assert report == read("expected/validation.json"), "Recorded validation report is stale"
@@ -254,7 +264,7 @@ def main():
                 "parent_executable_match": parent_match["executable_match"],
                 "creation_executable_match": creation_match["creation_executable_match"],
                 "implemented_external_selectors": 12,
-                "full_engine_source_reconstructed": False,
+                "full_engine_source_reconstructed": creation_match["creation_executable_match"],
             }
         )
     )

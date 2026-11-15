@@ -1,6 +1,6 @@
 {
   "name": "ElfomoFi current pricing engine and fee helper",
-  "status": "parent-executable-matched-helper-in-progress",
+  "status": "verified-executable-reconstruction",
   "chain_id": 8453,
   "address": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
   "helper": "0x42e88fbc20c66bfe4bac17892980b640990d8cbc",
@@ -9,22 +9,22 @@
   "deployment_transaction": "0xee98e76f2482e9df90f37ad1de66b60810fc523ddb9ee2590805bda1596198b5",
   "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
   "compiler": "0.8.34+commit.80d5c536",
-  "compiler_provenance": "Version from deployed CBOR. Stock solc 0.8.34, via IR, Cancun and default optimizer at 100 runs reproduces the complete parent executable and constructor prefix. Original source names, build settings and metadata are not recovered.",
+  "compiler_provenance": "Version from deployed CBOR. Stock solc 0.8.34, via IR, Cancun and default optimizer at 100 runs reproduces both complete runtime executables and both constructor prefixes. Original source names, build settings and metadata are not recovered.",
   "match_claims": {
     "original_constructor_runtime": true,
-    "full_engine_source": false,
-    "helper_executable_bytecode": false,
+    "full_engine_source": true,
+    "helper_executable_bytecode": true,
     "helper_full_bytecode": false,
     "helper_behavioral": "156 differential scenarios and 3 RPC-backed parent paths",
-    "explorer_submission": "not submitted",
+    "explorer_submission": "verified on Basescan (parent and helper)",
     "parent_executable_bytecode": true,
     "parent_full_bytecode": false,
     "implemented_external_selectors": 12,
     "total_external_selectors": 12,
     "parent_behavioral": "15451 scenarios: constructor, administration, reference pricing, public book, exact quotes and updates; not exhaustive or gas equivalent",
     "parent_constructor_prefix": true,
-    "creation_executable_bytecode": false,
+    "creation_executable_bytecode": true,
     "creation_full_bytecode": false,
-    "remaining_helper_executable_different_bytes": 17
+    "remaining_helper_executable_different_bytes": 0
   }
 }

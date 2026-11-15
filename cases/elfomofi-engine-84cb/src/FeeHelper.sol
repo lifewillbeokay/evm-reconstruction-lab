@@ -53,12 +53,14 @@ contract FeeHelper {
             mstore(add(p, 4), index)
             ok := staticcall(6000, pool, p, 36, p, 128)
             ok := and(ok, iszero(lt(returndatasize(), 128)))
-function clean(a,b) -> ta,tb {ta := and(a,0xffffffff) tb := signextend(6,b)}
-let rawTime := mload(p)
-let rawCumulative := mload(add(p,32))
-time,cumulative := clean(rawTime,rawCumulative)
-ok := and(ok,eq(mload(add(p,96)),1))
-ok := and(ok,and(eq(rawTime,time),eq(rawCumulative,cumulative)))
+            let rawTime := mload(p)
+            let rawCumulative := mload(add(p, 32))
+            time := and(rawTime, 0xffffffff)
+            cumulative := signextend(6, rawCumulative)
+            ok := and(
+                and(eq(time, rawTime), eq(cumulative, rawCumulative)),
+                and(ok, eq(mload(add(p, 96)), 1))
+            )
         }
     }
 }

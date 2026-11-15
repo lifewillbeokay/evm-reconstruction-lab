@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-11-15T22:21:43.632751+00:00",
+  "status": "verified on Basescan (parent and helper)",
+  "chain_id": 8453,
+  "compiler": "v0.8.34+commit.80d5c536",
+  "optimizer": {
+    "enabled": true,
+    "runs": 100
+  },
+  "viaIR": true,
+  "evmVersion": "cancun",
+  "license_selection": "1) No License (None)",
+  "contracts": [
+    {
+      "contract": "EngineState",
+      "address": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
+      "source_url": "https://basescan.org/address/0x84cb1a96e57e9b88cf75035384c06dc3769654ae#code",
+      "result": "verified",
+      "observed_message": "Successfully generated matching Bytecode and ABI for Contract Address",
+      "standard_input": "parent-standard-input.json",
+      "standard_input_sha256": "f009ec2e326203d70452f0eff009c1a72626ea3788d16ff0a7194b735a52dd56",
+      "constructor_arguments_bytes": 1696,
+      "screenshot": "evidence/basescan-engine-verified.jpg",
+      "screenshot_sha256": "6ab12c9b7663b425ffe8ab875d908c01dea78f8cb4bddd4abd621afaceb4886b"
+    },
+    {
+      "contract": "FeeHelper",
+      "address": "0x42e88fbc20c66bfe4bac17892980b640990d8cbc",
+      "source_url": "https://basescan.org/address/0x42e88fbc20c66bfe4bac17892980b640990d8cbc#code",
+      "result": "verified",
+      "observed_message": "Successfully generated matching Bytecode and ABI for Contract Address",
+      "standard_input": "helper-standard-input.json",
+      "standard_input_sha256": "86aedff224bd228996dc999bb62761675f74f69f4a1b2cb0938d9d87963b316a",
+      "constructor_arguments_bytes": 0,
+      "screenshot": "evidence/basescan-helper-verified.jpg",
+      "screenshot_sha256": "a16f4022d5df247f289b445e339961febd3bbf1bcc689cce607585b889dbe75b"
+    }
+  ],
+  "scope": "Successful browser submission results for the hash-bound reconstructed sources. Explorer acceptance does not recover original source names or metadata hashes."
+}
