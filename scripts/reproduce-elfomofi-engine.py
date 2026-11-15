@@ -186,6 +186,9 @@ def main():
     assert quote_compact(parent_results) == read("expected/quote-differential.json")
     assert update_compact(parent_results) == read("expected/update-differential.json")
     parent_match = json.loads((BUILD / "parent-bytecode-match.json").read_text())
+    assert parent_match == read("expected/parent-bytecode-match.json"), (
+        "Recorded parent bytecode comparison is stale"
+    )
     report = {
         "original_constructor_runtime_match": True,
         "constructor_scope": read("evidence/constructor-replay.json"),

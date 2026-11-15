@@ -8,8 +8,8 @@
     "target_sha256": "c213fb736a1e7b5ca225f52bcfb8390295a7f3ebb471861c34bf11670f988e7a"
   },
   "quote-execute": {
-    "cases": 900,
-    "target_sha256": "bae958d35f2659d9966e2c78b5526e0b52e14c323740ac2b3d33fcb8b4747542"
+    "cases": 1028,
+    "target_sha256": "2bfb4cf72ceb5195ae828f647e4cbde2a2ecc517e0ac8caca509cfba8621790a"
   },
   "quote-fill": {
     "cases": 2600,

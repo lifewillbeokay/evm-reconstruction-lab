@@ -84,6 +84,62 @@ def scenarios():
                 kwargs,
             )
         )
+    # These probe the internal execution entry directly. The public quote path
+    # has a separate zero-price guard before it reaches this routine. The
+    # deployed routine at 0x3bd4 instead checks amount == 0 after building levels.
+    # Replacing that check with price == 0 incorrectly bypasses fills, dust
+    # adjustment and fee validation in these otherwise unreachable inputs.
+    for suppress, ask, exact, amount, balance, counter in itertools.product(
+        [False, True],
+        [False, True],
+        [False, True],
+        [0, 1, 16, 100],
+        [10, 100],
+        [0, 16],
+    ):
+        kwargs = {
+            "code": {
+                T: responder({"70a08231": encode(["uint256"], [balance])}),
+                p.ARGS[2]: responder({"70a08231": encode(["uint256"], [10000])}),
+            },
+            "overrides": {p.ENGINE: {slot: hex(word)}},
+            "synthetic_storage": {p.ENGINE: {KEY: hex(counter + (counter << 16))}},
+        }
+        out.append(
+            (
+                f"execute-zero-price-{suppress}-{ask}-{exact}-{amount}-{balance}-{counter}",
+                (
+                    0x3BD4,
+                    [
+                        int(suppress),
+                        int(ask),
+                        int(T, 16),
+                        0,
+                        0,
+                        int(exact),
+                        amount,
+                        77,
+                        128,
+                    ],
+                    mw(m),
+                    "execute",
+                    [
+                        "bool",
+                        "bool",
+                        "address",
+                        "uint256",
+                        "uint256",
+                        "bool",
+                        "uint256",
+                        "uint256",
+                        p.META_TYPE,
+                    ],
+                    [suppress, ask, T, 0, 0, exact, amount, 77, m],
+                    ["uint256"] * 2,
+                ),
+                kwargs,
+            )
+        )
     return out
 
 

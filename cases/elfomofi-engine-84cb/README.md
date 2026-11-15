@@ -90,6 +90,9 @@ trade-update constraints below also determine whether settlement succeeds.
 
 The current candidate has a 24,554-byte runtime versus the deployed 24,500 bytes.
 The size difference is not a measure of completion or behavioral coverage.
+The checked-in bytecode comparison has also been refreshed: it still described
+an earlier 16,847-byte candidate. Reproduction now checks that this report agrees
+with the freshly compiled candidate, in addition to reporting the remaining mismatch.
 
 ## Reconstructed quotes
 
@@ -99,6 +102,16 @@ quote cost up per tranche. The inverse modes use the corresponding base-token
 rounding. Exact-output requests return zero when the ladder cannot satisfy them;
 internal exact-input fillers saturate at the available ladder. These are quote
 calculations, not a proof that a later swap will pass the update checks.
+
+The execution helper builds the ladder, then returns zero for an empty ladder
+or a zero requested amount. The public quote path checks for a zero price before
+calling this helper. The previous reconstruction incorrectly repeated that price
+check inside the helper, diverging in 24 of 128 new direct-entry, zero-price cases;
+for example, it returned zero where the original helper reverted with `fee`.
+The corrected amount check and regression cases preserve this internal behavior.
+These synthetic cases do not demonstrate an externally reachable zero-price swap.
+Prior target expectations are unchanged, and the evidence manifest was deliberately
+regenerated for this correction.
 
 Ordinary quotes combine a stale-price fee, a caller-class fee, the pool helper,
 and a same-block volume fee. There are 44 enum classes, with values above 43 from
@@ -183,7 +196,7 @@ conditions, not attribution of those addresses to particular organizations.
 
 ## Validation scope
 
-The parent checkpoint passes 15,323 differential scenarios:
+The parent checkpoint passes 15,451 differential scenarios:
 
 | Scope | Scenarios |
 | --- | ---: |
@@ -198,7 +211,7 @@ The parent checkpoint passes 15,323 differential scenarios:
 | Generalized ladder and caller-class fee rules | 4,560 |
 | Amount normalization, volume/count fees and quote-ID fields | 1,548 |
 | Small-trade adjustment and strict fee checks | 1,552 |
-| Combined internal quote execution | 900 |
+| Combined internal quote execution, including zero-price entry tests | 1,028 |
 | Public quotes, including two captured RPC results | 494 |
 | Public updates: accounting, guards, authorization, transient state and ABI | 985 |
 

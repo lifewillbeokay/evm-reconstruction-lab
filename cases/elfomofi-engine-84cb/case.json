@@ -21,6 +21,6 @@
     "parent_full_bytecode": false,
     "implemented_external_selectors": 12,
     "total_external_selectors": 12,
-    "parent_behavioral": "15323 scenarios: constructor, administration, reference pricing, public book, exact quotes and updates; not exhaustive or gas equivalent"
+    "parent_behavioral": "15451 scenarios: constructor, administration, reference pricing, public book, exact quotes and updates; not exhaustive or gas equivalent"
   }
 }

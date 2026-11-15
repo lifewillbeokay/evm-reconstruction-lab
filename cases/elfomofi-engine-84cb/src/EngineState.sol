@@ -634,7 +634,7 @@ contract EngineState {
     function executeQuote(bool suppress,bool ask,address token,uint256 extra,uint256 price,bool exactIn,
         uint256 amount,uint256 quoteId,Metadata memory m) internal view returns(uint256 result,uint256 resultId) {
         Level[] memory levels=quoteLevels(suppress,ask,extra,price,token,m);
-        if(levels.length==0 || price==0) return (0,quoteId);
+        if(levels.length==0 || amount==0) return (0,quoteId);
         if(ask) result=exactIn?buyExactIn(m.tokenDecimals,price,amount,levels):buyExactOut(m.tokenDecimals,price,amount,levels);
         else result=exactIn?sellExactIn(m.tokenDecimals,price,amount,levels):sellExactOut(m.tokenDecimals,price,amount,levels);
         uint256 marker;
