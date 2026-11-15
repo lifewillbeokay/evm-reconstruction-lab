@@ -28,6 +28,8 @@ jobs:
           npm ci --ignore-scripts
       - name: Test reusable tools
         run: uv run --frozen pytest -q
+      - name: Rebuild execution simulation probe
+        run: node scripts/build-execution-probe.cjs --check
       - name: Check case evidence
         run: uv run --frozen python scripts/evidence.py cases/wintermute-curve-balancer
       - name: Compile, compare and run differential tests

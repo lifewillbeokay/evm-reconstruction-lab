@@ -13,7 +13,7 @@ test('single-block reads, route changes, quote batch errors and input validation
       let result:any;
       if(r.method==='eth_chainId')result='0x2105';
       else if(r.method==='eth_getBlockByNumber')result={number:'0x100',hash,timestamp:'0x1000'};
-      else if(r.method==='eth_getStorageAt')result='0x'+word(r.params[1]===IMPLEMENTATION_SLOT?'0x555a998a43a63d67abfb186b375d8aa56c66790b':otherEngine);
+      else if(r.method==='eth_getStorageAt')result='0x'+word(r.params[1]===IMPLEMENTATION_SLOT?'0x555a998a43a63d67abfb186b375d8aa56c66790b':r.params[1]==='0x2'?'0xfff':otherEngine);
       else if(r.method==='eth_call'){
         const data=r.params[0].data;
         if(data.startsWith('0xd527c998'))result='0x'+[32,1,MARKETS[0].address,USDC].map(word).join('');
@@ -27,10 +27,10 @@ test('single-block reads, route changes, quote batch errors and input validation
   try{
     const params=new URLSearchParams({market:'WETH',partner:'791'});
     const data=await getBook(params);
-    assert.equal(data.engine,otherEngine);assert.equal(data.blockHash,hash);assert.equal(data.postedAge,null);
+    assert.equal(data.engine,otherEngine);assert.equal(data.blockHash,hash);assert.equal(data.postedAge,1);
     assert.equal(data.sells[0].status,'error');assert.equal(data.buys[0].status,'ok');assert.equal(data.quotedBid.length,0);
     assert(seen.filter(x=>['eth_call','eth_getStorageAt'].includes(x.method)).every(x=>x.params.at(-1)==='0x100'));
-    assert(!seen.some(x=>x.method==='eth_getStorageAt'&&x.params[0]===otherEngine)); // no old storage layout assumptions
+    assert(seen.some(x=>x.method==='eth_getStorageAt'&&x.params[0]===otherEngine&&x.params[1]==='0x2')); // newly verified engine layout
     assert(seen.filter(x=>x.method==='eth_getBlockByNumber').length===2);
     const count=seen.length;await getBook(params);assert.equal(seen.length,count); // request coalescing/cache
     await assert.rejects(getBook(new URLSearchParams({executor:'bad'})),RangeError);
@@ -42,7 +42,7 @@ test('a changed canonical block is rejected, not presented as coherent depth',as
     let result:any;
     if(r.method==='eth_chainId')result='0x2105';
     else if(r.method==='eth_getBlockByNumber')result={number:'0x100',hash:r.params[0]==='latest'?hash:'0x'+'cd'.repeat(32),timestamp:'0x1000'};
-    else if(r.method==='eth_getStorageAt')result='0x'+word(r.params[1]===IMPLEMENTATION_SLOT?'0x555a998a43a63d67abfb186b375d8aa56c66790b':otherEngine);
+    else if(r.method==='eth_getStorageAt')result='0x'+word(r.params[1]===IMPLEMENTATION_SLOT?'0x555a998a43a63d67abfb186b375d8aa56c66790b':r.params[1]==='0x2'?'0xfff':otherEngine);
     else if(r.params[0].data.startsWith('0xd527c998'))result='0x'+[32,1,MARKETS[0].address,USDC].map(word).join('');
     else if(r.params[0].data.startsWith('0x0a6e04cb'))result='0x'+[64,96,0,0].map(word).join('');
     else result='0x'+[10000000,42,96,0].map(word).join('');

@@ -39,18 +39,55 @@ quantities, quote IDs, caller parameters, block number and block hash.
 The route is read from dispatcher storage at every snapshot. The adapter pauses
 if the dispatcher implementation changes. Unreviewed engine addresses retain
 quote-derived depth but have ladder decoding disabled. Raw storage slot 2 is
-decoded for price age only on the previously studied engine; it is not assumed
-to have the same layout on newly routed engines.
+decoded only for the two reviewed engines; new engine layouts need review.
 
-## Reconstruction and verification
+## Execution simulator and architecture
 
-The historical case study in `lifewillbeokay/evm-reconstruction-lab` concerns
-engine `0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee`. During live development on
-2026-11-14 the dispatcher routed all three displayed pairs to
-`0x84cb1a96e57e9b88cf75035384c06dc3769654ae` (24,500 runtime bytes).
-The current engine was unverified on Basescan when checked. This site uses
-original deployed bytecode and public call interfaces. No matching full-source
-reconstruction exists yet, and no source verification was submitted for this site.
+The Execution tab calls the original deployed engine with a read-only RPC probe.
+It runs a quote followed by `update` in the same `eth_call` and distinguishes a
+passing engine check, absent quote, reverted quote, failed execution guard, and
+RPC failure. It does not run token transfers, approvals, the original dispatcher
+or full swap settlement. Independent sizes do not consume one another's liquidity.
+
+Controls cover 44 caller classes, up to 16 base-token sizes, posted-price age,
+same-block volume/counts, large-trade counters and gas/access context. Scenarios
+remain pinned to the same block while comparing settings; New snapshot refreshes
+it. Engine and helper code hashes plus pair routing are checked. Age and flow
+overrides are explicit, with raw inputs/results and hashes in the JSON export.
+The classifier response is synthetic; class numbers are not named trader identities.
+
+`POST /api/simulate` accepts the `Scenario` shape in `lib/simulation.ts`. The browser
+tries public RPC directly first, then uses this same collector through the API.
+No wallet, transaction signing, deployment or chain writes are involved.
+
+The Architecture tab visualizes the full pricing process and links to the
+[case architecture](../../cases/elfomofi-engine-84cb/ARCHITECTURE.md). It distinguishes
+observed rules from inferred trading intent and unrecovered offchain strategy.
+
+The earlier case preserves `0xd6ac027dbcbf19489e8ecd4d719aa83396eca3ee`. The current
+`0x84cb1a96e57e9b88cf75035384c06dc3769654ae` engine and its fee helper now have verified
+reconstructed source on Basescan. Both runtime executables and the entire creation
+executable match; original metadata hashes differ. Storage slot 2 is reviewed for
+both engines. The new execution probe supports only the verified current runtime.
+
+Build/check the instrumentation from the repository root:
+
+```sh
+node scripts/build-execution-probe.cjs
+node scripts/build-execution-probe.cjs --check
+```
+
+Explicit RPC integration checks (not part of offline CI):
+
+```sh
+node --experimental-strip-types scripts/simulate-live.mjs
+```
+
+This checks a pinned block for class fees, age penalties, cold/warm fee context,
+expiry, pre-trade count boundaries and the two-sided large-trade guard, then checks
+current WETH/cbBTC/AAPLc routing. Offline tests cover code fingerprints, mapping
+slots, state overrides, ABI/revert decoding, route changes and reorg rejection.
+The fixture bytecode is copied from the preserved case evidence.
 
 ## References
 

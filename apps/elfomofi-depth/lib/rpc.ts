@@ -1,11 +1,11 @@
 import {PROXY,SWAP,ENGINE,DEFAULT_EXECUTOR,IMPLEMENTATION_SLOT,MARKETS,word,decodeBook,decodePairs,addressAt,quoteCall,quoteResult,marginalLevels,samplingSizes,uintAt,parseUnits} from './elfomo.ts';
 import type {Book,Market,Level} from './elfomo.ts';
 
-type Reply={id:number;result?:any;error?:{code?:number;message?:string}};
-type Request={method:string;params:unknown[]};
-const PROVIDERS=['https://base-rpc.publicnode.com','https://base.drpc.org','https://public.1rpc.io/base','https://mainnet.base.org'];
+export type Reply={id:number;result?:any;error?:{code?:number;message?:string}};
+export type Request={method:string;params:unknown[]};
+export const PROVIDERS=['https://base-rpc.publicnode.com','https://base.drpc.org','https://public.1rpc.io/base','https://mainnet.base.org'];
 const cache=new Map<string,{at:number;promise:Promise<Book>}>();
-async function batch(endpoint:string,requests:Request[]):Promise<Reply[]> {
+export async function batch(endpoint:string,requests:Request[]):Promise<Reply[]> {
   const response=await fetch(endpoint,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(requests.map((r,i)=>({jsonrpc:'2.0',id:i+1,...r}))),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error(`RPC returned HTTP ${response.status}.`);
   const raw=await response.json() as Reply[];
@@ -13,7 +13,7 @@ async function batch(endpoint:string,requests:Request[]):Promise<Reply[]> {
   const byId=new Map(raw.map(r=>[r.id,r]));
   return requests.map((_,i)=>byId.get(i+1)||{id:i+1,error:{message:'Missing RPC response'}});
 }
-function requireResult(r:Reply){if(r.error||r.result===undefined)throw new Error(r.error?.message||'Missing RPC response');return r.result;}
+export function requireResult(r:Reply){if(r.error||r.result===undefined)throw new Error(r.error?.message||'Missing RPC response');return r.result;}
 function call(data:string,block:string):Request {return {method:'eth_call',params:[{to:PROXY,from:SWAP,data,gas:'0x1c9c380',gasPrice:'0x1'},block]};}
 async function collect(endpoint:string,market:Market,executor:string,partner:string,custom?:string):Promise<Book> {
   const first=await batch(endpoint,[{method:'eth_chainId',params:[]},{method:'eth_getBlockByNumber',params:['latest',false]}]);
@@ -41,7 +41,7 @@ async function collect(endpoint:string,market:Market,executor:string,partner:str
   if(engine==='0x'+'0'.repeat(40))throw new Error('This pair has no registered pricing engine.');
   const sizes=samplingSizes(market,book,custom);
   const requests:Request[]=sizes.flatMap(n=>[call(quoteCall(market,n,false,executor,partner),tag),call(quoteCall(market,n,true,executor,partner),tag)]);
-  if(engine===ENGINE)requests.push({method:'eth_getStorageAt',params:[engine,'0x2',tag]});
+  if([ENGINE,'0x84cb1a96e57e9b88cf75035384c06dc3769654ae'].includes(engine))requests.push({method:'eth_getStorageAt',params:[engine,'0x2',tag]});
   const replies:Reply[]=[];
   // Bounded batches fit the public RPC services' request limits.
   for(let i=0;i<requests.length;i+=18)replies.push(...await batch(endpoint,requests.slice(i,i+18)));
@@ -49,7 +49,7 @@ async function collect(endpoint:string,market:Market,executor:string,partner:str
   const buys=sizes.map((n,i)=>quoteResult(n,market.decimals,replies[2*i+1]));
   if([...sells,...buys].every(q=>q.status==='error'))throw new Error('All quote calls failed at this RPC provider.');
   const priceWord=replies.at(-1)!;
-  const postedTimestamp=engine!==ENGINE||priceWord.error?null:Number(uintAt(requireResult(priceWord),0)&0xffffffffn);
+  const postedTimestamp=![ENGINE,'0x84cb1a96e57e9b88cf75035384c06dc3769654ae'].includes(engine)||priceWord.error?null:Number(uintAt(requireResult(priceWord),0)&0xffffffffn);
   // Confirm no canonical-block replacement occurred while the sweep was running.
   const end=await batch(endpoint,[{method:'eth_getBlockByNumber',params:[tag,false]}]);
   if(requireResult(end[0])?.hash!==block.hash)throw new Error('Base reorganized during the sweep. Refresh to collect a consistent block.');

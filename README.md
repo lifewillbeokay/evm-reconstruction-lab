@@ -163,3 +163,8 @@ not an official Wintermute release. Vendored OpenZeppelin files retain their MIT
 license. See [NOTICE](NOTICE) for the explicit scope of these licenses.
 The ElfomoFi dispatcher reconstruction is also UNLICENSED; its public pricing
 interface retains its MIT identifier. Neither case is an official project release.
+
+The [live depth app](apps/elfomofi-depth) includes an execution simulator for caller
+classes, order sizes, stale prices and same-block guards, plus an interactive
+architecture tab. See the [engine architecture](cases/elfomofi-engine-84cb/ARCHITECTURE.md)
+for the exact simulation scope.

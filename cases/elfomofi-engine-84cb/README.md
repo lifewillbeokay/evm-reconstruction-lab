@@ -10,6 +10,9 @@ construction, exact quotes, trade updates, and the embedded fee helper. The two
 metadata hashes still differ, so full bytecode equality including metadata is
 not claimed.
 
+The [architecture summary](ARCHITECTURE.md) maps the contracts, state, pricing pipeline,
+execution guards and the live simulator’s exact scope.
+
 ## Evidence and verification
 
 The deployment transaction is
@@ -327,4 +330,9 @@ uv run --frozen python scripts/reproduce-elfomofi-engine.py
 
 All reproduction runs offline with the stock pinned compiler. Reports separate
 executable, metadata, full-bytecode and behavioral results. No transaction is
-broadcast, and no explorer verification has been submitted for this checkpoint.
+broadcast by reproduction. Both source submissions were accepted by Basescan; see
+[evidence/explorer-verification.json](evidence/explorer-verification.json).
+
+The manifest was deliberately regenerated to add the architecture summary and
+correct the outdated reproduction footer. Submitted Standard JSON and chain
+evidence remain unchanged.

@@ -1,5 +1,6 @@
 {
-  "README.md": "7308865619ca08718cbd051d1368f364c7a8c47dc0840996acb2e09b23344ec0",
+  "ARCHITECTURE.md": "f71219eba6103ea2df562ff4c76fb168a0ad1e2270f341c6c8f6ba9b5d31a44e",
+  "README.md": "922cf2f53b5207445e40177443d4bab685533b572f4ed54ae317daf0cc7d0bbe",
   "base_price_differential.py": "1fa0a464a06b5d161e43a888bc333ef40393914c6e9be86d0aa7cc29c71f61c3",
   "book_differential.py": "0a09c81b926c6cad007e2ecad0b85dfbe58d275e086a15a171333a48ad0402ba",
   "case.json": "75954fdbdf79bfda9c843697b81d7edfc24eaa7c47c315404468e8fcf4457518",
