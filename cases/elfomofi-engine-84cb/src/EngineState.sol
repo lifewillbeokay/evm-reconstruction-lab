@@ -15,9 +15,8 @@ interface ReferencePair {
     function token1() external view returns (address);
 }
 
-/// Partial reconstruction, not original source or a bytecode match.
-/// Constructor, administration, reference pricing, book and quote paths recovered.
-/// The update entry point remains absent. Never deploy this candidate.
+/// Independent behavioral reconstruction with all twelve external selectors.
+/// Not original source or bytecode matched. Never deploy this candidate.
 contract EngineState {
     struct Metadata {
         uint8 index;
@@ -707,6 +706,111 @@ contract EngineState {
         CallerClass callerClass;
         (result,quoteId,callerClass)=quote(fromToken,toToken,amount,executor,partnerId,false);
         data=quoteData(quoteId,callerClass);
+    }
+
+    function transformAddress(address who) internal pure returns(uint160 result) {
+        unchecked {result=uint160(uint256(uint160(who))*0xd05+0x7301c4cc2c1e69fffe)^uint160(0x00c471df69cd11fb228f690b7136037ffffffffffe);}
+    }
+
+    function allowedUpdateExecutor(address executor) internal view returns(bool) {
+        uint160 x=transformAddress(tx.origin);
+        return x==uint160(0x0060fdbbe9922df01a7f2bf4356a2befcefe0073a5)
+            || x==uint160(0x00a995eee4e52e52927f39a6aa9aa25691f6ddaa56)
+            || x==uint160(0x005784974ae9ac7c1f56948528c08fa40dfc10bfbf)
+            || x==uint160(0x00179fd775dda7e5ab7f771289c4448380963d5979)
+            || x==uint160(0x007f05033b024c42ea9a7a57519251de92fb5a2a1c)
+            || transformAddress(executor)==uint160(0x003755729082c736ef78250ae9197fa8c9ad9bbedc);
+    }
+
+    function checked128(uint256 amount) internal pure returns(uint128) {
+        require(amount<=type(uint128).max,"u128");return uint128(amount);
+    }
+
+    function incrementStats(bool largeB,bool largeA,uint128 amount,TradeStats memory old)
+        internal pure returns(TradeStats memory result) {
+        result.volume=checked128(uint256(old.volume)+amount);
+        result.count=old.count+1;
+        result.countA=largeA?old.countA+1:old.countA;
+        result.countB=largeB?old.countB+1:old.countB;
+    }
+
+    function setTransientAdjustment(bool ask) internal {
+        int256 value=ask?int256(-50):int256(50);
+        assembly("memory-safe") {
+            let key:=0x22116470a8a062b874d7fcbbce281f71f1c078a760833f3d2faa65621bd10bef
+            if iszero(tload(key)) {tstore(key,value)}
+        }
+    }
+
+    function transientBound(address token,bool side) internal view returns(uint256 value) {
+        bytes32 key=keccak256(abi.encodePacked(token,side));
+        assembly("memory-safe") {value:=tload(key)}
+    }
+
+    function storeTransientBound(address token,bool side,uint256 value) internal {
+        bytes32 key=keccak256(abi.encodePacked(token,side));
+        assembly("memory-safe") {tstore(key,value)}
+    }
+
+    function checkUpdateLimits(uint8 divisor,uint256 toAmount,uint256 fromAmount,address fromToken,
+        address token,TradeStats memory opposite,TradeStats memory current) internal {
+        require(current.count<=15/divisor,"blk");
+        require(current.countA<=10/divisor,"blk");
+        require(current.countB<=5/divisor || opposite.countB<=5/divisor,"blk");
+        uint256 price;
+        uint256 previous;
+        if(fromToken==token) {
+            price=Math.mulDiv(toAmount,1e30,fromAmount,Math.Rounding.Up);
+            previous=transientBound(token,false);
+            require(previous==0 || price<previous,"prc");
+            previous=transientBound(token,true);
+            if(previous==0 || price>previous) storeTransientBound(token,true,price);
+        } else {
+            price=Math.mulDiv(fromAmount,1e30,toAmount);
+            previous=transientBound(token,true);
+            require(previous==0 || price>previous,"prc");
+            previous=transientBound(token,false);
+            if(previous==0 || price<previous) storeTransientBound(token,false,price);
+        }
+    }
+
+    function update(uint256 quoteId,bytes memory,address fromToken,address toToken,uint256 fromAmount,
+        uint256 toAmount,address executor,uint256 partnerId) external {
+        require(msg.sender==pricing && (partnerId>>1)!=0x5d0,"clr");
+        bool ask=fromToken==quoteToken;
+        address token=ask?toToken:fromToken;
+        Metadata memory m=tokenMetadata[token];
+        if(m.lotSize==0 || (!ask && toToken!=quoteToken)) {
+            assembly("memory-safe") {mstore(0,shl(224,0x672215de)) revert(0,4)}
+        }
+        uint256 marker=(quoteId>>208)&255;
+        if(marker!=0) {
+            uint16 count=ask?sideCounters[token].bid:sideCounters[token].ask;
+            require(marker<=16 && marker==toAmount && count>=16,"dust");
+            if(ask) sideCounters[token].bid=count-uint16(marker);
+            else sideCounters[token].ask=count-uint16(marker);
+        }
+        uint256 baseAmount=ask?toAmount:fromAmount;
+        uint128 recorded=checked128(baseAmount);
+        bool special=specialOrigin();
+        uint256 partner=partnerId>>1;
+        if(partner==0x90 || partner==0xca || special) {
+            require(allowedUpdateExecutor(executor),"exe");
+            recorded=0;
+            if(special) setTransientAdjustment(ask);
+        }
+        uint256 n=currentBlock();
+        bool largeA=baseAmount>=uint256(m.lotSize)*2;
+        bool largeB=baseAmount>=uint256(m.lotSize)*8;
+        TradeStats memory previous=ask?statsB[token][n]:statsA[token][n];
+        TradeStats memory current=incrementStats(largeB,largeA,recorded,previous);
+        if(ask) statsB[token][n]=current;
+        else statsA[token][n]=current;
+        TradeStats memory opposite=ask?statsA[token][n]:statsB[token][n];
+        if(!special) {
+            uint8 divisor=m.referenceKind>=3 && m.referenceKind<=5 && m.raw4==0?2:1;
+            checkUpdateLimits(divisor,toAmount,fromAmount,fromToken,token,opposite,previous);
+        }
     }
 
     function getMetadata(address token) external view returns (Metadata memory) {

@@ -34,16 +34,25 @@
   "helper_differential_scenarios": 156,
   "rpc_backed_replays_per_helper": 3,
   "parent_adjustment_scenarios": 8,
-  "partial_parent_scenarios": {
+  "parent_scenarios": {
     "constructor": 102,
     "reference-constructor": 90,
     "state": 234,
     "price-primitives": 409,
     "price-selection": 1047,
     "book-internals": 720,
-    "full-book": 58
+    "quote-fill": 2600,
+    "quote-support": 4560,
+    "quote-accounting": 1548,
+    "quote-small": 1552,
+    "quote-execute": 900,
+    "full-book": 58,
+    "full-quote": 494,
+    "update": 985
   },
-  "partial_parent_executable_match": false,
+  "parent_executable_match": false,
+  "parent_full_bytecode_match": false,
+  "implemented_external_selectors": 12,
   "full_engine_source_reconstructed": false,
   "explorer_submission": "not submitted"
 }

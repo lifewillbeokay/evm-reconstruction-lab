@@ -1,4 +1,4 @@
-"""Offline validation of the partial parent reconstruction, not full equivalence."""
+"""Offline validation of the candidate reconstruction, not full equivalence."""
 
 import hashlib
 import json
@@ -97,6 +97,7 @@ def run_all():
     import small_trade_differential as small
     import execute_differential as execution
     import full_quote_differential as full_quotes
+    import update_differential as updates
 
     creation = bytes.fromhex(
         json.loads((p.BUILD / "state-compiled.json").read_text())["evm"]["bytecode"][
@@ -203,6 +204,8 @@ def run_all():
                 "calls_match": r["calls_match"],
             },
         )
+    for row in updates.run_all():
+        record("update", row["name"], row["target"], row["candidate"])
     return results, counts
 
 
@@ -227,4 +230,14 @@ def quote_compact(results):
         }
         for group in sorted(QUOTE_GROUPS)
         if (rows := [r for r in results if r["name"].split(":")[0] == group])
+    }
+
+
+def update_compact(results):
+    rows = [r for r in results if r["name"].split(":")[0] == "update"]
+    return {
+        "cases": len(rows),
+        "target_sha256": digest(
+            [{"name": r["name"], "target": r["target"]} for r in rows]
+        ),
     }

@@ -26,8 +26,9 @@ not assume the historical case-study address is still active.
 
 The [current engine checkpoint](cases/elfomofi-engine-84cb/README.md) captures
 the `0x84cb…` deployment and reconstructs its constructor, administrative calls,
-reference pricing, public order book, exact quotes and new fee helper. The partial parent passes
-14,314 differential scenarios and the helper passes 156; bytecode still differs.
+reference pricing, public order book, exact quotes, trade updates and new fee helper.
+All twelve engine selectors have candidate implementations; the parent passes
+15,299 differential scenarios and the helper passes 156. Bytecode still differs.
 The full engine reconstruction and Basescan verification remain in progress.
 
 This is a reconstruction workbench. It does not automatically recover arbitrary

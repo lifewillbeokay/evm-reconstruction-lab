@@ -9,7 +9,7 @@
   "deployment_transaction": "0xee98e76f2482e9df90f37ad1de66b60810fc523ddb9ee2590805bda1596198b5",
   "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
   "compiler": "0.8.34+commit.80d5c536",
-  "compiler_provenance": "Version from deployed CBOR. Helper and partial parent settings are experimental, not recovered original settings.",
+  "compiler_provenance": "Version from deployed CBOR. The parent uses stock default optimization at 200 runs, via IR, Cancun; helper settings remain experimental. Original settings are not established.",
   "match_claims": {
     "original_constructor_runtime": true,
     "full_engine_source": false,
@@ -19,8 +19,8 @@
     "explorer_submission": "not submitted",
     "parent_executable_bytecode": false,
     "parent_full_bytecode": false,
-    "partial_parent_behavioral": "14314 scenarios: constructor, administration, reference pricing, public book and exact quotes; update remains absent",
-    "implemented_external_selectors": 11,
-    "total_external_selectors": 12
+    "implemented_external_selectors": 12,
+    "total_external_selectors": 12,
+    "parent_behavioral": "15299 scenarios: constructor, administration, reference pricing, public book, exact quotes and updates; not exhaustive or gas equivalent"
   }
 }

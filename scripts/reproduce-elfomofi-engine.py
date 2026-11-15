@@ -164,6 +164,7 @@ def main():
         compact as compact_parent,
         quote_compact,
         QUOTE_GROUPS,
+        update_compact,
     )
 
     parent_results, parent_counts = run_parent()
@@ -171,14 +172,20 @@ def main():
         json.dumps(parent_results, indent=2) + "\n"
     )
     failures = [r["name"] for r in parent_results if not r["match"]]
-    assert not failures, f"Partial parent differential mismatches: {failures[:10]}"
+    assert not failures, f"Parent candidate differential mismatches: {failures[:10]}"
     parent_compact = compact_parent(parent_results)
     (BUILD / "parent-differential-compact.json").write_text(
         json.dumps(parent_compact, indent=2) + "\n"
     )
-    legacy = [r for r in parent_results if r["name"].split(":")[0] not in QUOTE_GROUPS]
+    legacy = [
+        r
+        for r in parent_results
+        if r["name"].split(":")[0] not in QUOTE_GROUPS | {"update"}
+    ]
     assert compact_parent(legacy) == read("expected/parent-differential.json")
     assert quote_compact(parent_results) == read("expected/quote-differential.json")
+    assert update_compact(parent_results) == read("expected/update-differential.json")
+    parent_match = json.loads((BUILD / "parent-bytecode-match.json").read_text())
     report = {
         "original_constructor_runtime_match": True,
         "constructor_scope": read("evidence/constructor-replay.json"),
@@ -186,8 +193,10 @@ def main():
         "helper_differential_scenarios": len(results),
         "rpc_backed_replays_per_helper": len(baseline),
         "parent_adjustment_scenarios": len(experiments),
-        "partial_parent_scenarios": parent_counts,
-        "partial_parent_executable_match": False,
+        "parent_scenarios": parent_counts,
+        "parent_executable_match": parent_match["executable_match"],
+        "parent_full_bytecode_match": parent_match["exact_match"],
+        "implemented_external_selectors": 12,
         "full_engine_source_reconstructed": False,
         "explorer_submission": "not submitted",
     }
@@ -199,7 +208,9 @@ def main():
                 "constructor_runtime_match": True,
                 "rpc_replays": len(baseline) * 2,
                 "parent_adjustments": len(experiments),
-                "partial_parent_scenarios": parent_counts,
+                "parent_scenarios": parent_counts,
+                "parent_executable_match": parent_match["executable_match"],
+                "implemented_external_selectors": 12,
                 "full_engine_source_reconstructed": False,
             }
         )
