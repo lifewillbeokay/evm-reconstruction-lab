@@ -24,6 +24,11 @@ current Base quotes at one block, compares them with the engine ladder, and
 exports reproducible snapshots. It follows the current routed engine; it does
 not assume the historical case-study address is still active.
 
+The [current engine checkpoint](cases/elfomofi-engine-84cb/README.md) captures
+the `0x84cb…` deployment and reconstructs its new reference-pool fee helper.
+The helper passes 156 differential scenarios; its bytecode is still different.
+The full engine reconstruction and Basescan verification remain in progress.
+
 This is a reconstruction workbench. It does not automatically recover arbitrary
 contracts' source or prove behavioral equivalence in every possible state.
 
@@ -55,6 +60,13 @@ uv run --frozen python scripts/reproduce-elfomofi.py
 
 Its captured state, explicit counterfactual experiments and independent ladder
 arithmetic also run offline. Results go to `build/elfomofi-pricing/`.
+
+For the current engine checkpoint:
+
+```sh
+uv run --frozen python scripts/evidence.py cases/elfomofi-engine-84cb
+uv run --frozen python scripts/reproduce-elfomofi-engine.py
+```
 
 Expected result:
 

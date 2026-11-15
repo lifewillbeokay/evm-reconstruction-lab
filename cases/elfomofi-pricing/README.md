@@ -297,3 +297,11 @@ The Solidity dispatcher is independently reconstructed and marked UNLICENSED.
 The public `IElfomoPricing` interface retains its published MIT identifier.
 Neither the repository license nor this analysis claims ownership of Elfomo's
 original software. See the root [NOTICE](../../NOTICE).
+
+## Harness update, 2026-11-14
+
+The witness harness now accepts explicit case-owned native precompile handlers.
+The current-engine case needs one captured B20 `decimals()` response during its
+constructor replay. This earlier case keeps the same default Cancun behavior,
+fixtures and expected results; its evidence manifest is deliberately updated
+for the documented harness change.

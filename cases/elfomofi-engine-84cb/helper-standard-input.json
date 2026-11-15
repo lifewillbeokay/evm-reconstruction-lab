@@ -1,0 +1,32 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "src/FeeHelper.sol": {
+      "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.34;\n\n/// Reconstructed candidate. Names and comments are analytical labels.\ncontract FeeHelper {\n    function getFee(address token) external view returns (uint256) {\n        if (token == 0x4200000000000000000000000000000000000006) {\n            return fee(0x72AB388E2E2F6FaceF59E3C3FA2C4E29011c2D38);\n        }\n        else if (token == 0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf) {\n            return fee(0xb94b22332ABf5f89877A14Cc88f2aBC48c34B3Df);\n        }\n        else { return 0; }\n    }\n\n    function fee(address pool) internal view returns (uint256) {\n        bool ok;\n        int256 tick;\n        uint256 index;\n        uint256 cardinality;\n        assembly (\"memory-safe\") {\n            let p := mload(0x40)\n            mstore(p, shl(224, 0x3850c7bd))\n            ok := staticcall(8000, pool, p, 4, p, 128)\n            ok := and(ok, iszero(lt(returndatasize(), 128)))\n            tick := mload(add(p, 32))\n            index := mload(add(p, 64))\n            cardinality := mload(add(p, 96))\n        }\n        if (!ok || tick < -887272 || tick > 887272 || cardinality < 2 || cardinality > 65535 || index >= cardinality) return 0;\n        (bool valid, uint32 time, int56 cumulative) = observation(pool, index);\n        if (!valid || time != uint32(block.timestamp)) return 0;\n        uint256 previous = index == 0 ? cardinality - 1 : index - 1;\n        (bool previousValid, uint32 previousTime, int56 previousCumulative) = observation(pool, previous);\n        if (!previousValid) return 0;\n        uint32 elapsed;\n        int56 accumulated;\n        unchecked {\n            elapsed = time - previousTime;\n            accumulated = cumulative - previousCumulative;\n        }\n        if (elapsed == 0) return 0;\n        int256 average = int256(accumulated) / int256(uint256(elapsed));\n        if (average < -887272 || average > 887272) return 0;\n        int256 delta = tick - average;\n        uint256 magnitude = uint256(delta < 0 ? -delta : delta);\n        uint256 result = (magnitude + 1) * 10;\n        return result > 1000 ? 1000 : result;\n    }\n\n    function observation(address pool, uint256 index) internal view returns (bool ok, uint32 time, int56 cumulative) {\n        assembly (\"memory-safe\") {\n            let p := mload(0x40)\n            mstore(p, shl(224, 0x252c09d7))\n            mstore(add(p, 4), index)\n            ok := staticcall(6000, pool, p, 36, p, 128)\n            ok := and(ok, iszero(lt(returndatasize(), 128)))\n            let rawTime := mload(p)\n            let rawCumulative := mload(add(p, 32))\n            ok := and(ok, eq(mload(add(p, 96)), 1))\n            time := and(rawTime, 0xffffffff)\n            cumulative := signextend(6, rawCumulative)\n            ok := and(ok, and(eq(rawTime, time), eq(rawCumulative, cumulative)))\n        }\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "viaIR": true,
+    "optimizer": {
+      "enabled": true,
+      "runs": 200,
+      "details": {
+        "yulDetails": {
+          "optimizerSteps": "dfDvulfnTUtnIfxa[r]EscLMVcul [j]Trpeulxa[r]cLvifMCTUca[r]LSsTOtfDnca[r]IulcscCTUtvifMx[scCTUt] TOntnfDIulvifMjmul[jul] VcTOcul jmul:fDnTOcmuO"
+        }
+      }
+    },
+    "evmVersion": "cancun",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata"
+        ]
+      }
+    }
+  }
+}

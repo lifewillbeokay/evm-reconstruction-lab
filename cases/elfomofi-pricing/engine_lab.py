@@ -49,6 +49,7 @@ def make_state(
     code_overrides=None,
     timestamp=None,
     fetch=None,
+    precompiles=None,
 ):
     loaded = set()
     codes = set()
@@ -89,6 +90,14 @@ def make_state(
             # A local write supersedes the captured value on subsequent reads.
             loaded.add(("0x" + address.hex(), hex(slot)))
             return super().set_storage(address, slot, value)
+
+    if precompiles:
+        # Explicit case-owned native handlers; standard Ethereum precompiles
+        # remain available. This does not claim to emulate a whole chain fork.
+        State.computation_class = State.computation_class.configure(
+            __name__="WitnessComputation",
+            _precompiles={**State.computation_class._precompiles, **precompiles},
+        )
 
     class VM(CancunVM):
         _state_class = State

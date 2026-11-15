@@ -1,0 +1,12 @@
+{
+  "block": "0x36db1d3",
+  "call": {
+    "to": "0xb200000000000000000000c2e324d24d7eecd1fb",
+    "from": "0x84cb1a96e57e9b88cf75035384c06dc3769654ae",
+    "data": "0x313ce567"
+  },
+  "result": "0x0000000000000000000000000000000000000000000000000000000000000008",
+  "code": "0xef",
+  "scope": "Only this decimals() read is replayed. Native gas accounting and other B20 methods are not emulated.",
+  "protocol_reference": "https://www.base.org/blog/introducing-base-beryl"
+}

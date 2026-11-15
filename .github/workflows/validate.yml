@@ -36,6 +36,10 @@ jobs:
         run: uv run --frozen python scripts/evidence.py cases/elfomofi-pricing
       - name: Reproduce ElfomoFi dispatcher and engine experiments
         run: uv run --frozen python scripts/reproduce-elfomofi.py
+      - name: Check current ElfomoFi engine evidence
+        run: uv run --frozen python scripts/evidence.py cases/elfomofi-engine-84cb
+      - name: Reproduce current engine and fee helper checkpoint
+        run: uv run --frozen python scripts/reproduce-elfomofi-engine.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,6 +47,7 @@ jobs:
           path: |
             build/wintermute-curve-balancer/
             build/elfomofi-pricing/
+            build/elfomofi-engine-checkpoint/
 
   depth-app:
     runs-on: ubuntu-latest

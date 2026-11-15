@@ -1,0 +1,39 @@
+{
+  "original_constructor_runtime_match": true,
+  "constructor_scope": {
+    "is_error": false,
+    "error": null,
+    "runtime_matches": true,
+    "child_code_matches": true,
+    "native_calls": [
+      {
+        "address": "0xb200000000000000000000c2e324d24d7eecd1fb",
+        "data": "0x313ce567"
+      }
+    ],
+    "native_scope": "Only this decimals() read is replayed. Native gas accounting and other B20 methods are not emulated.",
+    "header_scope": "Dependency code/storage captured at finalized block; one decimals() result captured at deployment block. This is not a complete replay of the signed deployment transaction."
+  },
+  "helper_bytecode_match": {
+    "exact_match": false,
+    "executable_match": false,
+    "metadata_match": false,
+    "original_has_recognized_metadata": true,
+    "candidate_has_recognized_metadata": true,
+    "original_bytes": 816,
+    "candidate_bytes": 816,
+    "original_keccak256": "0x4134563410f4611a3c10e238f4d202539afff270b4eddc8ed67c030ee36ea14b",
+    "candidate_keccak256": "0x564a0ed6bbaba9ff77db0ee7ca66899b95455b5f066f6c24f3342c47ca89c4fe",
+    "first_executable_difference": 725,
+    "difference_context": {
+      "start": 709,
+      "original": "830152611770fa60803d10151690805160208201519063ffffffff811693600160",
+      "candidate": "830152611770fa60803d10151690805191600160606020840151930151141663ff"
+    }
+  },
+  "helper_differential_scenarios": 156,
+  "rpc_backed_replays_per_helper": 3,
+  "parent_adjustment_scenarios": 8,
+  "full_engine_source_reconstructed": false,
+  "explorer_submission": "not submitted"
+}

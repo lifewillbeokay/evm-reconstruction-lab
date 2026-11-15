@@ -11,6 +11,8 @@ uv run --frozen python scripts/evidence.py cases/wintermute-curve-balancer
 uv run --frozen python scripts/reproduce.py
 uv run --frozen python scripts/evidence.py cases/elfomofi-pricing
 uv run --frozen python scripts/reproduce-elfomofi.py
+uv run --frozen python scripts/evidence.py cases/elfomofi-engine-84cb
+uv run --frozen python scripts/reproduce-elfomofi-engine.py
 ```
 
 Keep RPC credentials and local provider URLs out of commits. Tool tests run
