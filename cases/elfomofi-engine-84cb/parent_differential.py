@@ -91,6 +91,12 @@ def run_all():
     import price_differential as prices
     import base_price_differential as bases
     import book_differential as books
+    import fill_differential as fills
+    import quote_support_differential as support
+    import quote_accounting_differential as accounting
+    import small_trade_differential as small
+    import execute_differential as execution
+    import full_quote_differential as full_quotes
 
     creation = bytes.fromhex(
         json.loads((p.BUILD / "state-compiled.json").read_text())["evm"]["bytecode"][
@@ -141,6 +147,11 @@ def run_all():
         ("price-primitives", prices),
         ("price-selection", bases),
         ("book-internals", books),
+        ("quote-fill", fills),
+        ("quote-support", support),
+        ("quote-accounting", accounting),
+        ("quote-small", small),
+        ("quote-execute", execution),
     ]:
         for name, args, kwargs in module.scenarios():
             r = prices.evaluate(*args, **kwargs)
@@ -180,4 +191,40 @@ def run_all():
                 (p.CASE / "evidence/baseline-replays.json").read_text()
             )[0]
             assert "0x" + candidate.output.hex() == fixture["rpc_output"]
+    for name, data, kwargs in full_quotes.scenarios():
+        r = full_quotes.evaluate(data, **kwargs)
+        record(
+            "full-quote",
+            name,
+            {"error": r["target_error"], "output": r["target"], "calls_match": True},
+            {
+                "error": r["candidate_error"],
+                "output": r["candidate"],
+                "calls_match": r["calls_match"],
+            },
+        )
     return results, counts
+
+
+QUOTE_GROUPS = {
+    "quote-fill",
+    "quote-support",
+    "quote-accounting",
+    "quote-small",
+    "quote-execute",
+    "full-quote",
+}
+
+
+def quote_compact(results):
+    """One stable digest per new group; detailed named results stay in build/."""
+    return {
+        group: {
+            "cases": len(rows),
+            "target_sha256": digest(
+                [{"name": r["name"], "target": r["target"]} for r in rows]
+            ),
+        }
+        for group in sorted(QUOTE_GROUPS)
+        if (rows := [r for r in results if r["name"].split(":")[0] == group])
+    }

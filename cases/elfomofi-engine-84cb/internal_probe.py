@@ -1,7 +1,8 @@
 """Synthetic internal-entry and jump-destination experiments on captured code.
 
 This is deliberately not a transaction replay: entry stack/memory can be seeded.
-No target instructions are patched. Halt at a selected return PC in the tracer.
+No target bytecode is patched. Optional GAS substitution and chain/storage
+overrides are explicitly synthetic. Halt at a selected return PC in the tracer.
 """
 
 import copy
@@ -24,10 +25,17 @@ def probe(
     origin=None,
     timestamp=None,
     transient=None,
+    chain_id=None,
+    gas_value=None,
+    synthetic_storage=None,
 ):
     witness = copy.deepcopy(
         json.loads((p.CASE / "evidence/state-witness-getters.json").read_text())
     )
+    # Explicit synthetic state is distinct from captured evidence. Unlisted
+    # dependencies still fail closed in make_state.
+    for account, slots in (synthetic_storage or {}).items():
+        witness.setdefault(account, {"storage": {}})["storage"].update(slots)
     vm = make_state(
         witness,
         p.HEADER,
@@ -35,9 +43,18 @@ def probe(
         code_overrides=code,
         timestamp=timestamp,
     )
+    if chain_id is not None:
+        vm.state.execution_context._chain_id = chain_id
     base = vm.state.computation_class
     records = []
     original = base.opcodes[0x5B]
+    original_gas = base.opcodes[0x5A]
+
+    def gas(computation):
+        original_gas(computation=computation)
+        if gas_value is not None and computation.msg.code_address == addr(p.ENGINE):
+            computation.stack_pop1_int()
+            computation.stack_push_int(gas_value)
 
     def jumpdest(computation):
         pc = computation.code.program_counter - 1
@@ -60,7 +77,7 @@ def probe(
         return original(computation=computation)
 
     class Instrumented(base):
-        opcodes = {**base.opcodes, 0x5B: jumpdest}
+        opcodes = {**base.opcodes, 0x5B: jumpdest, 0x5A: gas}
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

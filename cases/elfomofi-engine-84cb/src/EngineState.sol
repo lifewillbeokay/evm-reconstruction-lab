@@ -16,8 +16,8 @@ interface ReferencePair {
 }
 
 /// Partial reconstruction, not original source or a bytecode match.
-/// Constructor, administration, reference pricing and getOrderbook are recovered.
-/// getAmountIn, getAmountOut and update remain absent. Never deploy this candidate.
+/// Constructor, administration, reference pricing, book and quote paths recovered.
+/// The update entry point remains absent. Never deploy this candidate.
 contract EngineState {
     struct Metadata {
         uint8 index;
@@ -39,6 +39,7 @@ contract EngineState {
     struct TokenPair { address tokenA; address tokenB; }
     struct PostedPrice { uint256 price; uint256 timestamp; uint256 age; int256 adjustment; }
     struct ReferencePrice { uint256 price; uint256 age; }
+    enum CallerClass { Class0, Class1, Class2, Class3, Class4, Class5, Class6, Class7, Class8, Class9, Class10, Class11, Class12, Class13, Class14, Class15, Class16, Class17, Class18, Class19, Class20, Class21, Class22, Class23, Class24, Class25, Class26, Class27, Class28, Class29, Class30, Class31, Class32, Class33, Class34, Class35, Class36, Class37, Class38, Class39, Class40, Class41, Class42, Class43 }
     struct Level { uint256 amount; uint256 price; }
 
     mapping(uint256 => uint256) internal levelConfigurations;       // slot 0
@@ -387,7 +388,11 @@ contract EngineState {
         assembly ("memory-safe") { mstore(result,used) }
     }
 
-    function bidLevels(uint256 extraSpread,uint256 price,address token,Metadata memory m)
+    function bidLevels(uint256 extraSpread,uint256 price,address token,Metadata memory m) internal view returns (Level[] memory) {
+        return bidLevelsInternal(extraSpread,price,token,m,false);
+    }
+
+    function bidLevelsInternal(uint256 extraSpread,uint256 price,address token,Metadata memory m,bool suppress)
         internal view returns (Level[] memory result)
     {
         uint256 balance = balanceOf(token);
@@ -404,12 +409,16 @@ contract EngineState {
         }
         result = new Level[](8);
         uint256 capacity = maxInventory-balance-lot;
-        uint256 length = fillLevels(false,capacity <= uint256(m.reservedLots)*lot,capacity,extraSpread,config,m,result);
+        uint256 length = fillLevels(suppress,capacity <= uint256(m.reservedLots)*lot,capacity,extraSpread,config,m,result);
         result[length++] = Level(maxInventory * 5,tailSpread);
         return limitBidByQuote(m.tokenDecimals,price,quoteBalance,length,result);
     }
 
-    function askLevels(uint256 extraSpread,uint256,address token,Metadata memory m)
+    function askLevels(uint256 extraSpread,uint256 price,address token,Metadata memory m) internal view returns (Level[] memory) {
+        return askLevelsInternal(extraSpread,price,token,m,false);
+    }
+
+    function askLevelsInternal(uint256 extraSpread,uint256,address token,Metadata memory m,bool suppress)
         internal view returns (Level[] memory result)
     {
         uint256 balance = balanceOf(token);
@@ -420,7 +429,7 @@ contract EngineState {
         if (reserve && balance <= lot) return singleton(balance,extraSpread+50000);
         result = new Level[](8);
         bool penalize = reserve && balance <= uint256(m.reservedLots)*lot;
-        uint256 length = fillLevels(false,penalize,reserve ? balance-lot : balance,extraSpread,config,m,result);
+        uint256 length = fillLevels(suppress,penalize,reserve ? balance-lot : balance,extraSpread,config,m,result);
         if (reserve) result[length++] = Level(lot,extraSpread+50000);
         assembly ("memory-safe") { mstore(result,length) }
     }
@@ -440,6 +449,264 @@ contract EngineState {
         (uint256 askPrice,,uint256 askAge) = basePrice(m,token,true,false);
         if (askPrice == 0 || askAge > hardAge) ask = new Level[](0);
         else ask = priceLevels(askPrice,askLevels(agePenalty(askAge)+helper,askPrice,token,m),true);
+    }
+
+    function convertBase(uint256 amount,uint256 price,uint256 spread,uint8 decimals,bool ask,Math.Rounding rounding)
+        internal view returns(uint256)
+    {
+        price = spreadPrice(price,spread,ask);
+        return Math.mulDiv(amount,price * 10 ** uint256(quoteDecimals),10 ** (uint256(decimals)+12),rounding);
+    }
+
+    function convertQuote(uint256 amount,uint256 price,uint256 spread,uint8 decimals,bool ask,Math.Rounding rounding)
+        internal view returns(uint256)
+    {
+        price = spreadPrice(price,spread,ask);
+        if (price == 0) return 0;
+        return Math.mulDiv(amount,10 ** (uint256(decimals)+12),price * 10 ** uint256(quoteDecimals),rounding);
+    }
+
+    function sellExactIn(uint8 decimals,uint256 price,uint256 amount,Level[] memory levels) internal view returns(uint256 result) {
+        for (uint256 i; i < levels.length && amount != 0; ++i) {
+            uint256 used = Math.min(amount,levels[i].amount);
+            result += convertBase(used,price,levels[i].price,decimals,false,Math.Rounding.Down);
+            amount -= used;
+        }
+    }
+
+    function sellExactOut(uint8 decimals,uint256 price,uint256 amount,Level[] memory levels) internal view returns(uint256 result) {
+        for (uint256 i; i < levels.length && amount != 0; ++i) {
+            uint256 available = convertBase(levels[i].amount,price,levels[i].price,decimals,false,Math.Rounding.Down);
+            if (available <= amount) {
+                result += levels[i].amount;
+                amount -= available;
+            } else {
+                result += convertQuote(amount,price,levels[i].price,decimals,false,Math.Rounding.Up);
+                amount = 0;
+            }
+        }
+        if (amount != 0) return 0;
+    }
+
+    function buyExactOut(uint8 decimals,uint256 price,uint256 amount,Level[] memory levels) internal view returns(uint256 result) {
+        for (uint256 i; i < levels.length && amount != 0; ++i) {
+            uint256 used = Math.min(amount,levels[i].amount);
+            result += convertBase(used,price,levels[i].price,decimals,true,Math.Rounding.Up);
+            amount -= used;
+        }
+        if (amount != 0) return 0;
+    }
+
+    function buyExactIn(uint8 decimals,uint256 price,uint256 amount,Level[] memory levels) internal view returns(uint256 result) {
+        for (uint256 i; i < levels.length && amount != 0; ++i) {
+            uint256 cost = convertBase(levels[i].amount,price,levels[i].price,decimals,true,Math.Rounding.Up);
+            if (cost <= amount) {
+                result += levels[i].amount;
+                amount -= cost;
+            } else {
+                result += convertQuote(amount,price,levels[i].price,decimals,true,Math.Rounding.Down);
+                return result;
+            }
+        }
+    }
+
+    function quoteLevels(bool suppress,bool ask,uint256 extra,uint256 price,address token,Metadata memory m)
+        internal view returns(Level[] memory)
+    {
+        return ask ? askLevelsInternal(extra,price,token,m,suppress) : bidLevelsInternal(extra,price,token,m,suppress);
+    }
+
+    function inventoryRelief(bool ask,uint256 balance,Metadata memory m) internal pure returns(bool) {
+        uint256 reserved = uint256(m.lotSize) * m.reservedLots;
+        if (ask) return balance + reserved >= uint256(m.lotSize) * m.maxLots;
+        return balance <= reserved;
+    }
+
+    function classFee(uint256 amount,uint256 balance,Metadata memory m,bool ask,uint256 age,CallerClass callerClass)
+        internal view returns(uint256 result)
+    {
+        uint256 kind = uint256(callerClass);
+        if (kind == 0 || (age == 0 && block.chainid != 56 && ((uint256(0x08c06bf0000c) & (uint256(1) << kind)) == 0)) || kind == 26) return 0;
+        uint256 units = amount / (uint256(m.lotSize) >> 1);
+        bool relief = inventoryRelief(ask,balance,m);
+        if (kind == 23 || kind == 22) result = 190;
+        else if (kind == 20 || kind == 2 || kind == 30 || kind == 24 || kind == 39 || kind == 43) {
+            result = block.chainid == 56 || (block.chainid == 4663 && (kind == 24 || kind == 30)) ? 680 : 170;
+        }
+        else if (kind == 38) result = block.chainid == 56 ? 300 : 150;
+        else if (kind == 3 || kind == 29 || kind == 21 || kind == 27) result = 150;
+        else if (kind == 25) result = 90;
+        else if (kind == 40) { if (units != 0) result = 30; }
+        else if (kind == 6 || kind == 36 || kind == 28) { if (units != 0) result = relief ? 40 : 50; }
+        else if (kind == 13 && block.chainid == 4663 && amount > uint256(m.lotSize)*4) result = 200;
+        else if (kind == 13 || kind == 7 || kind == 4 || kind == 11 || kind == 5 || kind == 8 || kind == 0
+            || kind == 10 || kind == 9 || kind == 12 || kind == 16 || kind == 18 || kind == 14 || kind == 15
+            || kind == 17 || kind == 19 || kind == 33 || kind == 41 || kind == 34 || kind == 37 || kind == 42) {
+            if (relief) {
+                if (units != 0 && (gasleft() & 1) != 0) result = 30;
+            } else {
+                if (units != 0 && gasleft() % 5 != 1) result = 40;
+            }
+        }
+        if (age == 0 && block.chainid == 56 && result < 100) result = 0;
+    }
+
+    function currentBlock() internal view returns(uint256) {
+        if(block.chainid==4663) return abi.decode(readCall(address(100),hex"a3b1b31d"),(uint256));
+        return block.number;
+    }
+
+    function tradeStats(bool ask,address token) internal view returns(TradeStats memory) {
+        uint256 n=currentBlock();
+        return ask ? statsB[token][n] : statsA[token][n];
+    }
+
+    function normalizeBaseAmount(bool ask,uint256 price,bool exactIn,uint256 amount,Metadata memory m)
+        internal view returns(uint256) {
+        if(ask!=exactIn) return amount;
+        return convertQuote(amount,price,0,m.tokenDecimals,ask,exactIn?Math.Rounding.Down:Math.Rounding.Up);
+    }
+
+    function blockVolumeFee(bool ask,uint128 lot,uint256 amount,address token)
+        internal view returns(uint256 fee,uint256 count) {
+        TradeStats memory t=tradeStats(ask,token);
+        count=ask ? 255-t.count : t.count;
+        if(t.volume==0 || amount==0 || lot==0) return (0,count);
+        if(t.volume<=lot) return (0,count);
+        if(block.chainid==8453) fee=Math.min(Math.ceilDiv(uint256(t.volume)-lot,lot)*20,100);
+    }
+
+    function countAdjustment(bool ask,address token,bool subtract,uint256 amount) internal view returns(uint256) {
+        uint256 count=tradeStats(ask,token).count;
+        uint256 adjustment=count*count;
+        if(adjustment>amount/1000) return amount;
+        if(subtract) return amount>adjustment ? amount-adjustment : 0;
+        return amount+adjustment;
+    }
+
+    function inventoryQuote(uint256 amount,uint256 balance,Metadata memory m,uint256 quoteId)
+        internal pure returns(uint256) {
+        if(amount==0) return quoteId;
+        uint256 maximum=uint256(m.lotSize)*m.maxLots;
+        uint256 total=balance+amount;
+        if(total<=maximum) return quoteId;
+        return quoteId | (Math.min(Math.mulDiv(total-maximum,10000,amount),65535)<<192);
+    }
+
+    function projectFees(bool ask,uint256 price,bool exactIn,uint256 amount,bool discountedAge,
+        uint256 age,uint256 balance,CallerClass callerClass,Metadata memory m,address token,uint256 quoteId)
+        internal view returns(uint256 total,uint256 resultId) {
+        uint256 baseAmount=normalizeBaseAmount(ask,price,exactIn,amount,m);
+        (uint256 volumeFee,uint256 count)=blockVolumeFee(ask,m.lotSize,baseAmount,token);
+        uint256 staleFee=agePenalty(discountedAge?Math.mulDiv(age,2,5):age);
+        uint256 callerFee=classFee(baseAmount,balance,m,ask,age,callerClass);
+        uint256 helperFee=helperAdjustment(token);
+        uint256 combined=callerFee+helperFee;
+        total=staleFee+volumeFee+combined;
+        resultId=quoteId | (Math.min(staleFee,255)<<160) | (Math.min(combined,255)<<168)
+            | (Math.min(volumeFee,255)<<176) | ((count&255)<<184);
+    }
+
+    function adjustSmallTrade(bool ask,address token,uint256 price,bool exactIn,uint256 result,
+        uint256 amount,uint8 decimals,Level[] memory levels) internal view returns(uint256,uint256) {
+        if(exactIn ? result>=16 : amount>16) return (result,0);
+        if((ask?sideCounters[token].bid:sideCounters[token].ask)<16) return (result,0);
+        uint256 capacity=ask?levels[0].amount:convertBase(levels[0].amount,price,levels[0].price,decimals,false,Math.Rounding.Down);
+        if(capacity<16) return (result,0);
+        uint256 d=ask?quoteDecimals:decimals;
+        uint256 unit=10**(d>7?d-7:0);
+        if(exactIn) {
+            if(amount<unit) return (result,0);
+            uint256 minimum=Math.min(Math.log10(amount/unit),14)+2;
+            if(result<minimum) return (minimum,minimum);
+        } else {
+            uint256 maximum=unit*10**(amount>2?amount-2:0);
+            if(result>maximum) return (maximum,amount);
+        }
+        return (result,0);
+    }
+
+    function validateFee(bool ask,uint8 decimals,uint256 price,bool exactIn,uint256 result,uint256 amount) internal view {
+        Math.Rounding rounding=exactIn?Math.Rounding.Up:Math.Rounding.Down;
+        uint256 fair=ask==exactIn?convertQuote(amount,price,0,decimals,ask,rounding):convertBase(amount,price,0,decimals,ask,rounding);
+        require(exactIn?fair>result:result>fair,"fee");
+    }
+
+    function executeQuote(bool suppress,bool ask,address token,uint256 extra,uint256 price,bool exactIn,
+        uint256 amount,uint256 quoteId,Metadata memory m) internal view returns(uint256 result,uint256 resultId) {
+        Level[] memory levels=quoteLevels(suppress,ask,extra,price,token,m);
+        if(levels.length==0 || price==0) return (0,quoteId);
+        if(ask) result=exactIn?buyExactIn(m.tokenDecimals,price,amount,levels):buyExactOut(m.tokenDecimals,price,amount,levels);
+        else result=exactIn?sellExactIn(m.tokenDecimals,price,amount,levels):sellExactOut(m.tokenDecimals,price,amount,levels);
+        uint256 marker;
+        (result,marker)=adjustSmallTrade(ask,token,price,exactIn,result,amount,m.tokenDecimals,levels);
+        if(result==0) return (0,quoteId);
+        if(!suppress && marker==0) validateFee(ask,m.tokenDecimals,price,exactIn,result,amount);
+        resultId=quoteId | (marker<<208);
+        if(!ask) resultId=inventoryQuote(exactIn?amount:result,balanceOf(token),m,resultId);
+    }
+
+    function scramble(uint256 x) internal pure returns(uint256) {
+        unchecked {
+            x^=x>>16;x*=0x7feb352d;x^=x>>15;x*=0x846ca68b;x^=x>>16;
+        }
+        return x;
+    }
+
+    function quoteData(uint256 quoteId,CallerClass callerClass) internal view returns(bytes memory) {
+        uint8 a=uint8(scramble(quoteId^block.number)%113);
+        uint8 b=uint8(scramble(quoteId^block.number^block.timestamp)%197);
+        uint16 c=uint16(scramble(quoteId)%12345);
+        return abi.encodePacked(a,b,a^b^uint8(callerClass),c);
+    }
+
+    function classify(address fromToken,address toToken,address executor,uint256 partnerId) internal view returns(CallerClass) {
+        if(tx.origin==pricing) return CallerClass.Class0;
+        uint8 value=abi.decode(readCall(pricing,abi.encodeWithSelector(bytes4(0x725e6ced),fromToken,toToken,executor,partnerId)),(uint8));
+        return CallerClass(value>43?0:value);
+    }
+
+    function ageDiscountAvailable() internal view returns(bool) {
+        (bool ok,bytes memory data)=address(this).staticcall{gas:1000}(hex"ef5c4d1c");
+        return ok && data.length==32;
+    }
+
+    function quote(address fromToken,address toToken,uint256 amount,address executor,uint256 partnerId,bool exactIn)
+        internal view returns(uint256 result,uint256 quoteId,CallerClass callerClass) {
+        bool ask=fromToken==quoteToken;
+        address token=ask?toToken:fromToken;
+        Metadata memory m=tokenMetadata[token];
+        if(m.lotSize==0 || (!ask && toToken!=quoteToken)) {
+            assembly("memory-safe") {mstore(0,shl(224,0x672215de)) revert(0,4)}
+        }
+        uint256 balance=balanceOf(token);
+        if(!ask && balance>=uint256(m.lotSize)*m.maxLots) return (0,0,CallerClass.Class0);
+        uint256 price;uint256 age;
+        (price,quoteId,age)=basePrice(m,token,ask,true);
+        if(price==0 || age>hardAge) return (0,quoteId,CallerClass.Class0);
+        callerClass=classify(fromToken,toToken,executor,partnerId);
+        quoteId |= uint256(uint8(callerClass))<<112;
+        bool suppress=specialOrigin();
+        uint256 extra;
+        if(!suppress) (extra,quoteId)=projectFees(ask,price,exactIn,amount,age>softAge&&ageDiscountAvailable(),age,balance,callerClass,m,token,quoteId);
+        (result,quoteId)=executeQuote(suppress,ask,token,extra,price,exactIn,amount,quoteId,m);
+        if(result!=0 && ((quoteId>>208)&255)==0) result=countAdjustment(ask,token,exactIn,result);
+    }
+
+    function getAmountOut(address fromToken,address toToken,uint256 amount,address executor,uint256 partnerId)
+        external view returns(uint256 result,uint256 quoteId,bytes memory data) {
+        require(msg.sender==pricing || (partnerId>>1)==0x5d0,"clr");
+        CallerClass callerClass;
+        (result,quoteId,callerClass)=quote(fromToken,toToken,amount,executor,partnerId,true);
+        data=quoteData(quoteId,callerClass);
+    }
+
+    function getAmountIn(address fromToken,address toToken,uint256 amount,address executor,uint256 partnerId)
+        external view returns(uint256 result,uint256 quoteId,bytes memory data) {
+        require(msg.sender==pricing || (partnerId>>1)==0x5d0,"clr");
+        CallerClass callerClass;
+        (result,quoteId,callerClass)=quote(fromToken,toToken,amount,executor,partnerId,false);
+        data=quoteData(quoteId,callerClass);
     }
 
     function getMetadata(address token) external view returns (Metadata memory) {

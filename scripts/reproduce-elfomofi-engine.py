@@ -159,7 +159,12 @@ def main():
             env=env,
             check=True,
         )
-    from parent_differential import run_all as run_parent, compact as compact_parent
+    from parent_differential import (
+        run_all as run_parent,
+        compact as compact_parent,
+        quote_compact,
+        QUOTE_GROUPS,
+    )
 
     parent_results, parent_counts = run_parent()
     (BUILD / "parent-differential.json").write_text(
@@ -171,7 +176,9 @@ def main():
     (BUILD / "parent-differential-compact.json").write_text(
         json.dumps(parent_compact, indent=2) + "\n"
     )
-    assert parent_compact == read("expected/parent-differential.json")
+    legacy = [r for r in parent_results if r["name"].split(":")[0] not in QUOTE_GROUPS]
+    assert compact_parent(legacy) == read("expected/parent-differential.json")
+    assert quote_compact(parent_results) == read("expected/quote-differential.json")
     report = {
         "original_constructor_runtime_match": True,
         "constructor_scope": read("evidence/constructor-replay.json"),

@@ -1,0 +1,26 @@
+{
+  "full-quote": {
+    "cases": 494,
+    "target_sha256": "55565ff5fe48d21250ce727d717c68fdc6a7a1c5e39b8b39eb20baf9dc966b92"
+  },
+  "quote-accounting": {
+    "cases": 1548,
+    "target_sha256": "c213fb736a1e7b5ca225f52bcfb8390295a7f3ebb471861c34bf11670f988e7a"
+  },
+  "quote-execute": {
+    "cases": 900,
+    "target_sha256": "bae958d35f2659d9966e2c78b5526e0b52e14c323740ac2b3d33fcb8b4747542"
+  },
+  "quote-fill": {
+    "cases": 2600,
+    "target_sha256": "8b89194339f76f8803fc1a647aa0d90865632064e5811bcebbbf2eeb8a623267"
+  },
+  "quote-small": {
+    "cases": 1552,
+    "target_sha256": "ab6b6ca29935cc7c6d0c057be906748f4aab69978a173f685efff3b6526ad0e5"
+  },
+  "quote-support": {
+    "cases": 4560,
+    "target_sha256": "d72ad21b74ed06b399de36f0d4d55d400428e46c2cbcfd76eae58a3e0799c0f8"
+  }
+}

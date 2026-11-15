@@ -4,9 +4,9 @@ This case preserves the Base engine at
 [`0x84cb1a96e57e9b88cf75035384c06dc3769654ae`](https://basescan.org/address/0x84cb1a96e57e9b88cf75035384c06dc3769654ae#code).
 It is separate from the earlier dispatcher and `0xd6ac…` engine case.
 **The full engine has not yet been reconstructed or verified.** This checkpoint
-reconstructs the constructor, nine of the twelve external selectors, fallback,
-reference-price selection, and the public order-book builder. The three missing
-selectors are `getAmountIn`, `getAmountOut` and `update`. Neither the partial parent
+reconstructs the constructor, eleven of the twelve external selectors, fallback,
+reference-price selection, public order-book construction, and both exact-quote
+entry points. The remaining missing selector is `update`. Neither the partial parent
 nor the reconstructed fee helper matches the target executable bytecode yet.
 
 ## Evidence and remaining work
@@ -34,7 +34,7 @@ and returns the deployment-block RPC result, eight. It does not model native
 gas charges or other B20 methods. Other dependency code/storage comes from the
 finalized snapshot, so this is not a complete signed-transaction replay.
 
-Remaining work includes exact quoting, caller classification, trade accounting,
+Remaining work includes trade-update accounting and its execution guards,
 compiler settings and bytecode matching, broader checks, and Basescan submission.
 The compiler version is observed. Candidate optimization settings are experimental
 and are not claimed to be the original settings.
@@ -66,8 +66,9 @@ those callers. Reference calls still occur on that special path and can revert.
 The captured parameters add 250 spread units after six seconds, 350 after eight,
 and 450 after ten. These equal 25, 35 and 45 basis points. The public book becomes
 empty on either side when that side's price is zero or the posted age exceeds
-15 seconds. The reconstructed quote paths are not yet available for extending
-these observations to every execution route.
+15 seconds. The quote entry points also check the hard age limit. Their stale-price
+fee can differ: a successful 1,000-gas self-call returning exactly 32 bytes enables
+using `floor(age * 2 / 5)` for that fee. The public book uses the unscaled age.
 
 The book uses configured `(lot count, spread)` levels. The ask side normally
 reserves one lot for a final level with 50,000 additional spread units; a flag can
@@ -76,14 +77,61 @@ additional metadata-controlled penalty. The bid side first checks the inventory
 target and quote-token balance, and can include a wide-spread tail sized at five
 times the configured inventory target. It then trims the ladder to available
 quote funds using the recovered rounding rules. These describe the public book;
-additional execution constraints remain to be reconstructed.
+trade-update constraints remain to be reconstructed.
 
-The current candidate has a 10,725-byte runtime versus the deployed 24,500 bytes.
+The current candidate has a 16,847-byte runtime versus the deployed 24,500 bytes.
 The size difference is not a measure of completion or behavioral coverage.
+
+## Reconstructed quotes
+
+The four quote modes fill the same ordered liquidity ladder with distinct rounding.
+Selling exact input floors quote proceeds per tranche; buying exact output rounds
+quote cost up per tranche. The inverse modes use the corresponding base-token
+rounding. Exact-output requests return zero when the ladder cannot satisfy them;
+internal exact-input fillers saturate at the available ladder. These are quote
+calculations, not a proof that a later swap will pass the remaining update checks.
+
+Ordinary quotes combine a stale-price fee, a caller-class fee, the pool helper,
+and a same-block volume fee. There are 44 enum classes, with values above 43 from
+the classifier mapped to zero. The analysis does not identify the callers behind
+those numbers. Several class branches depend on inventory and trade size; some
+also depend on `gasleft()` parity or its remainder modulo five. The tests force
+specific GAS results to establish those branches. They do not show that the
+candidate consumes the same gas or returns identical quotes at every gas limit.
+
+On chain ID 8453, when prior same-side volume exceeds one lot and the new amount
+is nonzero, the volume fee is
+`min(ceil((priorVolume - lotSize) / lotSize) * 20, 100)` spread units. A separate
+adjustment uses the square of the same-block trade count, subtracting it from
+quoted output or adding it to quoted input, only if it is at most one-thousandth
+of the amount. These are distinct mechanisms.
+
+A small-trade branch operates only at amounts of at most 16 atomic token units
+on the checked side and when the relevant stored counter is at least 16. Its
+logarithmic/exponential amount adjustment can bypass the ordinary strict fee
+check. That branch records a marker in the quote ID; its consumption by `update`
+remains work in progress.
+
+Recovered quote-ID additions are:
+
+| Bit offset | Field |
+| ---: | --- |
+| 112 | Caller class, 8 bits |
+| 160 | Stale-price fee, capped at 255 |
+| 168 | Caller fee plus helper fee, capped at 255 |
+| 176 | Same-block volume fee, capped at 255 |
+| 184 | Same-side count, inverted as `255 - count` for asks |
+| 192 | Excess inventory / incoming base amount, scaled by 10,000 and capped at 65,535 |
+| 208 | Small-trade marker |
+
+The five-byte returned data is derived from the quote ID, block number, timestamp
+and caller class. Access tests cover the pricing dispatcher and the special
+partner-ID route for direct calls. The remaining trade-update authorization and
+state transitions are not yet reconstructed.
 
 ## Validation scope
 
-The parent checkpoint passes 2,660 differential scenarios:
+The parent checkpoint passes 14,314 differential scenarios:
 
 | Scope | Scenarios |
 | --- | ---: |
@@ -94,6 +142,12 @@ The parent checkpoint passes 2,660 differential scenarios:
 | Price selection, quote-ID packing and special origins | 1,047 |
 | Internal book construction and inventory boundaries | 720 |
 | Public book, including one captured RPC result | 58 |
+| Four exact-input/exact-output ladder fillers | 2,600 |
+| Generalized ladder and caller-class fee rules | 4,560 |
+| Amount normalization, volume/count fees and quote-ID fields | 1,548 |
+| Small-trade adjustment and strict fee checks | 1,552 |
+| Combined internal quote execution | 900 |
+| Public quotes, including two captured RPC results | 494 |
 
 Constructor checks compare rejection data, resulting storage and external calls,
 excluding the returned child runtime, which is compared separately. State checks
@@ -101,7 +155,12 @@ also compare logs. Internal price/book checks seed stack and memory at recovered
 entry points in the original runtime and compare them with a test-only Solidity
 harness. They are synthetic function experiments, not transaction replays. Public
 book checks execute the candidate's actual external entry point and compare full
-call trees. No gas-equivalence or exhaustive-state proof is claimed.
+call trees. GAS substitution, alternate chain IDs, and explicitly seeded storage
+are controlled experiments. Unlisted dependencies fail closed. No gas-equivalence
+or exhaustive-state proof is claimed. The original per-case expected digests are
+preserved; added quote groups have target-result digests in
+`expected/quote-differential.json`, with named detailed results written under
+`build/elfomofi-engine-checkpoint/`.
 
 `parent-standard-input.json` preserves exact candidate inputs. The Math library
 is vendored unchanged from OpenZeppelin Contracts v4.9.6 under its MIT license;

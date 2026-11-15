@@ -5,13 +5,13 @@
   "original_has_recognized_metadata": true,
   "candidate_has_recognized_metadata": true,
   "original_bytes": 24500,
-  "candidate_bytes": 10725,
+  "candidate_bytes": 16847,
   "original_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
-  "candidate_keccak256": "0x6031c2b321041e4d8d30abb0fbb21095b5dd8e6844efe7ee9c5c7419fc343499",
-  "first_executable_difference": 11,
+  "candidate_keccak256": "0xd218d5780dbd1e4d1312ecad94d803daa5a77bd7f3d93966cb6e9a215056f9da",
+  "first_executable_difference": 1,
   "difference_context": {
     "start": 0,
-    "original": "60806040526004361015610028575b346100245761001c3661181b56",
-    "candidate": "6080604052600436101561010d575b346101095761001b610e46565b"
+    "original": "60806040526004361015610028575b346100",
+    "candidate": "60e0604052600436101561010d575b346101"
   }
 }
