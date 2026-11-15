@@ -3,12 +3,13 @@
 This case preserves the Base engine at
 [`0x84cb1a96e57e9b88cf75035384c06dc3769654ae`](https://basescan.org/address/0x84cb1a96e57e9b88cf75035384c06dc3769654ae#code).
 It is separate from the earlier dispatcher and `0xd6ac…` engine case.
-**The engine has not yet been bytecode matched or verified.** This checkpoint
-implements a behavioral candidate for the constructor, all twelve external
-selectors, fallback, reference pricing, book construction, exact quotes, and
-trade updates. Neither the parent nor the reconstructed fee helper matches the
-target executable bytecode yet. Coverage of every selector does not establish
-complete equivalence across inputs, state, or gas limits.
+**The complete parent runtime executable and its 4,364-byte constructor prefix
+now match exactly. Basescan verification remains pending.** The reconstructed
+source covers the constructor, all twelve external selectors, fallback, reference
+pricing, book construction, exact quotes, and trade updates. The embedded fee
+helper still differs at 17 executable byte positions. The two metadata hashes
+also differ, so neither complete creation bytecode nor full runtime bytecode is
+claimed to match.
 
 ## Evidence and remaining work
 
@@ -19,6 +20,10 @@ Its constructor creates the 816-byte helper at
 [`0x42e8…d8cbc`](https://basescan.org/address/0x42e88fbc20c66bfe4bac17892980b640990d8cbc#code).
 The helper's captured runtime equals the runtime embedded in the parent's
 creation input.
+
+A [publication-time route check](evidence/publication-route-check.json) at finalized
+block 57,935,202 still routes WETH, cbBTC and AAPLc to this engine
+with the captured runtime hash. This is a dated observation, not a permanent route.
 
 The checkpoint contains the deployment, finalized block, constructor arguments,
 runtime, a strict state witness and three RPC-backed replay fixtures. These
@@ -35,10 +40,33 @@ and returns the deployment-block RPC result, eight. It does not model native
 gas charges or other B20 methods. Other dependency code/storage comes from the
 finalized snapshot, so this is not a complete signed-transaction replay.
 
-Remaining work includes source and compiler fidelity, executable and creation
-bytecode matching, broader checks, and Basescan submission.
-The compiler version is observed. Candidate optimization settings are experimental
-and are not claimed to be the original settings.
+The parent compiles with stock Solidity 0.8.34, the default optimizer at 100 runs,
+via IR, targeting Cancun. The candidate constructor is actually executed against
+the recorded dependencies and constructor arguments; its returned runtime is
+compared with the captured deployed runtime, including immutable values. This
+reproduces all 24,447 parent executable bytes. The original metadata hash and
+source identifiers remain unknown.
+
+[`expected/creation-bytecode-match.json`](expected/creation-bytecode-match.json)
+accounts for every byte of the 29,706-byte creation code:
+
+| Region | Bytes | Result |
+| --- | ---: | --- |
+| Parent constructor prefix | 4,364 | Exact |
+| Parent runtime executable, with immutable placeholders | 24,447 | Exact |
+| Parent metadata | 53 | Different |
+| Embedded helper constructor | 26 | Exact |
+| Embedded helper runtime executable | 763 | 17 differing byte positions, starting at offset 738 |
+| Embedded helper metadata | 53 | Different |
+
+Only recognized CBOR metadata regions are excluded from executable comparisons.
+The remaining helper differences are executable and are not ignored. Reproduction
+checks these reports against fresh compiler output; a passing behavioral suite
+cannot replace a bytecode match. Remaining work is the helper's exact executable
+match, complete creation matching excluding metadata, and Basescan submission.
+The successful settings reproduce this candidate; they are not proof of the
+original build configuration. See [source fidelity notes](../../docs/bytecode-fidelity.md)
+for the reusable lessons from reaching this match.
 
 ## Reconstructed parent behavior
 
@@ -88,11 +116,11 @@ times the configured inventory target. It then trims the ladder to available
 quote funds using the recovered rounding rules. These describe the public book;
 trade-update constraints below also determine whether settlement succeeds.
 
-The current candidate has a 24,554-byte runtime versus the deployed 24,500 bytes.
-The size difference is not a measure of completion or behavioral coverage.
-The checked-in bytecode comparison has also been refreshed: it still described
-an earlier 16,847-byte candidate. Reproduction now checks that this report agrees
-with the freshly compiled candidate, in addition to reporting the remaining mismatch.
+The candidate and captured parent runtimes are both 24,500 bytes. Equality is
+established by comparing executable bytes after constructor execution, not by
+comparing lengths or counting implemented selectors. The evidence manifest was
+deliberately regenerated for this source-fidelity checkpoint. Captured chain
+files and behavioral target digests remain unchanged.
 
 ## Reconstructed quotes
 
@@ -233,15 +261,15 @@ preserved; added quote groups have target-result digests in
 `expected/update-differential.json`, with named detailed results written under
 `build/elfomofi-engine-checkpoint/`.
 
-`parent-standard-input.json` preserves exact candidate inputs. This parent
-checkpoint uses the stock default optimizer at 200 runs, via IR, targeting Cancun.
-The helper retains its separately recorded experimental settings. Neither setting
-choice is claimed to recover the original build. The Math library
-is vendored unchanged from OpenZeppelin Contracts v4.9.6 under its MIT license;
-see [`src/vendor/PROVENANCE.md`](src/vendor/PROVENANCE.md). This is a candidate
-dependency choice, not proof that the original author imported that version.
-Mined selector collisions are explicitly marked and independently hash-checked;
-they do not recover original function names.
+`parent-standard-input.json` preserves exact candidate inputs. Both parent and
+helper use the stock default optimizer at 100 runs, via IR, targeting Cancun.
+The Math library remains unchanged from OpenZeppelin Contracts v4.9.6 under its
+MIT license. The parent's inline `fullMulDiv` is an adapted variant with empty
+reverts for invalid denominators/overflow and an assembly division fast path;
+see [`src/vendor/PROVENANCE.md`](src/vendor/PROVENANCE.md). These dependency choices
+do not establish the original imports. Mined selector collisions, including the
+two timestamped oracle interfaces, are explicitly marked and independently
+hash-checked; they do not recover original function names.
 
 ## New fee helper
 

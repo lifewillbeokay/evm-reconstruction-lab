@@ -1,6 +1,7 @@
-"""Reproduce the current-engine checkpoint offline; does not claim full source recovery."""
+"""Reproduce the exact parent executable and report the unresolved child separately."""
 
 import copy
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -9,7 +10,7 @@ import sys
 
 from eth_abi import decode, encode
 from eth_utils import keccak
-from evm_lab.bytecode import compare, parse_hex
+from evm_lab.bytecode import compare, parse_hex, split_metadata
 from evm_lab.evm import Context, constructor_runtime
 
 REPO = Path(__file__).resolve().parents[1]
@@ -28,6 +29,13 @@ def read(path):
 def main():
     BUILD.mkdir(parents=True, exist_ok=True)
     info = read("case.json")
+    fidelity = read("expected/source-fidelity.json")
+    assert fidelity["compiler"] == info["compiler"]
+    for filename, expected_sha in fidelity["inputs_sha256"].items():
+        assert hashlib.sha256((CASE / filename).read_bytes()).hexdigest() == expected_sha
+        settings = read(filename)["settings"]
+        for key in ["optimizer", "viaIR", "evmVersion"]:
+            assert settings[key] == fidelity[key]
     engine, helper = info["address"], info["helper"]
     header = read("evidence/block.json")
     witness = read("evidence/state-witness.json")
@@ -96,6 +104,9 @@ def main():
     )
     assert candidate == bytes.fromhex(artifact["evm"]["deployedBytecode"]["object"])
     match = compare(helper_runtime, candidate)
+    assert match == read("expected/helper-bytecode-match.json"), (
+        "Recorded helper bytecode comparison is stale"
+    )
     (BUILD / "helper-bytecode-match.json").write_text(
         json.dumps(match, indent=2) + "\n"
     )
@@ -108,7 +119,7 @@ def main():
 
     baseline = read("evidence/baseline-replays.json")
     # Compare both the original helper and the reconstructed helper in the full
-    # original engine's quote/book paths. This does not reconstruct the parent.
+    # original engine's quote/book paths, separately from the parent checks below.
     for overrides in [{}, {helper: "0x" + candidate.hex()}]:
         vm = make_state(copy.deepcopy(witness), header, code_overrides=overrides)
         for request in baseline:
@@ -189,6 +200,30 @@ def main():
     assert parent_match == read("expected/parent-bytecode-match.json"), (
         "Recorded parent bytecode comparison is stale"
     )
+    import constructor_probe as constructor
+    from creation_comparison import analyze
+
+    parent_artifact = json.loads((BUILD / "state-compiled.json").read_text())
+    parent_init = bytes.fromhex(parent_artifact["evm"]["bytecode"]["object"])
+    _, candidate_vm, _, _, deployed = constructor.run(constructor.ARGS, creation=parent_init)
+    assert not deployed.is_error
+    # The standalone helper compiler input must reproduce the embedded child.
+    assert candidate_vm.state.get_code(parse_hex(helper)) == candidate
+    creation_match = analyze(
+        constructor.ORIGINAL, parent_artifact, helper_init, helper_runtime,
+        bytes.fromhex(artifact["evm"]["bytecode"]["object"]), candidate,
+        original, deployed.output,
+    )
+    assert creation_match == read("expected/creation-bytecode-match.json"), (
+        "Recorded creation segment comparison is stale"
+    )
+    assert parent_match["executable_match"]
+    assert "0x" + keccak(split_metadata(deployed.output).executable).hex() == fidelity["parent_runtime_executable_keccak256"]
+    assert creation_match["segments"][0]["candidate_sha256"] == fidelity["parent_constructor_prefix_sha256"]
+    assert len(creation_match["segments"][4]["different_byte_positions"]) == fidelity["remaining_helper_different_executable_bytes"]
+    (BUILD / "creation-bytecode-match.json").write_text(
+        json.dumps(creation_match, indent=2) + "\n"
+    )
     report = {
         "original_constructor_runtime_match": True,
         "constructor_scope": read("evidence/constructor-replay.json"),
@@ -199,11 +234,15 @@ def main():
         "parent_scenarios": parent_counts,
         "parent_executable_match": parent_match["executable_match"],
         "parent_full_bytecode_match": parent_match["exact_match"],
+        "creation_executable_match": creation_match["creation_executable_match"],
+        "creation_full_bytecode_match": creation_match["full_creation_match"],
+        "parent_constructor_prefix_match": creation_match["segments"][0]["exact_match"],
         "implemented_external_selectors": 12,
-        "full_engine_source_reconstructed": False,
+        "full_engine_source_reconstructed": creation_match["creation_executable_match"],
         "explorer_submission": "not submitted",
     }
     (BUILD / "validation.json").write_text(json.dumps(report, indent=2) + "\n")
+    assert report == read("expected/validation.json"), "Recorded validation report is stale"
     print(
         json.dumps(
             {
@@ -213,6 +252,7 @@ def main():
                 "parent_adjustments": len(experiments),
                 "parent_scenarios": parent_counts,
                 "parent_executable_match": parent_match["executable_match"],
+                "creation_executable_match": creation_match["creation_executable_match"],
                 "implemented_external_selectors": 12,
                 "full_engine_source_reconstructed": False,
             }

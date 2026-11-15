@@ -3,14 +3,12 @@ pragma solidity 0.8.34;
 
 /// Reconstructed candidate. Names and comments are analytical labels.
 contract FeeHelper {
-    function getFee(address token) external view returns (uint256) {
-        if (token == 0x4200000000000000000000000000000000000006) {
-            return fee(0x72AB388E2E2F6FaceF59E3C3FA2C4E29011c2D38);
-        }
-        else if (token == 0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf) {
-            return fee(0xb94b22332ABf5f89877A14Cc88f2aBC48c34B3Df);
-        }
-        else { return 0; }
+    function getFee(address token) external view returns(uint256) {
+        address pool;
+        if (token == 0x4200000000000000000000000000000000000006) pool=0x72AB388E2E2F6FaceF59E3C3FA2C4E29011c2D38;
+        else if (token == 0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf) pool=0xb94b22332ABf5f89877A14Cc88f2aBC48c34B3Df;
+        else return 0;
+        return fee(pool);
     }
 
     function fee(address pool) internal view returns (uint256) {
@@ -55,12 +53,12 @@ contract FeeHelper {
             mstore(add(p, 4), index)
             ok := staticcall(6000, pool, p, 36, p, 128)
             ok := and(ok, iszero(lt(returndatasize(), 128)))
-            let rawTime := mload(p)
-            let rawCumulative := mload(add(p, 32))
-            ok := and(ok, eq(mload(add(p, 96)), 1))
-            time := and(rawTime, 0xffffffff)
-            cumulative := signextend(6, rawCumulative)
-            ok := and(ok, and(eq(rawTime, time), eq(rawCumulative, cumulative)))
+function clean(a,b) -> ta,tb {ta := and(a,0xffffffff) tb := signextend(6,b)}
+let rawTime := mload(p)
+let rawCumulative := mload(add(p,32))
+time,cumulative := clean(rawTime,rawCumulative)
+ok := and(ok,eq(mload(add(p,96)),1))
+ok := and(ok,and(eq(rawTime,time),eq(rawCumulative,cumulative)))
         }
     }
 }

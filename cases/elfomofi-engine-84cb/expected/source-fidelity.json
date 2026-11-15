@@ -1,0 +1,18 @@
+{
+  "compiler": "0.8.34+commit.80d5c536",
+  "optimizer": {
+    "enabled": true,
+    "runs": 100
+  },
+  "viaIR": true,
+  "evmVersion": "cancun",
+  "inputs_sha256": {
+    "parent-standard-input.json": "394be461a6771442f10134bf8ccaa6af65eea5c3d7581c8b79c1951d0d68bcf6",
+    "helper-standard-input.json": "a03c95377e9a00957f4863324c91e96bad8d2839aadf75dbda4e83f1eddae72e"
+  },
+  "parent_runtime_executable_keccak256": "0xabba83c89cbaece5fa078d3c76357e52491b2a55a332ba004802b0e379f35965",
+  "parent_constructor_prefix_sha256": "059edd5f768f7e288cc67bf820c7d10ab238a84236d84188940ba59e502e108e",
+  "remaining_helper_different_executable_bytes": 17,
+  "original_metadata_recovered": false,
+  "explorer_verified": false
+}
