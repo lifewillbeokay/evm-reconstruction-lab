@@ -34,6 +34,16 @@
   "helper_differential_scenarios": 156,
   "rpc_backed_replays_per_helper": 3,
   "parent_adjustment_scenarios": 8,
+  "partial_parent_scenarios": {
+    "constructor": 102,
+    "reference-constructor": 90,
+    "state": 234,
+    "price-primitives": 409,
+    "price-selection": 1047,
+    "book-internals": 720,
+    "full-book": 58
+  },
+  "partial_parent_executable_match": false,
   "full_engine_source_reconstructed": false,
   "explorer_submission": "not submitted"
 }

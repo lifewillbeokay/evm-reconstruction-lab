@@ -25,8 +25,9 @@ exports reproducible snapshots. It follows the current routed engine; it does
 not assume the historical case-study address is still active.
 
 The [current engine checkpoint](cases/elfomofi-engine-84cb/README.md) captures
-the `0x84cb…` deployment and reconstructs its new reference-pool fee helper.
-The helper passes 156 differential scenarios; its bytecode is still different.
+the `0x84cb…` deployment and reconstructs its constructor, administrative calls,
+reference pricing, public order book and new fee helper. The partial parent passes
+2,660 differential scenarios and the helper passes 156; bytecode still differs.
 The full engine reconstruction and Basescan verification remain in progress.
 
 This is a reconstruction workbench. It does not automatically recover arbitrary

@@ -9,13 +9,18 @@
   "deployment_transaction": "0xee98e76f2482e9df90f37ad1de66b60810fc523ddb9ee2590805bda1596198b5",
   "runtime_keccak256": "0xdd4089704d81944a7e762909aaabe5c25205848b3290e812971101ee8f881be9",
   "compiler": "0.8.34+commit.80d5c536",
-  "compiler_provenance": "Version from deployed CBOR. Helper candidate settings are experimental, not recovered original settings.",
+  "compiler_provenance": "Version from deployed CBOR. Helper and partial parent settings are experimental, not recovered original settings.",
   "match_claims": {
     "original_constructor_runtime": true,
     "full_engine_source": false,
     "helper_executable_bytecode": false,
     "helper_full_bytecode": false,
     "helper_behavioral": "156 differential scenarios and 3 RPC-backed parent paths",
-    "explorer_submission": "not submitted"
+    "explorer_submission": "not submitted",
+    "parent_executable_bytecode": false,
+    "parent_full_bytecode": false,
+    "partial_parent_behavioral": "2660 scenarios: constructor, administration, price primitives and public book; exact quotes and update absent",
+    "implemented_external_selectors": 9,
+    "total_external_selectors": 12
   }
 }
